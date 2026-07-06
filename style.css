@@ -1,0 +1,533 @@
+/* ==========================================================================
+   0. 設定 (Variables) - ブランドのDNA
+   ========================================================================== */
+:root {
+    --bg-color: #050505;
+    --text-color: #ffffff;
+    --text-sub: rgba(255, 255, 255, 0.7);
+    --border-light: rgba(255, 255, 255, 0.05);
+    --border-medium: rgba(255, 255, 255, 0.3);
+    --font-primary: 'Noto Serif JP', serif;
+    --font-display: 'Montserrat', sans-serif;
+    --font-logo: 'Marcellus', serif; 
+    --header-height: 80px;
+    --max-width: 900px;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   1. 基本リセット & 全体設定
+   ========================================================================== */
+html.lenis, html.lenis body { height: auto; }
+html.lenis.lenis-smooth { scroll-behavior: auto !important; }
+html.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+html.lenis.lenis-stopped { overflow: hidden; }
+html.lenis.lenis-scrolling iframe { pointer-events: none; }
+html { scroll-padding-top: var(--header-height); }
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; padding: 0; background-color: var(--bg-color); color: var(--text-color); font-family: var(--font-primary); overflow-x: hidden; position: relative; min-height: 100vh; }
+body.no-scroll { overflow: hidden; }
+a { text-decoration: none; color: var(--text-color); transition: 0.3s; }
+
+/* ==========================================================================
+   2. エフェクト & 背景
+   ========================================================================== */
+.noise-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 500; opacity: 0.07; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
+.background-lights { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; overflow: hidden; pointer-events: none; }
+.light-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; animation: floatOrb 15s ease-in-out infinite alternate; }
+.orb-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%); animation-duration: 20s; }
+.orb-2 { top: 40%; right: -20%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(255,255,255,0.05), transparent 70%); animation-duration: 18s; animation-delay: -5s; }
+.orb-3 { bottom: -10%; left: 10%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(255,255,255,0.06), transparent 70%); animation-duration: 22s; animation-delay: -10s; }
+@keyframes floatOrb { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(3%, 5%) scale(1.05); } 100% { transform: translate(-2%, 2%) scale(0.95); } }
+
+.transition-curtain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-color); z-index: 9998; opacity: 1; pointer-events: auto; transition: opacity 0.8s cubic-bezier(0.45, 0, 0.55, 1); }
+.transition-curtain.is-open { opacity: 0; pointer-events: none; }
+
+/* ==========================================================================
+   3. ローディング
+   ========================================================================== */
+#loading { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 1s ease, visibility 1s ease; }
+#loading.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
+.loading-logo-img { display: block; margin: 0 auto; width: 180px; max-width: 80%; height: auto; animation: blinkLogo 1.8s ease-in-out infinite; }
+@keyframes blinkLogo { 0%, 100% { opacity: 0.15; } 50% { opacity: 1; filter: drop-shadow(0 0 15px rgba(255,255,255,0.5)); } }
+
+/* ==========================================================================
+   4. ヘッダー & ナビゲーション
+   ========================================================================== */
+header { position: fixed; top: 0; width: 100%; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid var(--border-light); }
+.logo a { display: flex; align-items: center; }
+.logo img { height: 60px; width: auto; transition: opacity 0.3s; }
+.nav-menu ul { list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; }
+.nav-menu ul li a { font-family: var(--font-display); font-size: 0.9rem; letter-spacing: 1px; opacity: 0.7; transition: 0.3s; }
+.nav-menu ul li a.current { opacity: 1; border-bottom: 1px solid var(--text-color); padding-bottom: 5px; }
+
+/* ハンバーガーメニュー (buttonタグ) */
+.hamburger { 
+    display: none; cursor: pointer; z-index: 2000; 
+    background: transparent; border: none; padding: 0; outline: none;
+}
+.hamburger span { display: block; width: 25px; height: 2px; background-color: var(--text-color); margin: 5px 0; transition: 0.4s; box-shadow: 0 0 5px rgba(255,255,255,0.5); }
+
+/* ==========================================================================
+   5. Heroセクション (Top Page)
+   ========================================================================== */
+.hero { position: relative; width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; overflow: hidden; }
+.video-background { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+.video-background video, .video-background img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+video::-webkit-media-controls { display: none !important; }
+.video-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); z-index: 1; }
+.hero-gradient { position: absolute; bottom: 0; left: 0; width: 100%; height: 200px; background: linear-gradient(to bottom, transparent, var(--bg-color)); z-index: 2; pointer-events: none; }
+.hero-text-wrapper { position: relative; z-index: 3; }
+.hero h1 { font-family: var(--font-logo); font-size: 5rem; line-height: 1.1; letter-spacing: 0.15em; margin-bottom: 10px; font-weight: 400; text-shadow: 0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(255,255,255,0.2); }
+.hero p { font-family: var(--font-display); font-size: 1.2rem; letter-spacing: 4px; opacity: 0.9; text-shadow: 0 0 10px rgba(0,0,0,0.8); text-transform: uppercase; }
+.scroll-indicator { position: absolute; bottom: 30px; left: 0; width: 100%; z-index: 5; display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0.7; pointer-events: none; }
+.scroll-indicator span { font-family: var(--font-display); font-size: 0.7rem; letter-spacing: 2px; animation: blink 2s infinite; }
+.scroll-indicator .line { width: 1px; height: 40px; background: linear-gradient(to bottom, #fff, transparent); animation: scrollDown 2s cubic-bezier(0.77, 0, 0.175, 1) infinite; }
+@keyframes scrollDown { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+/* ==========================================================================
+   6. コンテンツ共通 & IDENTITY & ABOUT & SERVICES
+   ========================================================================== */
+.sub-page-content { padding-top: 150px; padding-bottom: 100px; min-height: 80vh; position: relative; z-index: 10; }
+.page-title { text-align: center; margin-bottom: 80px; }
+.page-title h1 { font-family: var(--font-display); font-size: 3rem; letter-spacing: 5px; display: inline-block; border-bottom: 1px solid var(--border-medium); padding-bottom: 15px; font-weight: 400; text-shadow: 0 0 15px rgba(255,255,255,0.2); }
+h2 { font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 30px; letter-spacing: 3px; border-bottom: 1px solid var(--border-medium); padding-bottom: 10px; display: inline-block; font-weight: 400; }
+
+/* IDENTITY */
+.identity-wrapper { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+.identity-block { min-height: 50vh; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; margin-bottom: 40px; }
+.identity-catch { font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 40px; line-height: 1.6; }
+.identity-desc { font-size: 0.95rem; line-height: 2.2; opacity: 0.85; }
+.identity-img-container { width: 100%; max-width: 900px; margin: 0 auto 80px; aspect-ratio: 21 / 9; overflow: hidden; position: relative; border: 1px solid rgba(255,255,255,0.05); background: #000; }
+.identity-img-container::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, transparent 40%, #000 110%); pointer-events: none; z-index: 2; }
+.identity-img { width: 100%; height: 120%; position: absolute; top: -10%; left: 0; object-fit: cover; filter: grayscale(40%) brightness(0.7) contrast(1.3); }
+
+/* SERVICES */
+.service-list-wrapper { display: flex; justify-content: center; padding: 0 20px; }
+.service-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; width: 100%; max-width: var(--max-width); }
+.service-item { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.08); padding: 50px 30px; text-align: center; transition: 0.4s; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); }
+.service-item:hover { background: rgba(255, 255, 255, 0.08); border-color: var(--border-medium); transform: translateY(-5px); box-shadow: 0 0 25px rgba(255, 255, 255, 0.1); }
+.service-item h3 { font-family: var(--font-display); margin-top: 0; font-size: 1.3rem; margin-bottom: 15px; font-weight: 400; }
+.service-desc-text { font-size: 0.8rem; line-height: 1.8; opacity: 0.7; margin-top: 15px; font-family: 'Noto Serif JP', serif; letter-spacing: 0.5px; text-align: left; }
+
+/* ABOUT */
+.company-profile { width: 100%; max-width: 700px; margin: 0 auto; border-top: 1px solid rgba(255, 255, 255, 0.2); text-align: left; padding: 0 20px; }
+.profile-row { display: flex; justify-content: space-between; padding: 25px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.2); margin: 0; }
+.profile-row dt { font-family: var(--font-display); font-weight: bold; width: 30%; opacity: 0.8; letter-spacing: 1px; }
+.profile-row dd { width: 70%; margin: 0; line-height: 1.6; font-size: 0.95rem; }
+.en-text { font-family: var(--font-display); font-weight: 500; letter-spacing: 0.5px; }
+
+
+/* ==========================================================================
+   ★ RECRUIT ページ専用デザイン
+   ========================================================================== */
+.recruit-wrapper { width: 100%; max-width: 800px; margin: 0 auto; padding: 0 20px; }
+.recruit-story-section { text-align: center; margin-bottom: 80px; }
+.recruit-story-title { font-family: var(--font-display); font-size: 1.2rem; letter-spacing: 3px; margin-bottom: 40px; opacity: 0.9; }
+.recruit-story-text { font-size: 0.9rem; line-height: 2.2; letter-spacing: 0.5px; opacity: 0.85; margin-bottom: 30px; text-align: left; }
+
+.recruit-details { border-top: 1px solid rgba(255, 255, 255, 0.2); }
+.recruit-block { display: flex; justify-content: space-between; align-items: flex-start; padding: 60px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.15); }
+.recruit-block-title { flex: 0 0 30%; }
+.recruit-block-title h3 { font-family: var(--font-display); font-size: 1.3rem; letter-spacing: 2px; margin: 0 0 5px 0; font-weight: 500; }
+.recruit-block-title span { font-size: 0.75rem; opacity: 0.5; letter-spacing: 1px; }
+.recruit-block-content { flex: 1; font-size: 0.9rem; line-height: 2; opacity: 0.9; letter-spacing: 0.5px; }
+
+.job-list { list-style: none; padding: 0; margin: 0; }
+.job-list li { margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px dashed rgba(255,255,255,0.15); }
+.job-list li:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.job-list h4 { font-size: 1.05rem; margin: 0 0 8px 0; letter-spacing: 1px; color: #fff; font-weight: bold; }
+.job-list p { margin: 0; font-size: 0.85rem; opacity: 0.7; }
+
+.mind-box { margin-bottom: 30px; }
+.mind-box:last-child { margin-bottom: 0; }
+.mind-box h5 { font-size: 0.85rem; margin: 0 0 10px 0; opacity: 0.6; letter-spacing: 1px; }
+.mind-box p { margin: 0 0 10px 0; }
+.recruit-note { font-size: 0.75rem !important; opacity: 0.6; line-height: 1.8; }
+
+.recruit-entry-btn { display: inline-block; padding: 15px 40px; border: 1px solid rgba(255,255,255,0.5); background: transparent; color: #fff; font-family: var(--font-display); letter-spacing: 4px; transition: 0.4s; font-size: 0.9rem; }
+.recruit-entry-btn:hover { background: #fff; color: #000; border-color: #fff; box-shadow: 0 0 20px rgba(255,255,255,0.4); }
+
+/* ==========================================================================
+   ▼ CONTACT フォームデザイン 
+   ========================================================================== */
+.contact-wrapper { display: flex; flex-direction: column; align-items: center; padding: 0 20px; text-align: center; }
+.contact-lead-text { font-size: 0.85rem; line-height: 2.2; letter-spacing: 1px; opacity: 0.8; margin-bottom: 60px; font-family: var(--font-primary); }
+.contact-form { width: 100%; max-width: 800px; }
+
+.form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 50px; text-align: left; }
+.form-group.half { grid-column: span 1; }
+.form-group.full { grid-column: span 2; }
+.submit-btn.full { grid-column: span 2; }
+
+.form-group { display: flex; flex-direction: column; position: relative; }
+.form-group label { font-family: var(--font-display); margin-bottom: 5px; font-size: 0.75rem; letter-spacing: 3px; color: rgba(255, 255, 255, 0.5); text-transform: uppercase; }
+
+.form-group input, .form-group textarea, .form-group select {
+    background: transparent; border: none; border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-color); font-family: var(--font-primary); font-size: 1rem;
+    padding: 10px 0; outline: none; transition: all 0.4s ease; border-radius: 0;
+}
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255, 255, 255, 0.2); font-size: 0.9rem; }
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-bottom-color: #fff; box-shadow: 0 10px 10px -10px rgba(255,255,255,0.1); }
+
+.form-group select { appearance: none; -webkit-appearance: none; cursor: pointer; background-image: url('data:image/svg+xml;utf8,<svg fill="%23ffffff" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg" opacity="0.5"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); background-repeat: no-repeat; background-position-x: calc(100% - 5px); background-position-y: 50%; }
+.form-group select:invalid { color: rgba(255, 255, 255, 0.2); }
+.form-group select option { background: var(--bg-color); color: var(--text-color); }
+
+.file-desc { font-size: 0.75rem; opacity: 0.5; margin: 0 0 15px 0; letter-spacing: 0.5px; }
+.file-upload-wrapper { display: flex; align-items: center; gap: 20px; }
+.file-input { display: none; }
+.file-btn { background: transparent; border: 1px solid rgba(255, 255, 255, 0.3); color: #fff; padding: 10px 25px; font-family: var(--font-primary); font-size: 0.8rem; cursor: pointer; transition: 0.4s; letter-spacing: 2px; }
+.file-btn:hover { background: #fff; color: #000; box-shadow: 0 0 20px rgba(255,255,255,0.3); border-color: #fff; }
+.file-name { font-size: 0.85rem; opacity: 0.8; font-family: var(--font-display); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 300px; }
+
+.submit-btn { margin-top: 10px; padding: 20px 0; background: #fff; color: #000; border: none; font-family: var(--font-display); font-size: 1rem; letter-spacing: 5px; cursor: pointer; transition: 0.4s; font-weight: bold; width: 100%; }
+.submit-btn:hover { background: #ccc; letter-spacing: 7px; box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); }
+
+.back-btn { margin-top: 0; border: 1px solid rgba(255,255,255,0.4); padding: 20px 0; font-family: var(--font-display); letter-spacing: 3px; transition: 0.4s; background: transparent; color:#fff; cursor: pointer; flex: 1; }
+.back-btn:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+.confirm-list { text-align: left; margin-bottom: 50px; border-top: 1px solid rgba(255,255,255,0.2); }
+.confirm-list dt { font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 3px; opacity: 0.4; padding-top: 30px; margin-bottom: 5px; text-transform: uppercase; }
+.confirm-list dd { margin: 0 0 20px 0; font-size: 1rem; line-height: 1.8; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 25px; letter-spacing: 0.5px; }
+.confirm-actions { display: flex; gap: 20px; align-items: stretch; }
+
+.form-status { text-align: center; font-family: var(--font-primary); font-size: 0.9rem; letter-spacing: 1px; margin-top: 25px; opacity: 0; transition: opacity 0.4s ease; height: 0; overflow: hidden; }
+.form-status.show { opacity: 1; height: auto; }
+.form-status.success { color: #fff; }
+.form-status.error { color: #ff6b6b; }
+
+
+/* ==========================================================================
+   ★ WORKS / INFO トップページセクション ★ 
+   ========================================================================== */
+.section-container { width: 100%; max-width: var(--max-width); margin: 150px auto; padding: 0 20px; }
+.section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; border-bottom: 1px solid var(--border-medium); padding-bottom: 10px; }
+.section-header h2 { margin: 0; border: none; padding: 0; font-size: 2rem; }
+.view-all { font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 1px; position: relative; padding-right: 20px; opacity: 0.6; }
+.view-all::after { content: '→'; position: absolute; right: 0; top: 50%; transform: translateY(-50%); transition: 0.3s; }
+.view-all:hover { opacity: 1; }
+.view-all:hover::after { right: -5px; }
+
+.news-list { display: flex; flex-direction: column; }
+.news-item { display: flex; align-items: center; padding: 25px 0; border-bottom: 1px solid var(--border-light); transition: 0.3s; color: var(--text-color); }
+.news-item:hover { background: rgba(255, 255, 255, 0.03); padding-left: 10px; border-color: var(--border-medium); }
+.news-date { font-family: var(--font-display); opacity: 0.5; font-size: 0.85rem; width: 120px; flex-shrink: 0; }
+.news-cat { font-family: var(--font-display); font-size: 0.7rem; border: 1px solid rgba(255,255,255,0.3); padding: 2px 8px; margin-right: 20px; letter-spacing: 1px; opacity: 0.8; flex-shrink: 0; }
+.news-title { font-size: 0.95rem; letter-spacing: 0.5px; line-height: 1.6; }
+
+/* WORKS カードデザイン */
+.works-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+.work-card { display: block; }
+.work-img-box { width: 100%; aspect-ratio: 16 / 9; background: #111; overflow: hidden; position: relative; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1); }
+.dummy-img, .work-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+
+.work-overlay { 
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+    background: rgba(0,0,0,0.85); display: flex; flex-direction: column; justify-content: center; align-items: center; 
+    opacity: 0; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); 
+    padding: 40px; text-align: center;
+}
+.work-story {
+    transform: translateY(20px); transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex; flex-direction: column; align-items: center;
+}
+
+/* TOPページのWORKSホバー時のボタン */
+.work-story .view-btn { display: inline-block; border: 1px solid #fff; padding: 12px 30px; font-family: var(--font-display); letter-spacing: 2px; font-size: 0.85rem; color: #fff; transition: 0.4s; }
+
+.work-card:hover .dummy-img, .work-card:hover .work-img-box img { transform: scale(1.05); }
+.work-card:hover .work-overlay { opacity: 1; }
+.work-card:hover .work-story { transform: translateY(0); }
+.work-card:hover .view-btn { background: #fff; color: #000; box-shadow: 0 0 20px rgba(255,255,255,0.4); }
+
+.work-info h3 { font-family: var(--font-display); margin: 0 0 5px 0; font-size: 1.1rem; font-weight: 400; }
+.work-info p { margin: 0; font-size: 0.8rem; opacity: 0.6; font-family: var(--font-display); }
+
+.works-note { margin-top: 40px; text-align: center; font-size: 0.8rem; line-height: 1.8; color: var(--text-sub); font-family: var(--font-primary); }
+.works-note a.text-link { color: #fff; border-bottom: 1px solid rgba(255,255,255,0.4); transition: 0.3s; padding-bottom: 1px; }
+.works-note a.text-link:hover { border-bottom-color: #fff; opacity: 0.8; }
+
+
+/* ==========================================================================
+   ★ WORKS DETAIL ページ専用デザイン ★
+   ========================================================================== */
+.work-detail-wrapper { width: 100%; max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.work-detail-img-container { width: 100%; aspect-ratio: 16 / 9; margin-bottom: 40px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); background: #111; }
+.work-detail-img-container img { width: 100%; height: 100%; object-fit: cover; }
+.work-detail-header { text-align: center; margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 30px; }
+.work-detail-header h2 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 10px; border: none; padding: 0; font-weight: 400; letter-spacing: 2px; }
+.work-detail-cat { font-family: var(--font-display); font-size: 0.85rem; opacity: 0.6; letter-spacing: 1px; margin: 0; }
+.work-detail-body { max-width: 700px; margin: 0 auto 60px; text-align: center; }
+.work-detail-body p { font-size: 0.95rem; line-height: 2.2; letter-spacing: 0.5px; opacity: 0.9; margin: 0; }
+.work-detail-action { text-align: center; margin-bottom: 60px; }
+.work-detail-action .view-btn { display: inline-block; border: 1px solid #fff; padding: 15px 40px; font-family: var(--font-display); letter-spacing: 3px; font-size: 0.9rem; transition: 0.4s; background: transparent; color: #fff; }
+.work-detail-action .view-btn:hover { background: #fff; color: #000; box-shadow: 0 0 20px rgba(255,255,255,0.4); }
+.work-detail-back { text-align: center; margin-top: 20px; }
+.work-detail-back a { font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 2px; opacity: 0.5; transition: 0.3s; border-bottom: 1px solid transparent; padding-bottom: 2px; color: #fff; }
+.work-detail-back a:hover { opacity: 1; border-color: #fff; }
+
+
+/* ==========================================================================
+   システム系 (Privacy / 404)
+   ========================================================================== */
+.policy-content { text-align: left; max-width: 800px; margin: 0 auto; font-size: 0.9rem; line-height: 2; opacity: 0.9; padding: 0 20px; }
+.policy-content h2 { font-size: 1.2rem; margin-top: 40px; margin-bottom: 20px; border-bottom: 1px solid var(--border-light); display: block; text-align: left; }
+.policy-content p { margin-bottom: 20px; }
+
+.error-container { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+.error-code { font-family: var(--font-display); font-size: 6rem; letter-spacing: 10px; margin: 0; font-weight: 400; text-shadow: 0 0 30px rgba(255,255,255,0.3); }
+.error-msg { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 40px; opacity: 0.8; }
+
+
+/* ==========================================================================
+   7. フッター
+   ========================================================================== */
+footer { padding: 30px; text-align: center; font-size: 0.8rem; background: #000; color: #555; border-top: 1px solid var(--border-light); margin-top: 50px; }
+.footer-sns { display: flex; justify-content: center; gap: 30px; margin-bottom: 25px; }
+.footer-sns a { color: #fff; font-size: 1.2rem; opacity: 0.7; transition: 0.3s; }
+.footer-sns a:hover { opacity: 1; transform: scale(1.1); text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
+
+/* ==========================================================================
+   8. UIコンポーネント (アニメーション / カーソル / プロローグ)
+   ========================================================================== */
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 1.2s var(--ease-out), transform 1.2s var(--ease-out); }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.tw-cursor { display: inline-block; width: 8px; animation: twBlink 0.8s infinite; margin-left: 2px; opacity: 0.7; font-weight: normal; }
+@keyframes twBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+@media (min-width: 769px) {
+    body, a, button, input, textarea, select { cursor: none !important; }
+    #cursor { position: fixed; top: 0; left: 0; width: 8px; height: 8px; background-color: #fff; border-radius: 50%; pointer-events: none; z-index: 10001; transform: translate(-50%, -50%); transition: transform 0.1s ease; mix-blend-mode: difference; }
+    #cursor-follower { position: fixed; top: 0; left: 0; width: 40px; height: 40px; border: 1px solid rgba(255, 255, 255, 0.5); border-radius: 50%; pointer-events: none; z-index: 10000; transform: translate(-50%, -50%); transition: width 0.3s ease, height 0.3s ease, transform 0.15s ease-out; mix-blend-mode: difference; }
+    #cursor-follower.hovered { width: 80px; height: 80px; background-color: #fff; border-color: transparent; }
+}
+
+/* RECRUIT プロローグ */
+#recruit-prologue { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; height: 100dvh; background: #000; z-index: 9500; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; padding: 80px 20px 40px; transition: opacity 1.5s cubic-bezier(0.45, 0, 0.55, 1); overflow-y: auto; }
+#recruit-prologue.is-hidden { opacity: 0; pointer-events: none; }
+.prologue-content { max-width: 600px; width: 100%; margin: auto; padding-bottom: 50px; }
+.prologue-title { font-family: var(--font-display); font-size: 1rem; letter-spacing: 3px; text-align: center; margin-bottom: 40px; opacity: 0.8; }
+.prologue-text-p { font-size: 0.95rem; line-height: 1.8; margin-bottom: 30px; text-align: left; }
+.prologue-skip { text-align: center; font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 2px; opacity: 0.3; margin-top: 60px; cursor: pointer; transition: 0.3s; border-bottom: 1px solid transparent; padding-bottom: 2px; display: inline-block; width: 100%; }
+.prologue-skip:hover { opacity: 1; border-color: #fff; }
+.prologue-action { margin-top: 60px; text-align: center; display: none; flex-direction: column; align-items: center; gap: 25px; opacity: 0; pointer-events: none; transform: translateY(20px); transition: opacity 1.5s ease, transform 1.5s ease; }
+.prologue-action.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.prologue-cta-btn { display: inline-block; border: 1px solid #fff; padding: 15px 40px; font-family: var(--font-primary); font-size: 1.1rem; letter-spacing: 3px; background: #fff; color: #000; transition: 0.4s; text-decoration: none; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+.prologue-cta-btn:hover { background: transparent; color: #fff; box-shadow: 0 0 30px rgba(255,255,255,0.4); }
+.prologue-close-btn { font-size: 0.85rem; opacity: 0.6; cursor: pointer; letter-spacing: 1px; border-bottom: 1px solid transparent; transition: 0.3s; font-family: var(--font-primary); }
+.prologue-close-btn:hover { opacity: 1; border-color: #fff; }
+
+.recruit-img-container { width: 100%; max-width: 900px; margin: 0 auto 80px; aspect-ratio: 21 / 9; overflow: hidden; position: relative; border: 1px solid rgba(255,255,255,0.1); background: #111; }
+.recruit-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%) brightness(0.8) contrast(1.2); transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.recruit-img-container:hover .recruit-img { transform: scale(1.05); }
+
+/* ==========================================================================
+   ★ レスポンシブ (スマホ対応) ★
+   ========================================================================== */
+@media (max-width: 768px) {
+    #cursor, #cursor-follower { display: none; }
+    .hamburger { display: block; }
+    .nav-menu { position: fixed; top: 0; right: -100%; width: 100%; height: 100dvh; background: rgba(0,0,0,0.8); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); display: flex; justify-content: center; align-items: center; transition: 0.5s; z-index: 1500; overflow-y: auto; }
+    .nav-menu.active { right: 0; }
+    .nav-menu ul { flex-direction: column; text-align: center; gap: 50px; }
+    .nav-menu ul li a { font-size: 1.5rem; }
+    .hamburger.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+    
+    .hero h1 { font-size: 2.8rem; }
+    .hero p { font-size: 0.9rem; }
+    header { padding: 15px 20px; }
+    .logo img { height: 45px; }
+    .page-title h1 { font-size: 1.8rem; letter-spacing: 3px; }
+    .section-header h2 { font-size: 1.5rem; }
+    .sub-page-content { padding-top: 120px; }
+
+    .recruit-story-text { font-size: 0.8rem; line-height: 2.2; letter-spacing: 0; }
+    .recruit-block { flex-direction: column; padding: 40px 0; }
+    .recruit-block-title { width: 100%; margin-bottom: 25px; }
+    .recruit-block-title h3 { font-size: 1.2rem; }
+    .recruit-block-content { width: 100%; font-size: 0.85rem; line-height: 2.2; }
+    .job-list h4 { font-size: 0.95rem; }
+    .job-list p { font-size: 0.8rem; }
+    .recruit-entry-btn { width: 100%; text-align: center; padding: 15px 0; }
+    .recruit-note { font-size: 0.7rem !important; }
+    
+    .identity-block { min-height: 40vh; margin-bottom: 30px; }
+    .identity-catch { font-size: 1.1rem; margin-bottom: 20px; }
+    .identity-desc { font-size: 0.85rem; line-height: 2; }
+    .recruit-img-container, .identity-img-container { aspect-ratio: 16 / 9; margin-bottom: 40px; }
+    .identity-img-container::after { background: radial-gradient(circle, transparent 50%, #000 100%); }
+    .identity-img { height: 100%; top: 0; transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1); }
+
+    .service-list { grid-template-columns: 1fr; }
+    .service-desc-text { font-size: 0.75rem; text-align: left; }
+    .profile-row { flex-direction: column; gap: 5px; }
+    .profile-row dt { width: 100%; opacity: 0.5; font-size: 0.8rem; }
+    .profile-row dd { width: 100%; }
+    .business-list { font-size: 0.75rem; letter-spacing: -0.5px; }
+
+    .prologue-text-p { font-size: 0.8rem; line-height: 2.2; letter-spacing: -0.2px; margin-bottom: 20px; }
+    .prologue-cta-btn { padding: 12px 30px; font-size: 1rem; }
+
+    .contact-lead-text { font-size: 0.75rem; line-height: 2; margin-bottom: 40px; }
+    .contact-form { max-width: 100%; }
+    .form-grid { grid-template-columns: 1fr; gap: 30px; }
+    .form-group.half, .form-group.full, .submit-btn.full { grid-column: span 1; }
+    .confirm-actions { flex-direction: column; gap: 10px; }
+    .file-upload-wrapper { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .file-name { max-width: 100%; }
+
+    .news-item { flex-wrap: wrap; padding: 20px 0; }
+    .news-date { width: auto; margin-right: 15px; margin-bottom: 5px; }
+    .news-title { width: 100%; margin-top: 5px; font-size: 0.9rem; }
+    
+    .works-grid { grid-template-columns: 1fr; gap: 40px; }
+    .section-container { margin: 100px auto; }
+    .works-note { font-size: 0.75rem; }
+    
+    .work-overlay { padding: 20px; }
+    .work-story .view-btn { padding: 10px 25px; font-size: 0.75rem; }
+    
+    .work-detail-header h2 { font-size: 1.5rem; }
+    .work-detail-body p { font-size: 0.85rem; line-height: 2; }
+    .work-detail-action .view-btn { padding: 12px 30px; font-size: 0.8rem; }
+    
+    /* モバイル時の軽量化 (Blurを下げる) */
+    .light-orb { filter: blur(40px); }
+}
+
+/* ==========================================================================
+   ★ パフォーマンス・アクセシビリティ (A11y/減感対応) ★
+   ========================================================================== */
+/* 端末側でアニメーションを減らす設定にしているユーザーへの配慮 */
+@media (prefers-reduced-motion: reduce) {
+    .light-orb { animation: none !important; opacity: 0.2; }
+    .fade-in { transition-duration: 0.4s !important; transform: none !important; }
+}
+
+/* キーボード操作時のフォーカス可視化 (高級化) */
+a:focus-visible, 
+button:focus-visible, 
+input:focus-visible, 
+textarea:focus-visible, 
+select:focus-visible {
+    outline: 1px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 4px;
+    border-radius: 2px;
+    transition: outline-color 0.3s ease, outline-offset 0.3s ease;
+}
+/* マウス操作時はアウトラインを出さない */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+/* TextScrambleのノイズ文字を上品に */
+.dud { opacity: 0.35; }
+
+/* =========================================================
+   Cinematic & Playful Enhancements (2026-07)
+   ========================================================= */
+
+/* --- A-1: レターボックス化スクロール --- */
+.letterbox-bar { position: fixed; left: 0; width: 100%; height: 15vh; background: #000; z-index: 900; pointer-events: none; transform: scaleY(0); will-change: transform, opacity; transition: opacity 0.4s ease; }
+.letterbox-bar.top { top: 0; transform-origin: top; }
+.letterbox-bar.bottom { bottom: 0; transform-origin: bottom; }
+
+/* --- A-2: RECタイムコード --- */
+.hero-timecode { position: absolute; right: 28px; bottom: 28px; z-index: 6; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.65; display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; -webkit-user-select: none; font-variant-numeric: tabular-nums; }
+.tc-rec { width: 8px; height: 8px; border-radius: 50%; background: #e0352b; box-shadow: 0 0 8px rgba(224, 53, 43, 0.8); animation: recBlink 1.3s steps(1) infinite; }
+@keyframes recBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.15; } }
+@media (max-width: 768px) { .hero-timecode { right: 16px; bottom: 20px; font-size: 0.6rem; } }
+
+/* --- C-1: 行単位テキストリベール --- */
+.line-reveal .rl { display: block; overflow: hidden; }
+.line-reveal .rl-inner { display: block; transform: translateY(115%); transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+.line-reveal.revealed .rl-inner { transform: translateY(0); }
+
+/* --- D-1: 隠しリール --- */
+.hero-text-wrapper h1 { user-select: none; -webkit-user-select: none; cursor: default; }
+.secret-reel { position: fixed; inset: 0; background: #000; z-index: 9990; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.6s ease; }
+.secret-reel.show { opacity: 1; }
+.secret-reel video { width: min(88vw, 1100px); max-height: 74vh; display: block; box-shadow: 0 0 60px rgba(255, 255, 255, 0.08); }
+.sr-caption { position: absolute; bottom: 6vh; left: 0; width: 100%; text-align: center; pointer-events: none; }
+.sr-caption p { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 4px; opacity: 0.55; text-transform: uppercase; }
+.sr-close { position: absolute; top: 24px; right: 32px; background: none; border: 1px solid rgba(255, 255, 255, 0.3); color: #fff; width: 44px; height: 44px; border-radius: 50%; font-size: 1.2rem; line-height: 1; cursor: pointer; transition: 0.3s; }
+.sr-close:hover { background: #fff; color: #000; }
+
+/* =========================================================
+   Hidden Commands (Easter Eggs)
+   ========================================================= */
+
+/* --- E-1: カチンコ SCENE 0 --- */
+.clapper-overlay { position: fixed; inset: 0; z-index: 9985; display: flex; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.78); opacity: 0; transition: opacity 0.4s ease; pointer-events: none; }
+.clapper-overlay.show { opacity: 1; }
+.clapper { width: min(420px, 82vw); filter: drop-shadow(0 0 40px rgba(255,255,255,0.08)); }
+.clapper-stick { height: 42px; background: repeating-linear-gradient(-45deg, #fff 0 24px, #000 24px 48px); border: 2px solid #fff; border-bottom: none; transform-origin: left bottom; transform: rotate(-16deg); transition: transform 0.16s cubic-bezier(0.6, 0, 1, 1); }
+.clapper-overlay.clap .clapper-stick { transform: rotate(0deg); }
+.clapper-board { border: 2px solid #fff; background: #000; padding: 26px 26px 20px; display: flex; flex-wrap: wrap; gap: 6px 26px; align-items: baseline; }
+.cl-scene, .cl-take { font-family: 'Montserrat', sans-serif; letter-spacing: 3px; font-size: 1.25rem; }
+.cl-take { opacity: 0.7; }
+.cl-note { width: 100%; font-family: 'Montserrat', sans-serif; font-size: 0.62rem; letter-spacing: 2px; opacity: 0.5; text-transform: uppercase; margin-top: 10px; }
+
+/* --- E-2: ネガ反転 THE NEGATIVE --- */
+.nega-overlay { position: fixed; inset: 0; background: #fff; mix-blend-mode: difference; z-index: 9986; pointer-events: none; opacity: 0; transition: opacity 1.2s ease; }
+.nega-overlay.show { opacity: 1; }
+
+/* --- E-3: エンドロール --- */
+.end-credits { position: fixed; inset: 0; background: #000; z-index: 9987; overflow: hidden; opacity: 0; transition: opacity 0.6s ease; }
+.end-credits.show { opacity: 1; }
+.ec-roll { position: absolute; left: 0; width: 100%; top: 100%; text-align: center; animation: ecRoll 16s linear forwards; }
+@keyframes ecRoll { from { transform: translateY(0); } to { transform: translateY(calc(-100vh - 100%)); } }
+.ec-role { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 4px; opacity: 0.5; margin: 36px 0 8px; text-transform: uppercase; }
+.ec-name { font-family: 'Marcellus', serif; font-size: 1.7rem; letter-spacing: 3px; }
+.ec-fin { margin-top: 80px; font-family: 'Montserrat', sans-serif; letter-spacing: 5px; font-size: 0.9rem; }
+.ec-cta { display: inline-block; margin-top: 46px; font-family: 'Montserrat', sans-serif; font-size: 0.72rem; letter-spacing: 3px; border: 1px solid rgba(255, 255, 255, 0.4); padding: 13px 28px; transition: 0.3s; }
+.ec-cta:hover { background: #fff; color: #000; }
+.ec-close { position: absolute; top: 24px; right: 32px; background: none; border: 1px solid rgba(255, 255, 255, 0.3); color: #fff; width: 44px; height: 44px; border-radius: 50%; font-size: 1.2rem; line-height: 1; cursor: pointer; transition: 0.3s; z-index: 2; }
+.ec-close:hover { background: #fff; color: #000; }
+
+/* --- E-4: 深夜モード --- */
+.tc-rec.fast { animation-duration: 0.45s; }
+
+/* --- E-5: 404 NO SIGNAL --- */
+.no-signal-wrap { position: relative; min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
+.static-noise { position: absolute; inset: -50%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity: 0.22; animation: staticJitter 0.25s steps(3) infinite; pointer-events: none; }
+@keyframes staticJitter { 0% { transform: translate(0, 0); } 33% { transform: translate(-4%, 3%); } 66% { transform: translate(3%, -4%); } 100% { transform: translate(0, 0); } }
+.color-bars { display: flex; width: min(300px, 70vw); height: 14px; margin-bottom: 40px; opacity: 0.85; animation: barsFlicker 4s steps(1) infinite; position: relative; z-index: 2; }
+.color-bars span { flex: 1; }
+@keyframes barsFlicker { 0%, 92%, 100% { opacity: 0.85; } 94% { opacity: 0.2; } 96% { opacity: 0.7; } 98% { opacity: 0.3; } }
+.no-signal-text { position: relative; z-index: 2; font-family: 'Montserrat', sans-serif; font-size: clamp(2rem, 8vw, 4rem); letter-spacing: 12px; animation: nsBlink 1.6s steps(1) infinite; text-shadow: 3px 0 0 rgba(255,0,60,0.35), -3px 0 0 rgba(0,200,255,0.35); }
+@keyframes nsBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+.no-signal-sub { position: relative; z-index: 2; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 4px; opacity: 0.55; margin: 18px 0 46px; text-transform: uppercase; }
+
+/* --- E-7: DECK OF ULDNLC（リクルート隠しカード） --- */
+.card-draw-overlay { position: fixed; inset: 0; z-index: 9988; background: rgba(0, 0, 0, 0.9); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px; opacity: 0; transition: opacity 0.5s ease; padding: 20px; }
+.card-draw-overlay.show { opacity: 1; }
+.cd-lead { text-align: center; font-family: 'Montserrat', sans-serif; letter-spacing: 4px; font-size: 0.85rem; }
+.cd-lead span { display: block; margin-top: 12px; font-family: 'Noto Serif JP', serif; font-size: 0.72rem; letter-spacing: 1px; line-height: 1.9; opacity: 0.6; }
+.draw-card { width: min(210px, 54vw); aspect-ratio: 2.5 / 3.5; perspective: 1200px; cursor: pointer; }
+.draw-card-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.draw-card.flipped .draw-card-inner { transform: rotateY(180deg); }
+.dc-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border: 1px solid rgba(255, 255, 255, 0.5); border-radius: 12px; background: #0a0a0a; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 12px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 255, 255, 0.06); overflow: hidden; }
+.dc-back { background: repeating-linear-gradient(45deg, #0a0a0a 0 9px, #131313 9px 18px); }
+.dc-back-suits { font-size: 1rem; letter-spacing: 8px; opacity: 0.7; }
+.dc-back-logo { font-family: 'Marcellus', serif; letter-spacing: 4px; font-size: 0.85rem; opacity: 0.85; }
+.dc-front { transform: rotateY(180deg); }
+.dc-suit { font-size: 4.4rem; line-height: 1; }
+.dc-rank { font-family: 'Marcellus', serif; font-size: 2.6rem; line-height: 1; }
+.dc-front.red .dc-suit, .dc-front.red .dc-rank, .dc-front.red .dc-corner { color: #c8453e; }
+.dc-corner { position: absolute; font-family: 'Marcellus', serif; font-size: 0.95rem; text-align: center; line-height: 1.15; }
+.dc-corner.tl { top: 10px; left: 13px; }
+.dc-corner.br { bottom: 10px; right: 13px; transform: rotate(180deg); }
+.cd-result { text-align: center; opacity: 0; pointer-events: none; transition: opacity 0.6s ease 0.45s; }
+.cd-result.show { opacity: 1; pointer-events: auto; }
+.cd-suit-name { font-family: 'Montserrat', sans-serif; letter-spacing: 4px; font-size: 0.85rem; margin-bottom: 10px; }
+.cd-meaning { font-size: 0.8rem; letter-spacing: 1px; opacity: 0.75; margin-bottom: 24px; }
+.cd-actions { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; align-items: center; }
+.cd-again { background: transparent; border: 1px solid rgba(255, 255, 255, 0.35); color: #fff; padding: 11px 22px; font-family: 'Noto Serif JP', serif; font-size: 0.75rem; letter-spacing: 2px; cursor: pointer; transition: 0.3s; }
+.cd-again:hover { border-color: #fff; background: rgba(255, 255, 255, 0.08); }
+.cd-entry { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 0.72rem; letter-spacing: 2px; border: 1px solid #fff; background: #fff; color: #000; padding: 12px 24px; transition: 0.3s; }
+.cd-entry:hover { background: transparent; color: #fff; }
+.cd-taken { display: block; margin-top: 10px; font-style: normal; font-size: 0.68rem; letter-spacing: 1px; opacity: 0.45; }
