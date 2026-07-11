@@ -116,7 +116,29 @@ document.addEventListener("DOMContentLoaded", function() {
     // 4. ローディング & ページ遷移 (★url.href正規化・完全版)
     // =========================================================
     const loader = document.getElementById('loading');
-    if (loader) { setTimeout(() => loader.classList.add('loaded'), 2000); }
+    const introHero = document.querySelector('.hero');
+    const introReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const introSeen = localStorage.getItem('uldnlc_intro_seen');
+    const introForce = /[?&]intro/.test(location.search); // ?intro でプレビュー再生（初回制限を無視）
+    if (loader && introHero && !introReduced && (introForce || !introSeen)) {
+        // 初回訪問：ハイエンド×微サイバーのイントロで世界に迷い込む演出
+        introHero.classList.add('hc-mat');
+        localStorage.setItem('uldnlc_intro_seen', '1');
+        requestAnimationFrame(() => {
+            loader.classList.add('play');                                       // イントロ開始（約2.6s）
+            setTimeout(() => introHero.classList.add('hc-go'), 2050);           // 映像のシネマグレード立ち上げ
+            setTimeout(() => {                                                  // 黒幕を除去してヒーローへ
+                loader.style.display = 'none';
+                introHero.classList.remove('hc-mat', 'hc-go');
+            }, 2680);
+        });
+    } else if (loader) {
+        // 2回目以降・リデュースドモーション：イントロなしで即表示
+        loader.classList.add('no-intro');
+        if (introHero) introHero.classList.remove('hc-mat', 'hc-go');
+        setTimeout(() => loader.classList.add('loaded'), introReduced ? 150 : 350);
+        setTimeout(() => { loader.style.display = 'none'; }, 1300);
+    }
 
     const curtain = document.querySelector('.transition-curtain');
     window.addEventListener('pageshow', (event) => { if (event.persisted && curtain) { curtain.classList.add('is-open'); } });
@@ -766,5 +788,75 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         setTimeout(playMorse, 12000);
         setInterval(playMorse, 45000);
+    }
+
+    // --- E-8: IDENTITY サーモグラフィ（哲学「見えない熱量を、可視化する」を体現） ---
+    if (document.title.includes('IDENTITY')) {
+        const idCatch = document.querySelector('.identity-catch');
+        const idImg = document.querySelector('.identity-img');
+        const idCont = document.querySelector('.identity-img-container');
+        if (idCatch && idImg && idCont) {
+            const cap = document.createElement('div');
+            cap.className = 'thermal-caption';
+            cap.innerHTML = '<span class="tl">Thermography</span><span class="tj">熱量、可視化。</span>';
+            idCont.appendChild(cap);
+            let thermalTimer = null;
+            idCatch.addEventListener('click', () => {
+                idImg.classList.add('thermal');
+                cap.classList.add('show');
+                clearTimeout(thermalTimer);
+                thermalTimer = setTimeout(() => {
+                    idImg.classList.remove('thermal');
+                    cap.classList.remove('show');
+                }, 4200);
+            });
+        }
+    }
+
+    // --- E-9: ABOUT STUDIO INFO タイプライター（STUDIO INFO をクリック） ---
+    if (document.title.includes('ABOUT')) {
+        const infoHead = document.querySelector('.about-information h3');
+        const infoDl = document.querySelector('.about-information dl');
+        if (infoHead && infoDl) {
+            const cells = Array.from(infoDl.querySelectorAll('dt, dd'));
+            const originals = cells.map(c => c.innerHTML);
+            const sleep = ms => new Promise(r => setTimeout(r, ms));
+            let typing = false;
+            const typeCell = async (c, html) => {
+                const parts = html.split(/<br\s*\/?>/i);
+                let out = '';
+                for (let p = 0; p < parts.length; p++) {
+                    const text = parts[p].replace(/<[^>]+>/g, '').trim();
+                    for (let i = 0; i < text.length; i++) {
+                        out += text[i];
+                        c.innerHTML = out + '<span class="tw-caret on">▌</span>';
+                        await sleep(26);
+                    }
+                    if (p < parts.length - 1) out += '<br>';
+                }
+                c.innerHTML = out;
+            };
+            infoHead.addEventListener('click', async () => {
+                if (typing) return;
+                typing = true;
+                for (let i = 0; i < cells.length; i++) await typeCell(cells[i], originals[i]);
+                await sleep(400);
+                cells.forEach((c, i) => { c.innerHTML = originals[i]; });
+                typing = false;
+            });
+        }
+    }
+
+    // --- SERVICES フィルムインデックス（可視・番号 + ライン描画） ---
+    if (document.title.includes('SERVICES')) {
+        document.querySelectorAll('.services-list > .service-item').forEach((item, i) => {
+            const rule = document.createElement('span');
+            rule.className = 'svc-rule';
+            const idx = document.createElement('span');
+            idx.className = 'svc-index';
+            idx.textContent = String(i + 1).padStart(2, '0');
+            item.insertBefore(rule, item.firstChild);
+            item.insertBefore(idx, item.firstChild);
+        });
     }
 });
