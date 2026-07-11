@@ -355,29 +355,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // 10. Cinematic & Playful Enhancements
     // =========================================================
 
-    // --- A-1: レターボックス化スクロール（トップのみ） ---
-    const heroSec = document.getElementById('hero-section');
-    const lbTop = document.querySelector('.letterbox-bar.top');
-    const lbBottom = document.querySelector('.letterbox-bar.bottom');
-    if (heroSec && lbTop && lbBottom) {
-        const updateLetterbox = () => {
-            const h = heroSec.offsetHeight;
-            const y = window.scrollY;
-            // 前半35%で閉じる
-            const close = Math.min(1, Math.max(0, y / (h * 0.35)));
-            const eased = 1 - Math.pow(1 - close, 3); // easeOutCubic
-            lbTop.style.transform = `scaleY(${eased})`;
-            lbBottom.style.transform = `scaleY(${eased})`;
-            // ヒーローを抜けたらフェードアウト
-            const fade = Math.min(1, Math.max(0, (y - h * 0.55) / (h * 0.2)));
-            lbTop.style.opacity = String(1 - fade);
-            lbBottom.style.opacity = String(1 - fade);
-        };
-        window.addEventListener('scroll', updateLetterbox, { passive: true });
-        updateLetterbox();
-    }
-
-    // --- A-2: RECタイムコード（24fps・NEGAモード中は逆走） ---
+    // --- A-2: タイムコード（24fps・NEGAモード中は逆走） ---
     let negaActive = false;
     const tcDigits = document.querySelector('.hero-timecode .tc-digits');
     if (tcDigits) {
@@ -478,7 +456,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // --- D-4: コンソールメッセージ ---
     console.log('%cULDNLC %c CREATIVE BEYOND LIMITS', 'font-size:18px; letter-spacing:6px; color:#fff; background:#000; padding:10px 6px 10px 18px;', 'font-size:10px; letter-spacing:3px; color:#888; background:#000; padding:10px 18px 10px 6px;');
     console.log('We see you. 一緒に作りませんか？ → https://uldnlc.studio/recruit.html');
-    console.log('P.S. このサイトには隠しコマンドが眠っています。まずは REC から。');
+    console.log('P.S. このサイトには隠しコマンドが眠っています。まずは右下のタイムコードから。');
 
     // =========================================================
     // 11. Hidden Commands (Easter Eggs)
