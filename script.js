@@ -578,11 +578,22 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // --- E-4: 深夜モード「STILL SHOOTING.」（0時〜4時） ---
+    // --- E-4: 深夜モード「STILL SHOOTING.」（2時〜4時） ---
     const hourNow = new Date().getHours();
-    if (hourNow >= 0 && hourNow < 4) {
+    if (hourNow >= 2 && hourNow < 4) {
         const heroTag = document.querySelector('.hero-text-wrapper p');
-        if (heroTag) heroTag.textContent = 'STILL SHOOTING.';
+        if (heroTag) {
+            // 初見の来訪者にスローガンを届けてから切り替える
+            // フェード幅は .fade-in の transition から取る（SP は 0.4s に上書きされるため固定値にしない）
+            const fadeMs = parseFloat(getComputedStyle(heroTag).transitionDuration) * 1000 || 400;
+            setTimeout(() => {
+                heroTag.style.opacity = '0';
+                setTimeout(() => {
+                    heroTag.textContent = 'STILL SHOOTING.';
+                    heroTag.style.opacity = '1';
+                }, fadeMs);
+            }, 5000);
+        }
         document.querySelector('.tc-rec')?.classList.add('fast');
     }
 
