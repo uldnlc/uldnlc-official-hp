@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /h/
 
 Sitemap: https://uldnlc.studio/sitemap.xml
