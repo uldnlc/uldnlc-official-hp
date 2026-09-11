@@ -13,18 +13,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SERVICES | ULDNLC</title>
-    
+
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <meta name="description" content="ULDNLCの提供するサービス。継続運用プラン（制作・投稿設計・数値分析・改善提案）を中心に、映像制作、SNSショート動画、デザイン、写真・宣材制作、Web制作、イベント企画まで。">
+    <meta name="description" content="ULDNLCのサービス。企画・撮影・編集の映像制作から、投稿設計・数値分析・改善提案のSNS運用、イベントの企画・運営、デザイン・Webまで。見つける・形にする・届ける・確かめるの4つの段階を、ひとつのチームで担います。">
 
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://uldnlc.studio/services.html">
     <link rel="canonical" href="https://uldnlc.studio/services.html">
     <meta property="og:title" content="SERVICES | ULDNLC">
-    <meta property="og:description" content="ULDNLCの提供するサービス。継続運用プラン（制作・投稿設計・数値分析・改善提案）を中心に、映像制作、SNSショート動画、デザイン、写真・宣材制作、Web制作、イベント企画まで。">
+    <meta property="og:description" content="ULDNLCのサービス。企画・撮影・編集の映像制作から、投稿設計・数値分析・改善提案のSNS運用、イベントの企画・運営、デザイン・Webまで。見つける・形にする・届ける・確かめるの4つの段階を、ひとつのチームで担います。">
     <meta property="og:image" content="https://uldnlc.studio/ogp.jpg">
     <meta name="twitter:card" content="summary_large_image">
 
@@ -32,15 +32,91 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Montserrat:wght@400;700&family=Noto+Serif+JP:wght@300;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
+
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ===== SERVICES(2026-09-12 再構成)—— このページ専用 ===== */
+        .svc-wrap { max-width: 800px; margin: 0 auto; }
+        .svc-label { font-family: 'Montserrat', sans-serif; font-size: 0.6rem; letter-spacing: 3px; opacity: 0.5; }
+        .svc-a { color: #fff; border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom: 1px; transition: 0.3s; }
+        .svc-a:hover { border-bottom-color: #fff; opacity: 0.8; }
+
+        /* 冒頭:4つの段階 */
+        .svc-lead { margin: 0 auto 70px; }
+        .svc-lead-text { font-size: 0.92rem; line-height: 2.1; margin: 0 0 36px; }
+        .svc-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255,255,255,0.3); border-bottom: 1px solid rgba(255,255,255,0.15); }
+        .svc-flow li { padding: 22px 16px 20px; position: relative; }
+        .svc-flow li + li { border-left: 1px solid rgba(255,255,255,0.1); }
+        .svc-flow .st { display: block; font-family: 'Montserrat', sans-serif; font-size: 0.58rem; letter-spacing: 3px; opacity: 0.45; }
+        .svc-flow .ja { display: block; font-size: 1.05rem; margin-top: 10px; letter-spacing: 2px; }
+        .svc-flow .d { display: block; font-size: 0.72rem; opacity: 0.65; margin-top: 6px; }
+        .svc-flow-group { display: grid; grid-template-columns: 1fr 1fr; margin-top: 10px; }
+        .svc-flow-group span { font-size: 0.68rem; letter-spacing: 1px; opacity: 0.55; padding-left: 16px; }
+        .svc-lead-note { font-size: 0.78rem; line-height: 1.9; opacity: 0.8; margin: 26px 0 0; }
+
+        /* 3つのまとまり */
+        .services-list > .service-item.svc-group { text-align: left; padding: 44px 40px 40px; margin-bottom: 48px; }
+        .svc-group .svc-label { display: block; margin-bottom: 10px; }
+        .svc-group h3 { letter-spacing: 2px; margin-bottom: 6px; }
+        .svc-group .svc-ja { font-size: 0.8rem; opacity: 0.75; margin: 0 0 18px; letter-spacing: 2px; }
+        .svc-group .svc-sum { font-size: 0.88rem; line-height: 1.9; margin: 0 0 26px; }
+        .svc-dl { margin: 0; display: grid; grid-template-columns: 10.5em 1fr; }
+        .svc-dl dt, .svc-dl dd { margin: 0; padding: 14px 0; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.8rem; line-height: 1.85; }
+        .svc-dl dt { font-weight: 700; letter-spacing: 1px; padding-right: 16px; }
+        .svc-dl dd { opacity: 0.85; }
+        .svc-sub { margin: 28px 0 0; font-size: 0.78rem; line-height: 1.9; opacity: 0.85; }
+        .svc-sub .svc-label { display: inline-block; margin: 0 12px 0 0; }
+        .svc-links { margin: 24px 0 0; font-size: 0.75rem; opacity: 0.85; }
+
+        .svc-stages { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 30px; border: 1px solid rgba(255,255,255,0.12); }
+        .svc-stages > div { padding: 16px 14px; }
+        .svc-stages > div + div { border-left: 1px solid rgba(255,255,255,0.12); }
+        .svc-stages .q { display: block; font-size: 0.85rem; letter-spacing: 1px; }
+        .svc-stages .m { display: block; font-size: 0.68rem; opacity: 0.6; margin-top: 6px; line-height: 1.7; }
+        .svc-quote { margin: 22px 0 0; padding-left: 16px; border-left: 1px solid rgba(255,255,255,0.35); font-size: 0.8rem; line-height: 1.9; opacity: 0.9; }
+        .svc-small { font-size: 0.7rem; opacity: 0.55; margin: 12px 0 0; line-height: 1.8; }
+
+        .svc-industry { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+        .svc-industry > div { border: 1px solid rgba(255,255,255,0.12); padding: 20px 20px 18px; }
+        .svc-industry h4 { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 0.85rem; letter-spacing: 2px; margin: 0 0 4px; }
+        .svc-industry h4 span { font-size: 0.55rem; opacity: 0.45; margin-left: 8px; }
+        .svc-industry p { font-size: 0.75rem; line-height: 1.85; opacity: 0.85; margin: 8px 0 12px; }
+
+        /* ご依頼の形 */
+        .svc-request { margin: 30px auto 0; }
+        .svc-request .svc-label { display: block; margin-bottom: 18px; }
+        .svc-req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .svc-req-grid > div { border: 1px solid rgba(255,255,255,0.12); padding: 22px 22px 20px; }
+        .svc-req-grid > div.core { border-color: rgba(255,255,255,0.45); }
+        .svc-req-grid .t { display: block; font-size: 0.92rem; letter-spacing: 1px; }
+        .svc-req-grid .s { display: block; font-family: 'Montserrat', sans-serif; font-size: 0.55rem; letter-spacing: 3px; opacity: 0.45; margin-top: 6px; }
+        .svc-req-grid p { font-size: 0.75rem; line-height: 1.85; opacity: 0.85; margin: 10px 0 0; }
+        .svc-cta { text-align: center; margin: 60px 0 0; font-size: 0.85rem; }
+
+        @media (max-width: 768px) {
+            .svc-pc { display: none; }
+            .svc-flow { grid-template-columns: 1fr 1fr; }
+            .svc-flow li:nth-child(3) { border-left: 0; border-top: 1px solid rgba(255,255,255,0.1); }
+            .svc-flow li:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.1); }
+            .svc-flow-group { display: none; }
+            .services-list > .service-item.svc-group { padding: 34px 20px 30px; }
+            .svc-dl { grid-template-columns: 1fr; }
+            .svc-dl dt { padding-bottom: 2px; }
+            .svc-dl dd { border-top: 0; padding-top: 0; }
+            .svc-stages { grid-template-columns: 1fr 1fr; }
+            .svc-stages > div:nth-child(3) { border-left: 0; }
+            .svc-stages > div:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,0.12); }
+            .svc-industry, .svc-req-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
     <div id="loading" style="display: none;"></div>
-    
+
     <div class="transition-curtain"></div>
     <div class="noise-overlay"></div>
-    
+
     <div class="background-lights">
         <div class="light-orb orb-1"></div>
         <div class="light-orb orb-2"></div>
@@ -72,117 +148,162 @@
             <div class="section-header fade-in">
                 <h2>SERVICES</h2>
             </div>
-            
-            <div class="services-list" style="max-width: 800px; margin: 0 auto;">
 
-                <div class="service-item fade-in" style="margin-bottom: 60px; padding: 30px 0 35px; border-top: 1px solid rgba(255,255,255,0.3); border-bottom: 1px solid rgba(255,255,255,0.15);">
-                    <div style="font-family: 'Montserrat', sans-serif; font-size: 0.6rem; letter-spacing: 3px; opacity: 0.5; margin-bottom: 12px;">CORE SERVICE</div>
-                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px;">MONTHLY OPERATION</h3>
-                    <p style="line-height: 1.8; opacity: 0.9; font-size: 0.8rem;">
-                        継続運用プラン<br>
-                        構成・撮影・編集に加えて、投稿設計、公開後の数値分析、改善提案までを月額で担います。<br>
-                        一本ごとに何が起きたのか、なぜそうなったのかをレポートにまとめ、翌月の内容へ反映します。<br>
-                        <br>
-                        リーチと再生数だけでなく、保存・プロフィールアクセス・その先の来店や問い合わせまでを、<br>
-                        4つの段階に分けて追いかけます。どこで止まっているのかが分かれば、次に手を打てます。<br>
-                        <a href="price.html#operation" class="text-link" style="font-size: 0.9em;">プランの詳細を見る →</a>
-                    </p>
+            <!-- 冒頭:4つの段階(番号の自動付与の対象外) -->
+            <div class="svc-wrap svc-lead fade-in">
+                <p class="svc-lead-text">
+                    何を、誰に、どう見せるかを決めるところから、撮影・編集、公開、<br class="svc-pc">
+                    そして届いたかどうかの確認まで。<br>
+                    ULDNLCは、この4つの段階をひとつのチームで担います。
+                </p>
+                <ol class="svc-flow">
+                    <li><span class="st">STEP 1</span><span class="ja">見つける</span><span class="d">企画・構成</span></li>
+                    <li><span class="st">STEP 2</span><span class="ja">形にする</span><span class="d">撮影・編集</span></li>
+                    <li><span class="st">STEP 3</span><span class="ja">届ける</span><span class="d">投稿・導線</span></li>
+                    <li><span class="st">STEP 4</span><span class="ja">確かめる</span><span class="d">数値分析・改善</span></li>
+                </ol>
+                <div class="svc-flow-group"><span>── 映像制作</span><span>── SNS運用・数値分析</span></div>
+                <p class="svc-lead-note">
+                    分析を書いた担当者が、翌月の構成も担当します。<br>
+                    分かったことが、そのまま次の制作に反映されます。
+                </p>
+            </div>
+
+            <div class="services-list svc-wrap">
+
+                <!-- 01 映像制作 -->
+                <div class="service-item svc-group fade-in">
+                    <span class="svc-label">STEP 1 — 2 ・ 見つける / 形にする</span>
+                    <h3>PRODUCTION</h3>
+                    <p class="svc-ja">映像制作</p>
+                    <p class="svc-sum">伝えたいことを整理するところから、撮影・編集まで。</p>
+                    <dl class="svc-dl">
+                        <dt>企画・構成</dt>
+                        <dd>目的と、見ていただきたい相手を整理します。1本ごとに「冒頭の数秒で何を見せるか」まで設計します。</dd>
+                        <dt>撮影</dt>
+                        <dd>構図・光・音まで設計し、店舗や施設へ伺って撮影します。撮影機材はこちらでご用意します。</dd>
+                        <dt>編集</dt>
+                        <dd>テロップ・音・テンポを整え、縦型・横型など各SNSの形に合わせて仕上げます。</dd>
+                        <dt>品質チェック</dt>
+                        <dd>テレビ番組制作の現場出身のディレクターが、公開前に確認します。</dd>
+                        <dt>表紙・サムネイル</dt>
+                        <dd>一覧の中で選ばれる1枚を用意します。</dd>
+                    </dl>
+                    <p class="svc-sub"><span class="svc-label">WHAT WE MAKE</span>SNSショート動画(Reels・TikTok・YouTube Shorts)/ ブランドムービー / PR動画 / 商品紹介動画 / MV / ライブ・イベント映像 / 宣材・商品写真</p>
+                    <p class="svc-links">料金の目安:<a href="price.html#video" class="svc-a">映像制作</a> ・ <a href="price.html#short" class="svc-a">SNSショート動画</a> ・ <a href="price.html#photo" class="svc-a">写真・宣材</a></p>
                 </div>
 
-                <div class="service-item fade-in" style="margin-bottom: 60px;">
-                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px;">VIDEO PRODUCTION</h3>
-                    <p style="line-height: 1.8; opacity: 0.9; font-size: 0.8rem;">
-                        映像制作<br>
-                        MV、ブランドムービー、PR動画、ライブ映像まで。<br>
-                        企画・撮影・編集を一貫し、<br>
-                        ブランドや人の魅力を記憶に残る映像へ翻訳します。<br>
-                        <a href="price.html#video" class="text-link" style="font-size: 0.9em;">料金の目安を見る →</a>
-                    </p>
+                <!-- 02 SNS運用・数値分析 -->
+                <div class="service-item svc-group fade-in">
+                    <span class="svc-label">STEP 3 — 4 ・ 届ける / 確かめる</span>
+                    <h3>OPERATION &amp; ANALYSIS</h3>
+                    <p class="svc-ja">SNS運用・数値分析</p>
+                    <p class="svc-sum">公開して終わりにしません。<br>届いたかどうかを1本ごとに確かめ、次の制作に反映します。</p>
+                    <dl class="svc-dl">
+                        <dt>投稿設計</dt>
+                        <dd>公開日時、タイトル、キャプション、ハッシュタグ、複数のSNSへの同時掲載を設計します。</dd>
+                        <dt>導線の整備</dt>
+                        <dd>動画をご覧になった方が、お店・ご予約・お問い合わせへ進めるよう、プロフィールやリンク、再生リストを整えます。</dd>
+                        <dt>1本ごとの分析レポート</dt>
+                        <dd>公開から7日後に、下の4つの段階で数字を整理してお届けします。</dd>
+                        <dt>月次レポートと改善提案</dt>
+                        <dd>1か月分をまとめ、うまくいった型と、翌月の投稿テーマをご提案します。</dd>
+                        <dt>定例ミーティング</dt>
+                        <dd>月1回、数字の見方と次の一手をご説明します。</dd>
+                    </dl>
+                    <div class="svc-stages">
+                        <div><span class="q">① 届いたか</span><span class="m">再生数・リーチ</span></div>
+                        <div><span class="q">② 刺さったか</span><span class="m">最後まで見られたか・保存・シェア</span></div>
+                        <div><span class="q">③ 動いたか</span><span class="m">プロフィールへのアクセス・リンクのクリック</span></div>
+                        <div><span class="q">④ 成果につながったか</span><span class="m">ご来店・お問い合わせ・ご予約</span></div>
+                    </div>
+                    <p class="svc-quote">再生数が伸びた動画が、良い動画とは限りません。<br>どこまで届き、どこで止まっているかを段階ごとに分けることで、次に直すべき場所がはっきりします。</p>
+                    <p class="svc-small">※ ④は、ご来店・お問い合わせなどの数字を共有いただくことで分析できる段階です。</p>
+                    <p class="svc-links"><a href="price.html#operation" class="svc-a">月額プランの詳細を見る →</a></p>
                 </div>
 
-                <div class="service-item fade-in" style="margin-bottom: 60px;">
-                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px;">SHORT VIDEO</h3>
-                    <p style="line-height: 1.8; opacity: 0.9; font-size: 0.8rem;">
-                        SNSショート動画制作<br>
-                        Reels・TikTok・YouTube Shorts。<br>
-                        撮影から編集、テロップ、サムネイルまで。<br>
-                        単発・少数本からご依頼いただけます。<br>
-                        <a href="price.html#short" class="text-link" style="font-size: 0.9em;">料金の目安を見る →</a>
-                    </p>
+                <!-- 03 イベント企画・運営 -->
+                <div class="service-item svc-group fade-in">
+                    <span class="svc-label">STEP 1 — 4 ・ 場をつくる</span>
+                    <h3>EVENT</h3>
+                    <p class="svc-ja">イベント企画・運営</p>
+                    <p class="svc-sum">企画から当日の運営、告知と記録まで。<br>場をつくる仕事も、映像と同じチームで担います。</p>
+                    <dl class="svc-dl">
+                        <dt>企画・構成</dt>
+                        <dd>コンセプト、出演者・出展者、会場、当日の流れを組み立てます。</dd>
+                        <dt>告知・集客</dt>
+                        <dd>フライヤー、告知映像、SNSでの告知を設計・制作します。</dd>
+                        <dt>当日の運営</dt>
+                        <dd>進行の管理、出演者・出展者への対応、現場のディレクションを担います。</dd>
+                        <dt>記録と発信</dt>
+                        <dd>当日の映像・写真を記録し、終了後の発信やアフタームービーにつなげます。</dd>
+                        <dt>振り返り</dt>
+                        <dd>来場や反応を整理し、次回の企画に活かします。</dd>
+                    </dl>
+                    <p class="svc-sub"><span class="svc-label">KNOW-HOW</span>イベントの企画・運営で培った知見をもとに、準備の段取りから当日の進行までを組み立て、効果的で円滑な運営を行います。</p>
+                    <p class="svc-links">実績:<a href="work-battlestrings.html" class="svc-a">Battle Strings</a> ・ <a href="work-musashino.html" class="svc-a">武蔵野万博</a> ・ <a href="work-stomps.html" class="svc-a">STOMPS KICHIJOJI(アフタームービー)</a></p>
                 </div>
 
-                <div class="service-item fade-in" style="margin-bottom: 60px;">
-                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px;">DESIGN</h3>
-                    <p style="line-height: 1.8; opacity: 0.9; font-size: 0.8rem;">
-                        デザイン制作<br>
-                        名刺、フライヤー、SNS画像、イベントビジュアル。<br>
-                        世界観を保ったまま、必要な場面のデザインを支えます。<br>
-                        <a href="price.html#design" class="text-link" style="font-size: 0.9em;">料金の目安を見る →</a>
-                    </p>
-                </div>
-
-                <div class="service-item fade-in" style="margin-bottom: 60px;">
-                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px;">PHOTO</h3>
-                    <p style="line-height: 1.8; opacity: 0.9; font-size: 0.8rem;">
-                        写真・宣材制作<br>
-                        アーティスト写真、プロフィール、ポートフォリオ。<br>
-                        人と作品の魅力が伝わるビジュアルを制作します。<br>
-                        <a href="price.html#photo" class="text-link" style="font-size: 0.9em;">料金の目安を見る →</a>
-                    </p>
-                </div>
-
-                <div class="service-item fade-in" style="margin-bottom: 60px;">
-                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px;">WEB</h3>
-                    <p style="line-height: 1.8; opacity: 0.9; font-size: 0.8rem;">
-                        Web制作<br>
-                        HP、LP、ポートフォリオサイト。<br>
-                        SNS・予約・問い合わせへの導線まで、<br>
-                        企画から設計・実装まで自社で一貫して行います。<br>
-                        <a href="price.html#web" class="text-link" style="font-size: 0.9em;">料金の目安を見る →</a>
-                    </p>
-                </div>
-
-                <div class="service-item fade-in" style="margin-bottom: 60px;">
-                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px;">STAY SUPPORT<span style="font-size: 0.6rem; opacity: 0.45; letter-spacing: 2px; margin-left: 10px;">SUGOSU DESIGN</span></h3>
-                    <p style="line-height: 1.8; opacity: 0.9; font-size: 0.8rem;">
-                        宿泊・日帰り滞在施設の“過ごし方”を発信支援<br>
-                        施設ごとの魅力を整理し、SNS発信・縦型映像・HP導線までを個別提案。<br>
-                        動画を納品して終わりではない、共想型の支援です。<br>
-                        <a href="stay-support.html" class="text-link" style="font-size: 0.9em;">詳しく見る →</a>
-                    </p>
-                </div>
-
-                <div class="service-item fade-in" style="margin-bottom: 60px;">
-                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px;">SHOP SUPPORT<span style="font-size: 0.6rem; opacity: 0.45; letter-spacing: 2px; margin-left: 10px;">GearPix</span></h3>
-                    <p style="line-height: 1.8; opacity: 0.9; font-size: 0.8rem;">
-                        楽器店向け 商品コンテンツ制作代行<br>
-                        商品撮影、試奏ショート動画、SNS発信まで。<br>
-                        楽器店の発信業務をまるごと引き受け、<br>
-                        スタッフが本来の業務に集中できる環境をつくります。<br>
-                        <a href="gearpix.html" class="text-link" style="font-size: 0.9em;">詳しく見る →</a>
-                    </p>
-                </div>
-
-                <div class="service-item fade-in" style="margin-bottom: 60px;">
-                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px;">ARTIST SUPPORT</h3>
-                    <p style="line-height: 1.8; opacity: 0.9; font-size: 0.8rem;">
-                        アーティスト支援<br>
-                        宣材写真、ライブ映像、MV、ブッキング、仕事仲介まで。<br>
-                        音楽業界での経験を活かし、活動全体を支えます。<br>
-                        <a href="price.html#artist" class="text-link" style="font-size: 0.9em;">料金の目安を見る →</a>
-                    </p>
-                </div>
-
-                <div class="service-item fade-in" style="margin-bottom: 60px;">
-                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px;">EVENT PLANNING</h3>
-                    <p style="line-height: 1.8; opacity: 0.9; font-size: 0.8rem;">
-                        イベント企画・運営<br>
-                        音楽イベント、地域・カルチャー企画。<br>
-                        企画からフライヤー・映像・当日運営・アーカイブまで横断します。
-                    </p>
+                <!-- 04 ブランド・デザイン・その他 -->
+                <div class="service-item svc-group fade-in">
+                    <span class="svc-label">BRAND / DESIGN / WEB</span>
+                    <h3>DESIGN &amp; MORE</h3>
+                    <p class="svc-ja">ブランド・デザイン・その他</p>
+                    <p class="svc-sum">映像のまわりにある「伝える仕事」も、同じ考え方で形にします。</p>
+                    <dl class="svc-dl">
+                        <dt>ブランドの整理</dt>
+                        <dd>コンセプト、見せ方、世界観を、言葉とビジュアルに落とし込みます。</dd>
+                        <dt>デザイン</dt>
+                        <dd>名刺、フライヤー、SNS画像、資料、イベントビジュアル。 <a href="price.html#design" class="svc-a">料金の目安</a></dd>
+                        <dt>Web</dt>
+                        <dd>ホームページ・LP・ポートフォリオの制作と、SNSからの導線づくり。 <a href="price.html#web" class="svc-a">料金の目安</a></dd>
+                        <dt>アーティスト支援</dt>
+                        <dd>宣材写真、ライブ映像、MV、発信素材、出演の調整。 <a href="price.html#artist" class="svc-a">料金の目安</a></dd>
+                    </dl>
+                    <div class="svc-industry">
+                        <div>
+                            <h4>STAY SUPPORT<span>SUGOSU DESIGN</span></h4>
+                            <p>宿泊・日帰り滞在施設向け。過ごし方が伝わる映像と、SNS・HPの発信を支援します。</p>
+                            <a href="stay-support.html" class="svc-a" style="font-size: 0.75rem;">詳しく見る →</a>
+                        </div>
+                        <div>
+                            <h4>SHOP SUPPORT<span>RESTAURANT / RETAIL</span></h4>
+                            <p>飲食店・小売店向け。メニューや商品の撮影、ショート動画、新メニューや入荷情報の発信をまとめて引き受け、ご来店につながる発信を支えます。</p>
+                            <a href="shop-support.html" class="svc-a" style="font-size: 0.75rem;">詳しく見る →</a>
+                        </div>
+                    </div>
                 </div>
 
             </div>
+
+            <!-- ご依頼の形(番号の自動付与の対象外) -->
+            <div class="svc-wrap svc-request fade-in">
+                <span class="svc-label">HOW TO REQUEST</span>
+                <div class="svc-req-grid">
+                    <div class="core">
+                        <span class="t">月額で一式</span>
+                        <span class="s">STEP 1 — 4 ・ CORE SERVICE</span>
+                        <p>発信を続けて、ご来店・お問い合わせまでつなげたい方へ。<a href="price.html#operation" class="svc-a">プランを見る</a></p>
+                    </div>
+                    <div>
+                        <span class="t">制作のみ</span>
+                        <span class="s">STEP 1 — 2</span>
+                        <p>映像はほしいが、運用はご自身で行いたい方へ。</p>
+                    </div>
+                    <div>
+                        <span class="t">工程を選んで</span>
+                        <span class="s">EDIT / SHOOT + EDIT</span>
+                        <p>編集だけ、撮影と編集だけなど、必要な部分だけ頼みたい方へ。</p>
+                    </div>
+                    <div>
+                        <span class="t">単発の制作・企画</span>
+                        <span class="s">PROJECT</span>
+                        <p>MV、ブランドムービー、イベントなど、1回のご依頼に。</p>
+                    </div>
+                </div>
+                <p class="svc-cta"><a href="contact.html" class="svc-a">ご相談・お問い合わせはこちら →</a></p>
+            </div>
+
         </section>
     </main>
 
