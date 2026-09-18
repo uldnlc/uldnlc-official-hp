@@ -44,12 +44,66 @@
         /* 冒頭:4つの段階 */
         .svc-lead { margin: 0 auto 70px; }
         .svc-lead-text { font-size: 0.92rem; line-height: 2.1; margin: 0 0 36px; }
-        .svc-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255,255,255,0.3); border-bottom: 1px solid rgba(255,255,255,0.15); }
+        .svc-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid rgba(255,255,255,0.3); border-bottom: 1px solid rgba(255,255,255,0.15); }
         .svc-flow li { padding: 22px 16px 20px; position: relative; }
         .svc-flow li + li { border-left: 1px solid rgba(255,255,255,0.1); }
         .svc-flow .st { display: block; font-family: 'Montserrat', sans-serif; font-size: 0.58rem; letter-spacing: 3px; opacity: 0.45; }
         .svc-flow .ja { display: block; font-size: 1.05rem; margin-top: 10px; letter-spacing: 2px; }
         .svc-flow .d { display: block; font-size: 0.72rem; opacity: 0.65; margin-top: 6px; }
+        .svc-flow li a { color: inherit; text-decoration: none; display: block; transition: 0.3s; }
+        .svc-flow li a:hover { opacity: 0.75; }
+        .svc-flow .svc-flow-core { background: rgba(255,255,255,0.05); box-shadow: inset 2px 0 0 rgba(255,255,255,0.45); }
+        /* こんな方へ / メリット(2026-09-18) */
+        .svc-merit { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.12);
+                     border: 1px solid rgba(255,255,255,0.12); margin: 0 0 54px; }
+        .svc-merit > div { background: #0b0b0b; padding: 26px 22px 24px; }
+        .svc-merit .mn { font-family: 'Montserrat', sans-serif; font-size: 0.58rem; letter-spacing: 3px; opacity: 0.4; }
+        .svc-merit .mt { font-size: 0.98rem; line-height: 1.7; margin: 10px 0 0; letter-spacing: 1px; }
+        .svc-merit .md { font-size: 0.75rem; line-height: 1.85; opacity: 0.7; margin: 10px 0 0; }
+        .svc-for { margin: 0 0 18px; padding: 13px 16px; background: rgba(255,255,255,0.045);
+                   font-size: 0.82rem; line-height: 1.8; letter-spacing: 0.5px; }
+        .svc-for b { font-weight: 400; opacity: 0.5; font-size: 0.68rem; letter-spacing: 2px;
+                     font-family: 'Montserrat', sans-serif; display: block; margin-bottom: 5px; }
+        .svc-rec { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 0.6rem;
+                   letter-spacing: 2px; border: 1px solid rgba(255,255,255,0.5); padding: 4px 10px;
+                   margin-left: 12px; vertical-align: 3px; }
+        .svc-to-loop { margin: 16px 0 0; font-size: 0.75rem; line-height: 1.85; opacity: 0.6; }
+        .svc-edge { margin: 24px 0 0; padding: 20px 22px 18px; border: 1px solid rgba(255,255,255,0.22);
+                    background: rgba(255,255,255,0.035); }
+        .svc-edge > b { font-weight: 600; font-size: 0.72rem; letter-spacing: 3px; color: #fff;
+                        font-family: 'Montserrat', sans-serif; display: block; margin-bottom: 12px; }
+        .svc-edge > b span { font-family: 'Noto Serif JP', serif; font-weight: 400; font-size: 0.85em;
+                             letter-spacing: 1px; opacity: 0.55; margin-left: 10px; }
+        .svc-edge p { font-size: 0.82rem; line-height: 2; margin: 0; }
+        .svc-edge p + p { margin-top: 9px; opacity: 0.78; }
+        .svc-work { margin: 14px 0 0; padding-top: 13px; border-top: 1px solid rgba(255,255,255,0.12);
+                    font-size: 0.74rem; line-height: 1.85; opacity: 0.75; }
+        .svc-work b { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 0.62rem;
+                      letter-spacing: 2px; opacity: 0.6; margin-right: 12px; }
+        .svc-price { font-family: 'Montserrat', sans-serif; font-size: 0.82rem; letter-spacing: 1px;
+                     margin: 22px 0 0; opacity: 0.9; }
+        .svc-price span { font-size: 0.68rem; opacity: 0.5; margin-left: 8px; letter-spacing: 1px; }
+        @media (max-width: 720px) { .svc-merit { grid-template-columns: 1fr; } }
+
+        /* 循環図(2026-09-18) */
+        .svc-cycle { margin: 0 0 14px; }
+        .svc-cycle svg { display: block; width: 100%; max-width: 660px; height: auto; margin: 0 auto; }
+        .svc-cycle .ring { fill: none; stroke: rgba(255,255,255,0.14); stroke-width: 1; stroke-dasharray: 3 5; }
+        .svc-cycle .arc { fill: none; stroke: rgba(255,255,255,0.3); stroke-width: 1.2; }
+        .svc-cycle .node { fill: #0b0b0b; stroke: rgba(255,255,255,0.22); stroke-width: 1; }
+        .svc-cycle .node-hit { fill: transparent; cursor: pointer; }
+        .svc-cycle a:hover .node { stroke: rgba(255,255,255,0.7); fill: rgba(255,255,255,0.05); }
+        .svc-cycle .en { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 600;
+                         letter-spacing: 2px; fill: #fff; }
+        .svc-cycle .ja { font-size: 13px; fill: rgba(255,255,255,0.8); letter-spacing: 1px; }
+        .svc-cycle .sm { font-size: 10.5px; fill: rgba(255,255,255,0.45); letter-spacing: 1px; }
+        .svc-cycle .core-en { font-family: 'Montserrat', sans-serif; font-size: 21px; font-weight: 600;
+                              letter-spacing: 3px; fill: #fff; }
+        .svc-cycle .core-ja { font-size: 12px; fill: rgba(255,255,255,0.65); letter-spacing: 1.5px; }
+        .svc-cycle .lead-in { stroke: rgba(255,255,255,0.28); stroke-width: 1.2; fill: none; stroke-dasharray: 4 4; }
+        .svc-cycle .svc-cycle-sp { display: none; }
+        .svc-cycle-note { font-size: 0.78rem; line-height: 1.9; opacity: 0.7; text-align: center; margin: 4px 0 0; }
+
         .svc-flow-group { display: grid; grid-template-columns: 1fr 1fr; margin-top: 10px; }
         .svc-flow-group span { font-size: 0.68rem; letter-spacing: 1px; opacity: 0.55; padding-left: 16px; }
         .svc-lead-note { font-size: 0.78rem; line-height: 1.9; opacity: 0.8; margin: 26px 0 0; }
@@ -95,6 +149,8 @@
 
         @media (max-width: 768px) {
             .svc-pc { display: none; }
+            .svc-cycle .svc-cycle-pc { display: none; }
+            .svc-cycle .svc-cycle-sp { display: block; max-width: 360px; }
             .svc-flow { grid-template-columns: 1fr 1fr; }
             .svc-flow li:nth-child(3) { border-left: 0; border-top: 1px solid rgba(255,255,255,0.1); }
             .svc-flow li:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.1); }
@@ -135,6 +191,7 @@
             <ul>
                 <li><a href="identity.html">IDENTITY</a></li>
                 <li><a href="services.html">SERVICES</a></li>
+                <li><a href="price.html">PRICE</a></li>
                 <li><a href="about.html">ABOUT</a></li>
                 <li><a href="recruit.html">RECRUIT</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
@@ -151,65 +208,239 @@
             <!-- 冒頭:4つの段階(番号の自動付与の対象外) -->
             <div class="svc-wrap svc-lead fade-in">
                 <p class="svc-lead-text">
-                    何を、誰に、どう見せるかを決めるところから、撮影・編集、公開、<br class="svc-pc">
-                    そして届いたかどうかの確認まで。<br>
-                    ULDNLCは、この4つの段階をひとつのチームで担います。
+                    <strong style="font-weight:400;">撮影する人も、編集する人も、数字を見る人も、同じチームです。</strong><br>
+                    動画をつくって終わりにせず、公開したあと何人に届いたかまで確かめます。
                 </p>
-                <ol class="svc-flow">
-                    <li><span class="st">STEP 1</span><span class="ja">見つける</span><span class="d">企画・構成</span></li>
-                    <li><span class="st">STEP 2</span><span class="ja">形にする</span><span class="d">撮影・編集</span></li>
-                    <li><span class="st">STEP 3</span><span class="ja">届ける</span><span class="d">投稿・導線</span></li>
-                    <li><span class="st">STEP 4</span><span class="ja">確かめる</span><span class="d">数値分析・改善</span></li>
-                </ol>
-                <div class="svc-flow-group"><span>── 映像制作</span><span>── SNS運用・数値分析</span></div>
-                <p class="svc-lead-note">
-                    分析を書いた担当者が、翌月の構成も担当します。<br>
-                    分かったことが、そのまま次の制作に反映されます。
+                <div class="svc-merit">
+                    <div>
+                        <span class="mn">01</span>
+                        <p class="mt">窓口はひとつ</p>
+                        <p class="md">撮影、編集、投稿、数字の確認まで。制作会社と運用会社を分けて頼む必要がありません。</p>
+                    </div>
+                    <div>
+                        <span class="mn">02</span>
+                        <p class="mt">次に何を直すか分かる</p>
+                        <p class="md">何人に届いて、何人がプロフィールを見て、何人がお店に来たか。毎月お伝えします。</p>
+                    </div>
+                    <div>
+                        <span class="mn">03</span>
+                        <p class="mt">番組制作の現場出身が見る</p>
+                        <p class="md">公開前に、テレビ番組制作の現場を経験したディレクターが確認します。</p>
+                    </div>
+                </div>
+
+                <div class="svc-cycle">
+                    <svg class="svc-cycle-pc" viewBox="0 0 700 430" role="img" aria-label="READ から始まり、MAP・BUILD・TRACE を毎月くり返す循環図">
+                        <defs>
+                            <marker id="svc-ah" viewBox="0 0 9 9" refX="7" refY="4.5" markerWidth="5.5" markerHeight="5.5" orient="auto">
+                                <path d="M 0 0 L 9 4.5 L 0 9 z" fill="rgba(255,255,255,0.5)"></path>
+                            </marker>
+                        </defs>
+                        <!-- READ(入口・円の外) -->
+                        <a href="price.html#read">
+                            <circle class="node" cx="78" cy="215" r="60"></circle>
+                            <text class="en" x="78" y="200" text-anchor="middle">READ</text>
+                            <text class="ja" x="78" y="222" text-anchor="middle">いまを見る</text>
+                            <text class="sm" x="78" y="241" text-anchor="middle">無料・1回</text>
+                        </a>
+                        <path class="lead-in" d="M 142 215 L 200 215" marker-end="url(#svc-ah)"></path>
+
+                        <!-- 循環のリング -->
+                        <circle class="ring" cx="430" cy="215" r="150"></circle>
+
+                        <!-- 循環の矢印(ノードを避けて円周に沿わせる) -->
+                        <path class="arc" d="M 491 78 A 150 150 0 0 1 579 231" marker-end="url(#svc-ah)"></path>
+                        <path class="arc" d="M 518 336 A 150 150 0 0 1 342 336" marker-end="url(#svc-ah)"></path>
+                        <path class="arc" d="M 281 231 A 150 150 0 0 1 369 78" marker-end="url(#svc-ah)"></path>
+
+                        <!-- MAP(上) -->
+                        <a href="price.html#map">
+                            <circle class="node" cx="430" cy="65" r="62"></circle>
+                            <text class="en" x="430" y="50" text-anchor="middle">MAP</text>
+                            <text class="ja" x="430" y="72" text-anchor="middle">何を出すか</text>
+                            <text class="ja" x="430" y="90" text-anchor="middle">決める</text>
+                        </a>
+
+                        <!-- BUILD(右下) -->
+                        <a href="price.html#build">
+                            <circle class="node" cx="560" cy="290" r="62"></circle>
+                            <text class="en" x="560" y="282" text-anchor="middle">BUILD</text>
+                            <text class="ja" x="560" y="304" text-anchor="middle">つくる</text>
+                        </a>
+
+                        <!-- TRACE(左下) -->
+                        <a href="price.html#trace">
+                            <circle class="node" cx="300" cy="290" r="62"></circle>
+                            <text class="en" x="300" y="275" text-anchor="middle">TRACE</text>
+                            <text class="ja" x="300" y="297" text-anchor="middle">数字を</text>
+                            <text class="ja" x="300" y="315" text-anchor="middle">見る</text>
+                        </a>
+
+                        <!-- LOOP(中心) -->
+                        <a href="price.html#loop">
+                            <circle class="node" cx="430" cy="215" r="72" fill="rgba(255,255,255,0.055)"></circle>
+                            <text class="core-en" x="430" y="208" text-anchor="middle">LOOP</text>
+                            <text class="core-ja" x="430" y="232" text-anchor="middle">毎月まわす</text>
+                        </a>
+                    </svg>
+
+                    <svg class="svc-cycle-sp" viewBox="0 0 360 470" role="img" aria-label="READ から始まり、MAP・BUILD・TRACE を毎月くり返す循環図">
+                        <defs>
+                            <marker id="svc-ah-sp" viewBox="0 0 9 9" refX="7" refY="4.5" markerWidth="5.5" markerHeight="5.5" orient="auto">
+                                <path d="M 0 0 L 9 4.5 L 0 9 z" fill="rgba(255,255,255,0.5)"></path>
+                            </marker>
+                        </defs>
+                        <!-- READ(入口・円の外) -->
+                        <a href="price.html#read">
+                            <circle class="node" cx="180" cy="54" r="50"></circle>
+                            <text class="en" x="180" y="38" text-anchor="middle">READ</text>
+                            <text class="ja" x="180" y="60" text-anchor="middle">いまを見る</text>
+                            <text class="sm" x="180" y="79" text-anchor="middle">無料・1回</text>
+                        </a>
+                        <path class="lead-in" d="M 180 112 L 180 144" marker-end="url(#svc-ah-sp)"></path>
+
+                        <!-- 循環のリング -->
+                        <circle class="ring" cx="180" cy="340" r="132"></circle>
+
+                        <!-- 循環の矢印(ノードを避けて円周に沿わせる) -->
+                        <path class="arc" d="M 241.9 223.4 A 132 132 0 0 1 311.9 344.6" marker-end="url(#svc-ah-sp)"></path>
+                        <path class="arc" d="M 249.9 451.9 A 132 132 0 0 1 110.1 451.9" marker-end="url(#svc-ah-sp)"></path>
+                        <path class="arc" d="M 48.1 344.6 A 132 132 0 0 1 118.0 223.4" marker-end="url(#svc-ah-sp)"></path>
+
+                        <!-- MAP(上) -->
+                        <a href="price.html#map">
+                            <circle class="node" cx="180" cy="208" r="56"></circle>
+                            <text class="en" x="180" y="193" text-anchor="middle">MAP</text>
+                            <text class="ja" x="180" y="215" text-anchor="middle">何を出すか</text>
+                            <text class="ja" x="180" y="233" text-anchor="middle">決める</text>
+                        </a>
+
+                        <!-- BUILD(右下) -->
+                        <a href="price.html#build">
+                            <circle class="node" cx="294" cy="406" r="52"></circle>
+                            <text class="en" x="294" y="398" text-anchor="middle">BUILD</text>
+                            <text class="ja" x="294" y="420" text-anchor="middle">つくる</text>
+                        </a>
+
+                        <!-- TRACE(左下) -->
+                        <a href="price.html#trace">
+                            <circle class="node" cx="66" cy="406" r="52"></circle>
+                            <text class="en" x="66" y="391" text-anchor="middle">TRACE</text>
+                            <text class="ja" x="66" y="413" text-anchor="middle">数字を</text>
+                            <text class="ja" x="66" y="431" text-anchor="middle">見る</text>
+                        </a>
+
+                        <!-- LOOP(中心) -->
+                        <a href="price.html#loop">
+                            <circle class="node" cx="180" cy="340" r="62" fill="rgba(255,255,255,0.055)"></circle>
+                            <text class="core-en" x="180" y="333" text-anchor="middle">LOOP</text>
+                            <text class="core-ja" x="180" y="357" text-anchor="middle">毎月まわす</text>
+                        </a>
+                    </svg>
+                </div>
+                <p class="svc-cycle-note">
+                    <strong style="font-weight:400;">この輪をまるごとお引き受けするのが LOOP です。</strong>一部だけでもお受けします。<br class="svc-pc">
+                    つくる人と数字を見る人が同じだと、<strong style="font-weight:400;">分かったことがそのまま次の制作に入ります。</strong>
                 </p>
             </div>
 
             <div class="services-list svc-wrap">
 
+                <!-- 00 READ / MAP -->
+                <div class="service-item svc-group fade-in">
+                    <span class="svc-label">READ ・ 現在地を読む</span>
+                    <h3 id="read">READ</h3>
+                    <p class="svc-ja">発信の現在地｜Marketing Quick Audit</p>
+                    <p class="svc-for"><b>こんな方へ</b>何から手をつければいいか分からない</p>
+                    <p class="svc-sum">いまの発信を外から拝見し、直せる場所を <strong style="font-weight:400;">A4・1枚</strong>にまとめてお渡しします。</p>
+                    <dl class="svc-dl">
+                        <dt>見るところ</dt>
+                        <dd>投稿の型と反応 / プロフィールからご予約・ご購入までの道筋 / 近い業種2〜3社の見せ方</dd>
+                        <dt>お渡しするもの</dt>
+                        <dd>A4・1枚の診断シート。売り込みの資料ではありません。</dd>
+                    </dl>
+                    <div class="svc-edge">
+                        <b>STRENGTH<span>ULDNLCの強み</span></b>
+                        <p><strong style="font-weight:400;">売り場に立っていた人間が読みます。</strong>代表は楽器店で販売とSNS運用を担当し、<strong style="font-weight:400;">1機種で56台・約179万円</strong>を売りました。数字を追う側にいた目で拝見します。</p>
+                        <p>③と④は<strong style="font-weight:400;">空欄のままお渡しします。</strong>外から見ている限り、誰にも書けないためです。</p>
+                        <p class="svc-work"><b>実績</b>楽器店での販売・SNS運用（1機種 56台・約179万円）</p>
+                    </div>
+                    <p class="svc-price">無料<span>1回かぎり</span></p>
+                    <p class="svc-links"><a href="price.html#read" class="svc-a">くわしく見る →</a></p>
+                </div>
+
+                <div class="service-item svc-group fade-in">
+                    <span class="svc-label">MAP ・ 進む方向を決める</span>
+                    <h3 id="map">MAP</h3>
+                    <p class="svc-ja">戦略設計｜Growth Strategy Design</p>
+                    <p class="svc-for"><b>こんな方へ</b>何を投稿すればいいか、毎回迷ってしまう</p>
+                    <p class="svc-sum">誰に、何を、どの順番で伝えるかを決めます。<strong style="font-weight:400;">迷わず投稿できる状態</strong>にしてお渡しします。</p>
+                    <dl class="svc-dl">
+                        <dt>やること</dt>
+                        <dd>15〜20分のヒアリング（事業とお客さまについて）→ 届ける相手の整理 → 何を前に出すかの決定</dd>
+                        <dt>お渡しするもの</dt>
+                        <dd>戦略資料のお渡しと、内容をご説明するお打ち合わせ。</dd>
+                    </dl>
+                    <div class="svc-edge">
+                        <b>STRENGTH<span>ULDNLCの強み</span></b>
+                        <p><strong style="font-weight:400;">ブランドを一から立ち上げてきた経験から設計します。</strong>フレグランスブランドのコンセプトづくり、地域をあげた大型イベントのディレクション。<strong style="font-weight:400;">机上の整理ではなく、世に出したものから逆算します。</strong></p>
+                        <p>発信の話から始めません。「何を投稿するか」は、「誰が、何を見て決めているか」が定まらないと決まらないためです。</p>
+                        <p class="svc-work"><b>実績</b><a href="work-reminiscent.html" class="svc-a">Réminiscent</a>（ブランドディレクション） ・ <a href="work-musashino.html" class="svc-a">武蔵野万博</a>（クリエイティブディレクション）</p>
+                    </div>
+                    <p class="svc-price">50,000円〜<span>撮影・編集は含みません</span></p>
+                    <p class="svc-links"><a href="price.html#map" class="svc-a">くわしく見る →</a></p>
+                </div>
+
                 <!-- 01 映像制作 -->
                 <div class="service-item svc-group fade-in">
-                    <span class="svc-label">STEP 1 — 2 ・ 見つける / 形にする</span>
-                    <h3>PRODUCTION</h3>
-                    <p class="svc-ja">映像制作</p>
-                    <p class="svc-sum">伝えたいことを整理するところから、撮影・編集まで。</p>
+                    <span class="svc-label">MAP / BUILD ・ 見つける / 形にする</span>
+                    <h3 id="build">BUILD</h3>
+                    <p class="svc-ja">映像制作｜Production Partner</p>
+                    <p class="svc-for"><b>こんな方へ</b>撮る人も、編集する人も、社内にいない</p>
+                    <p class="svc-sum">お店や施設へ伺って撮影し、編集・サムネイルまで仕上げてお渡しします。<strong style="font-weight:400;">機材はこちらでご用意します。</strong></p>
                     <dl class="svc-dl">
                         <dt>企画・構成</dt>
-                        <dd>目的と、見ていただきたい相手を整理します。1本ごとに「冒頭の数秒で何を見せるか」まで設計します。</dd>
-                        <dt>撮影</dt>
-                        <dd>構図・光・音まで設計し、店舗や施設へ伺って撮影します。撮影機材はこちらでご用意します。</dd>
-                        <dt>編集</dt>
-                        <dd>テロップ・音・テンポを整え、縦型・横型など各SNSの形に合わせて仕上げます。</dd>
+                        <dd>誰に見せたいかを整理し、1本ごとに「冒頭の数秒で何を見せるか」まで決めます。</dd>
+                        <dt>撮影・編集</dt>
+                        <dd>構図・光・音を設計して撮影。テロップとテンポを整え、縦型・横型それぞれの形に仕上げます。</dd>
                         <dt>品質チェック</dt>
-                        <dd>テレビ番組制作の現場出身のディレクターが、公開前に確認します。</dd>
-                        <dt>表紙・サムネイル</dt>
-                        <dd>一覧の中で選ばれる1枚を用意します。</dd>
+                        <dd>公開前に、テレビ番組制作の現場出身のディレクターが確認します。表紙の1枚もご用意します。</dd>
                     </dl>
+                    <div class="svc-edge">
+                        <b>STRENGTH<span>ULDNLCの強み</span></b>
+                        <p><strong style="font-weight:400;">テレビ番組制作の現場出身のディレクターが、公開前に1本ずつ確認します。</strong>業務用の撮影機材を自社で保有しているため、<strong style="font-weight:400;">レンタルの手配も、機材費の上乗せもありません。</strong></p>
+                        <p>お見積りは納品する尺と撮影時間で決まります。<strong style="font-weight:400;">30秒の動画に、3分ぶんのご負担をいただくことがありません。</strong></p>
+                        <p class="svc-work"><b>実績</b><a href="work-reminiscent.html" class="svc-a">Réminiscent</a>（ブランドムービー） ・ <a href="work-ayers.html" class="svc-a">エアーズギター様</a>（SNSショート動画） ・ MV制作</p>
+                    </div>
+                    <p class="svc-price">月額 150,000円〜<span>単発は 22,000円 / 本〜</span></p>
+                    <p class="svc-to-loop">※ 公開後の数字まで一緒に見る場合は、<a href="#loop" class="svc-a">LOOP</a> のほうがまとまります。</p>
                     <p class="svc-sub"><span class="svc-label">WHAT WE MAKE</span>SNSショート動画(Reels・TikTok・YouTube Shorts)/ ブランドムービー / PR動画 / 商品紹介動画 / MV / ライブ・イベント映像 / 宣材・商品写真</p>
                     <p class="svc-links">料金の目安:<a href="price.html#video" class="svc-a">映像制作</a> ・ <a href="price.html#short" class="svc-a">SNSショート動画</a> ・ <a href="price.html#photo" class="svc-a">写真・宣材</a></p>
                 </div>
 
                 <!-- 02 SNS運用・数値分析 -->
                 <div class="service-item svc-group fade-in">
-                    <span class="svc-label">STEP 3 — 4 ・ 届ける / 確かめる</span>
-                    <h3>OPERATION &amp; ANALYSIS</h3>
+                    <span class="svc-label">TRACE ・ 届けて、確かめる</span>
+                    <h3 id="trace">TRACE</h3>
                     <p class="svc-ja">SNS運用・数値分析</p>
-                    <p class="svc-sum">公開して終わりにしません。<br>届いたかどうかを1本ごとに確かめ、次の制作に反映します。</p>
+                    <p class="svc-for"><b>こんな方へ</b>動画はあるが、効果が出ているのか分からない</p>
+                    <p class="svc-sum">投稿から数字の確認までをお引き受けします。<strong style="font-weight:400;">次に何を直すかを、毎月ご一緒に決めます。</strong></p>
                     <dl class="svc-dl">
-                        <dt>投稿設計</dt>
-                        <dd>公開日時、タイトル、キャプション、ハッシュタグ、複数のSNSへの同時掲載を設計します。</dd>
-                        <dt>導線の整備</dt>
-                        <dd>動画をご覧になった方が、お店・ご予約・お問い合わせへ進めるよう、プロフィールやリンク、再生リストを整えます。</dd>
-                        <dt>1本ごとの分析レポート</dt>
-                        <dd>公開から7日後に、下の4つの段階で数字を整理してお届けします。</dd>
-                        <dt>月次レポートと改善提案</dt>
-                        <dd>1か月分をまとめ、うまくいった型と、翌月の投稿テーマをご提案します。</dd>
-                        <dt>定例ミーティング</dt>
-                        <dd>月1回、数字の見方と次の一手をご説明します。</dd>
+                        <dt>投稿する</dt>
+                        <dd>公開日時、タイトル、キャプション、ハッシュタグを設計。ご覧になった方がお店・ご予約へ進める道筋も整えます。</dd>
+                        <dt>数字を見る</dt>
+                        <dd>公開7日後に1本ごとのレポート。月末に1か月分をまとめ、翌月の投稿テーマをご提案します。</dd>
+                        <dt>ご説明する</dt>
+                        <dd>月1回の定例で、数字の見方と次の一手をお伝えします。</dd>
                     </dl>
+                    <div class="svc-edge">
+                        <b>STRENGTH<span>ULDNLCの強み</span></b>
+                        <p><strong style="font-weight:400;">「再生数が伸びた / 伸びなかった」で終わらせません。</strong>届いたか・刺さったか・動いたか・成果が出たか。<strong style="font-weight:400;">4つに切り分けるので、どこで止まっているかが分かります。</strong></p>
+                        <p><strong style="font-weight:400;">④ まで見ます。</strong>ご来店やお問い合わせの数まで一緒に確認するため、発信がどこまでつながったかをご報告できます。</p>
+                        <p class="svc-work"><b>実績</b><a href="work-ayers.html" class="svc-a">エアーズギター様</a>（楽器店）— 1本ごとの分析レポートと月次まとめを継続中</p>
+                    </div>
+                    <p class="svc-price">月額 200,000円〜<span>撮影・編集は含みません</span></p>
+                    <p class="svc-to-loop">※ 制作からご希望の場合は、<a href="#loop" class="svc-a">LOOP</a> のほうがまとまります。</p>
                     <div class="svc-stages">
                         <div><span class="q">① 届いたか</span><span class="m">再生数・リーチ</span></div>
                         <div><span class="q">② 刺さったか</span><span class="m">最後まで見られたか・保存・シェア</span></div>
@@ -222,24 +453,49 @@
                 </div>
 
                 <!-- 03 イベント企画・運営 -->
+                <!-- LOOP -->
+                <div class="service-item svc-group fade-in" style="border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.045);">
+                    <span class="svc-label">LOOP ・ 全部を毎月回す ／ CORE SERVICE</span>
+                    <h3 id="loop">LOOP<span class="svc-rec">おすすめ</span></h3>
+                    <p class="svc-ja">マーケティング一貫運用｜Marketing &amp; Creative Partner</p>
+                    <p class="svc-for"><b>こんな方へ</b>発信そのものを、まるごと任せたい</p>
+                    <p class="svc-sum">つくって、投稿して、数字を見て、翌月に活かす。<strong style="font-weight:400;">この一周を毎月お引き受けします。</strong></p>
+                    <dl class="svc-dl">
+                        <dt>毎月の流れ</dt>
+                        <dd>構成 → 撮影 → 編集 → 投稿 → 7日後に分析 → 翌月の提案。上の BUILD と TRACE を合わせたものです。</dd>
+                        <dt>本数</dt>
+                        <dd>月5本から。1本あたりの内容とご料金は、本数が変わっても同じです。</dd>
+                        <dt>ご負担いただくこと</dt>
+                        <dd>撮影日の立ち会いと、ご来店・お問い合わせ数の共有。この2つだけです。</dd>
+                    </dl>
+                    <p class="svc-quote">
+                        制作会社に頼めば運用が手元に残り、運用会社に頼めば制作が外注になる。<br>
+                        その両方を、ひとつのチームで引き受けます。
+                    </p>
+                    <div class="svc-edge">
+                        <b>STRENGTH<span>ULDNLCの強み</span></b>
+                        <p><strong style="font-weight:400;">制作と運用を、別の会社に分けません。</strong>数字を見たチームが、そのまま翌月の内容を組みます。<strong style="font-weight:400;">「先月の結果を伝え直す」打ち合わせが要りません。</strong></p>
+                        <p>売り場の実務、テレビ番組制作の現場、制作会社の編集。<strong style="font-weight:400;">この3つが同じ卓にいます。</strong></p>
+                        <p class="svc-work"><b>実績</b><a href="work-ayers.html" class="svc-a">エアーズギター様</a>（楽器店）— 月5本。構成から分析レポートまで継続中</p>
+                    </div>
+                    <p class="svc-price">月額 250,000円〜<span>月5本・初回3ヶ月</span></p>
+                    <p class="svc-links"><a href="price.html#loop" class="svc-a">くわしく見る →</a></p>
+                </div>
+
                 <div class="service-item svc-group fade-in">
-                    <span class="svc-label">STEP 1 — 4 ・ 場をつくる</span>
+                    <span class="svc-label">EVENT ・ 場をつくる</span>
                     <h3>EVENT</h3>
                     <p class="svc-ja">イベント企画・運営</p>
-                    <p class="svc-sum">企画から当日の運営、告知と記録まで。<br>場をつくる仕事も、映像と同じチームで担います。</p>
+                    <p class="svc-for"><b>こんな方へ</b>イベントをやりたいが、手が足りない</p>
+                    <p class="svc-sum">企画から当日の運営、告知と記録まで。<strong style="font-weight:400;">場をつくる仕事も、映像と同じチームで担います。</strong></p>
                     <dl class="svc-dl">
-                        <dt>企画・構成</dt>
-                        <dd>コンセプト、出演者・出展者、会場、当日の流れを組み立てます。</dd>
-                        <dt>告知・集客</dt>
-                        <dd>フライヤー、告知映像、SNSでの告知を設計・制作します。</dd>
-                        <dt>当日の運営</dt>
-                        <dd>進行の管理、出演者・出展者への対応、現場のディレクションを担います。</dd>
-                        <dt>記録と発信</dt>
-                        <dd>当日の映像・写真を記録し、終了後の発信やアフタームービーにつなげます。</dd>
-                        <dt>振り返り</dt>
+                        <dt>準備</dt>
+                        <dd>コンセプト、出演者・出展者、会場、当日の流れを組み立て、フライヤー・告知映像・SNS告知まで制作します。</dd>
+                        <dt>当日</dt>
+                        <dd>進行の管理、出演者・出展者への対応、現場のディレクション。映像・写真の記録も同時に行います。</dd>
+                        <dt>終わったあと</dt>
                         <dd>来場や反応を整理し、次回の企画に活かします。</dd>
                     </dl>
-                    <p class="svc-sub"><span class="svc-label">KNOW-HOW</span>イベントの企画・運営で培った知見をもとに、準備の段取りから当日の進行までを組み立て、効果的で円滑な運営を行います。</p>
                     <p class="svc-links">実績:<a href="work-battlestrings.html" class="svc-a">Battle Strings</a> ・ <a href="work-musashino.html" class="svc-a">武蔵野万博</a> ・ <a href="work-stomps.html" class="svc-a">STOMPS KICHIJOJI(アフタームービー)</a></p>
                 </div>
 
@@ -255,7 +511,7 @@
                         <dt>デザイン</dt>
                         <dd>名刺、フライヤー、SNS画像、資料、イベントビジュアル。 <a href="price.html#design" class="svc-a">料金の目安</a></dd>
                         <dt>Web</dt>
-                        <dd>ホームページ・LP・ポートフォリオの制作と、SNSからの導線づくり。 <a href="price.html#web" class="svc-a">料金の目安</a></dd>
+                        <dd>ホームページ・LP・ポートフォリオのデザインと構築。ドメインの設定と公開まで。 <a href="price.html#web" class="svc-a">料金の目安</a></dd>
                         <dt>アーティスト支援</dt>
                         <dd>宣材写真、ライブ映像、MV、発信素材、出演の調整。 <a href="price.html#artist" class="svc-a">料金の目安</a></dd>
                     </dl>
@@ -277,30 +533,15 @@
 
             <!-- ご依頼の形(番号の自動付与の対象外) -->
             <div class="svc-wrap svc-request fade-in">
-                <span class="svc-label">HOW TO REQUEST</span>
-                <div class="svc-req-grid">
-                    <div class="core">
-                        <span class="t">月額で一式</span>
-                        <span class="s">STEP 1 — 4 ・ CORE SERVICE</span>
-                        <p>発信を続けて、ご来店・お問い合わせまでつなげたい方へ。<a href="price.html#operation" class="svc-a">プランを見る</a></p>
-                    </div>
-                    <div>
-                        <span class="t">制作のみ</span>
-                        <span class="s">STEP 1 — 2</span>
-                        <p>映像はほしいが、運用はご自身で行いたい方へ。</p>
-                    </div>
-                    <div>
-                        <span class="t">工程を選んで</span>
-                        <span class="s">EDIT / SHOOT + EDIT</span>
-                        <p>編集だけ、撮影と編集だけなど、必要な部分だけ頼みたい方へ。</p>
-                    </div>
-                    <div>
-                        <span class="t">単発の制作・企画</span>
-                        <span class="s">PROJECT</span>
-                        <p>MV、ブランドムービー、イベントなど、1回のご依頼に。</p>
-                    </div>
-                </div>
-                <p class="svc-cta"><a href="contact.html" class="svc-a">ご相談・お問い合わせはこちら →</a></p>
+                <p class="svc-lead-text" style="text-align:center; margin: 0 0 26px;">
+                    <strong style="font-weight:400;">つくることから数字の確認までを続けるなら、LOOP をおすすめしています。</strong><br>
+                    まだ決めかねている場合は、<strong style="font-weight:400;">無料の READ</strong> からお試しください。いまの発信を拝見して、必要なものをご提案します。
+                </p>
+                <p class="svc-cta"><a href="contact.html" class="svc-a">ご相談・お問い合わせはこちら →</a> ・ <a href="price.html" class="svc-a">料金を見る →</a></p>
+                <p class="svc-small" style="text-align:center; margin-top:28px;">
+                    本ページに記載の金額はすべて<strong style="opacity:1;">税別・目安</strong>です。正式な金額は、ご相談内容をうかがったうえで個別にお見積りいたします。<br>
+                    撮影の日数・場所、出演者の有無、編集の分量、納期などにより変動します。交通費・宿泊費・特殊機材費等が別途発生する場合があります。
+                </p>
             </div>
 
         </section>
