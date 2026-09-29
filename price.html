@@ -58,8 +58,8 @@
       .pr-rows{ border-top:1px solid rgba(255,255,255,.2); }
       .pr-row{ padding:22px 0; border-bottom:1px solid rgba(255,255,255,.15);
                display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
-      .pr-row span:first-child{ font-size:.8rem; opacity:.9; }
-      .pr-row span:last-child{ font-size:.8rem; opacity:.75; font-family:'Montserrat',sans-serif; letter-spacing:.5px; }
+      .pr-row > span:first-child{ font-size:.8rem; opacity:.9; }
+      .pr-row > span:last-child{ font-size:.8rem; opacity:.75; font-family:'Montserrat',sans-serif; letter-spacing:.5px; text-align:right; }
       .pr-row .sub{ display:block; font-size:.68rem; opacity:.55; margin-top:5px; letter-spacing:.5px; }
       .pr-note{ font-size:.75rem; line-height:1.95; opacity:.6; margin-top:20px; }
       .pr-sub{ font-family:'Montserrat',sans-serif; font-size:.78rem; letter-spacing:1.5px;
@@ -67,10 +67,56 @@
       .pr-sub span{ font-size:.85em; opacity:.6; letter-spacing:.5px; }
       .pr-back{ font-family:'Montserrat',sans-serif; font-size:.65rem; letter-spacing:1.5px; opacity:.45; }
 
+      /* 2026-09-30 再構成 */
+      .intro-lead{ line-height:2.1; opacity:.9; font-size:.85rem; letter-spacing:1px; }
+      .pr-card3{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,.12);
+                 border:1px solid rgba(255,255,255,.12); margin-bottom:26px; }
+      .pr-card3 > div{ background:#0b0b0b; padding:24px 18px; scroll-margin-top:100px; }
+      .pr-card3 .core{ background:rgba(255,255,255,.06); box-shadow:inset 0 2px 0 rgba(255,255,255,.55); }
+      .pc-en{ font-family:'Montserrat',sans-serif; font-size:.95rem; letter-spacing:2.5px; font-weight:700; }
+      .pc-badge{ font-family:'Montserrat',sans-serif; font-size:.55rem; letter-spacing:1.5px; border:1px solid rgba(255,255,255,.5);
+                 padding:3px 8px; margin-left:8px; vertical-align:2px; }
+      .pc-ja{ font-size:.74rem; opacity:.65; margin:6px 0 12px; letter-spacing:1px; }
+      .pc-txt{ font-size:.74rem; line-height:1.85; opacity:.82; }
+      .pc-for{ font-size:.68rem; line-height:1.8; opacity:.55; margin-top:10px; }
+      .cmp{ width:100%; border-collapse:collapse; font-size:.76rem; }
+      .cmp th, .cmp td{ padding:14px 8px; border-bottom:1px solid rgba(255,255,255,.14); text-align:center; }
+      .cmp th{ font-family:'Montserrat',sans-serif; font-size:.72rem; letter-spacing:1.5px; font-weight:700; }
+      .cmp th small{ display:block; font-family:'Noto Serif JP',serif; font-weight:300; font-size:.66rem; letter-spacing:.5px; opacity:.6; margin-top:3px; }
+      .cmp td:first-child, .cmp th:first-child{ text-align:left; opacity:.8; font-weight:300; }
+      .cmp .core{ background:rgba(255,255,255,.05); }
+      .cmp .dot{ opacity:.9; } .cmp .no{ opacity:.25; }
+      .cmp .sep td{ border-top:1px solid rgba(255,255,255,.35); }
+      .cmp .price{ font-family:'Montserrat',sans-serif; letter-spacing:.3px; white-space:nowrap; }
+      .cmp .price.em{ font-size:.86rem; }
+      .pr-list{ margin:22px 0 0; padding:0; list-style:none; font-size:.74rem; line-height:1.9; opacity:.68; }
+      .pr-list li{ padding-left:1.1em; text-indent:-1.1em; margin-bottom:4px; }
+      .pr-list li::before{ content:'・'; }
+      .pr-details{ margin-top:22px; border-top:1px solid rgba(255,255,255,.14); border-bottom:1px solid rgba(255,255,255,.14); }
+      .pr-details summary{ cursor:pointer; list-style:none; padding:16px 0; font-size:.76rem; letter-spacing:1px; opacity:.85; }
+      .pr-details summary::-webkit-details-marker{ display:none; }
+      .pr-details summary::after{ content:'＋'; float:right; opacity:.6; }
+      .pr-details[open] summary::after{ content:'－'; }
+      .pr-details > div{ padding-bottom:18px; }
+      .spot-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px 44px; }
+      .spot-grid > div{ scroll-margin-top:100px; }
+      .spot-grid .pr-sub{ margin-top:30px; }
+      .spot-grid .pr-row{ padding:15px 0; }
+      .spot-grid .pr-note{ margin-top:12px; font-size:.7rem; }
+      .ind-card{ border:1px solid rgba(255,255,255,.14); padding:24px 22px; margin-bottom:18px; }
+      .ind-card .ic-h{ display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:6px; margin-bottom:8px; }
+      .ind-card .ic-cp{ font-size:.7rem; border:1px solid rgba(255,255,255,.4); padding:4px 10px; letter-spacing:.5px; }
+      .ind-card .pr-rows{ margin-top:14px; }
+      .ind-card .pr-row{ padding:14px 0; }
+      .ind-card .pr-note{ margin-top:12px; font-size:.7rem; }
+
       .pc-only{ display:inline; }
 
       @media (max-width:860px){
         .pc-only{ display:none; }
+        .pr-card3{ grid-template-columns:1fr; }
+        .spot-grid{ grid-template-columns:1fr; gap:0; }
+        .cmp{ font-size:.68rem; } .cmp th, .cmp td{ padding:12px 4px; } .cmp .price.em{ font-size:.74rem; }
         .flowmap{ grid-template-columns:repeat(2,1fr); }
         .flowmap .fm-core{ grid-column:span 2; }
       }
@@ -121,307 +167,224 @@
 
             <div style="max-width: 800px; margin: 0 auto;">
 
-                <div class="fade-in" style="margin-bottom: 70px;">
-                    <p class="line-reveal" style="line-height: 2.1; opacity: 0.9; font-size: 0.85rem; letter-spacing: 1px;">
-                        ULDNLCの制作は、ひとつとして同じ案件がありません。<br>
-                        「何を、誰に、どう伝えるか」から一緒に考えるため、<br>
-                        本ページの金額は確定価格ではなく「目安」です。<br>
-                        <br>
-                        お見積もりは無料です。<br>
-                        ご希望のご予算に合わせて、制作できる内容のご提案も承ります。<br>
-                        お気軽にご相談ください。
+                <div class="fade-in" style="margin-bottom: 64px;">
+                    <p class="line-reveal intro-lead">
+                        本ページの金額は、確定価格ではなく「目安」です（すべて税別）。<br>
+                        お見積もりは無料です。ご予算に合わせた内容のご提案も承ります。
                     </p>
                 </div>
 
+                <!-- ============ 全体像 ============ -->
                 <div class="fade-in" style="margin-bottom: 80px;">
                     <div class="pr-kicker">OUR SERVICES</div>
                     <h3 class="pr-h">サービスの全体像</h3>
-                    <p class="pr-lead">
-                        ULDNLCのご支援は、5つの段階でご用意しています。<br>
-                        どこから始めていただいても構いません。すでに制作の体制がおありなら分析だけを、<br class="pc-only">
-                        数字をご自身で見ておられるなら制作だけを、お引き受けできます。
-                    </p>
-
+                    <p class="pr-lead">5つの段階のうち、どこから始めていただいても構いません。迷ったら、まずは無料の READ からどうぞ。</p>
                     <div class="flowmap">
                         <a href="#read">
                             <span class="fm-en">READ</span>
                             <span class="fm-ja">現在地を知る</span>
-                            <span class="fm-txt">いまの発信を外から拝見し、1枚にまとめます</span>
+                            <span class="fm-txt">何から手をつければいいか分からないときに</span>
                             <span class="fm-pr">無料</span>
                         </a>
                         <a href="#map">
                             <span class="fm-en">MAP</span>
                             <span class="fm-ja">進む方向を決める</span>
-                            <span class="fm-txt">誰に何を、どの順番で伝えるかを設計します</span>
+                            <span class="fm-txt">誰に何を、どの順番で伝えるかを決めたいときに</span>
                             <span class="fm-pr">50,000円〜</span>
                         </a>
                         <a href="#build">
                             <span class="fm-en">BUILD</span>
                             <span class="fm-ja">つくる</span>
-                            <span class="fm-txt">映像・写真・デザイン・Web。つくることに専念します</span>
-                            <span class="fm-pr">月額 150,000円〜</span>
+                            <span class="fm-txt">つくる人が社内にいないときに</span>
+                            <span class="fm-pr">月額 100,000円〜</span>
                         </a>
                         <a href="#trace">
                             <span class="fm-en">TRACE</span>
                             <span class="fm-ja">届けて、確かめる</span>
-                            <span class="fm-txt">投稿設計から数値分析・改善提案まで</span>
-                            <span class="fm-pr">月額 200,000円〜</span>
+                            <span class="fm-txt">動画はあるが、届いているか分からないときに</span>
+                            <span class="fm-pr">月額 100,000円〜</span>
                         </a>
                         <a href="#loop" class="fm-core">
                             <span class="fm-en">LOOP</span>
                             <span class="fm-ja">全部を回し続ける</span>
                             <span class="fm-txt">つくって、届けて、確かめるまで。<strong style="font-weight:400;">いちばんおすすめしています</strong></span>
-                            <span class="fm-pr">月額 250,000円〜</span>
+                            <span class="fm-pr">月額 200,000円〜</span>
                         </a>
                     </div>
-
-                    <p class="flow-eq">
-                        制作だけでは、届いたかどうかは分かりません。何人に見られ、どこで離れ、次に何を変えるべきかまでを一緒に見るのが LOOP です。
-                    </p>
+                    <p class="flow-eq">月額のサービスは、初回3ヶ月の価格を表示しています。</p>
                 </div>
 
-                <!-- ============ READ ============ -->
-                <div id="read" class="pr-sec fade-in">
+                <!-- ============ 診断と戦略設計(READ / MAP) ============ -->
+                <div class="pr-sec fade-in">
                     <div class="pr-kicker">01 ／ FIRST STEP</div>
-                    <h3 class="pr-h">READ<span>｜発信の現在地</span></h3>
-                    <p class="pr-lead">
-                        まだ数字がない段階で、いまの発信を外から拝見します。<br>
-                        SNSの現状、プロフィールからご予約・ご購入までの導線、同業2〜3社の簡易チェック、<br class="pc-only">
-                        いまの強みと改善できそうな余地を、A4・1枚にまとめてお渡しします。
-                    </p>
+                    <h3 class="pr-h">診断と戦略設計<span>｜READ ・ MAP</span></h3>
                     <div class="pr-rows">
-                        <div class="pr-row">
-                            <span>診断シート（A4・1枚）<span class="sub">ご覧いただいて、違っていればご指摘ください</span></span>
-                            <span>無料</span>
-                        </div>
+                        <div id="read" class="pr-row" style="scroll-margin-top:100px;"><span>READ｜発信の現在地<span class="sub">いまの発信・ご予約やご購入までの導線・近い業種の見せ方を外から拝見し、A4・1枚にまとめます</span></span><span>無料</span></div>
+                        <div id="map" class="pr-row" style="scroll-margin-top:100px;"><span>MAP Light｜戦略設計<span class="sub">ヒアリング（15〜20分）・簡易リサーチ・ターゲット整理 → 戦略資料のお渡しとお打ち合わせ</span></span><span>50,000円〜</span></div>
+                        <div class="pr-row"><span>MAP Full<span class="sub">Light ＋ 顧客インサイト・課題の優先順位・訴求方針・KPI・ご予約導線の設計・3ヶ月の進め方</span></span><span>150,000円〜</span></div>
                     </div>
-                    <p class="pr-note">
-                        詳細な市場調査・ペルソナ設計・投稿企画・台本制作は含みません。<br>
-                        <a href="contact.html" class="text-link">お申し込みはこちら →</a>
-                    </p>
+                    <p class="pr-note">READ は1回かぎり・売り込みの資料ではありません。MAP に制作・編集・投稿は含みません。<a href="contact.html" class="text-link">お申し込みはこちら →</a></p>
                 </div>
 
-                <!-- ============ MAP ============ -->
-                <div id="map" class="pr-sec fade-in">
-                    <div class="pr-kicker">02 ／ STRATEGY</div>
-                    <h3 class="pr-h">MAP<span>｜戦略設計</span></h3>
-                    <p class="pr-lead">
-                        大きな戦略資料ではなく、実際に動き出すために必要な方向を決めるためのものです。<br>
-                        ヒアリングは15〜20分。発信の話ではなく、事業とお客さまのことからうかがいます。
-                    </p>
-                    <div class="pr-rows">
-                        <div class="pr-row">
-                            <span>Light<span class="sub">ヒアリング・簡易リサーチ・ターゲット整理 → 戦略資料のお渡しとお打ち合わせ</span></span>
-                            <span>50,000円〜</span>
+                <!-- ============ 月額プラン ============ -->
+                <div id="operation" class="pr-sec fade-in">
+                    <div class="pr-kicker">02 ／ MONTHLY</div>
+                    <h3 class="pr-h">月額プラン<span>｜BUILD ・ TRACE ・ LOOP</span></h3>
+                    <div class="pr-card3">
+                        <div id="build">
+                            <span class="pc-en">BUILD</span>
+                            <p class="pc-ja">つくることに専念する</p>
+                            <p class="pc-txt">企画・構成から編集まで。分析は含みません。</p>
+                            <p class="pc-for">数字は社内で見ておられる方に</p>
                         </div>
-                        <div class="pr-row">
-                            <span>Full<span class="sub">上記 ＋ 顧客インサイト・課題の優先順位・訴求方針・KPI・ご予約導線の設計・3ヶ月の進め方</span></span>
-                            <span>150,000円〜</span>
+                        <div id="trace">
+                            <span class="pc-en">TRACE</span>
+                            <p class="pc-ja">届けて、確かめる</p>
+                            <p class="pc-txt">投稿設計・数値分析・改善提案。制作は含みません。</p>
+                            <p class="pc-for">動画はすでにお持ちの方に</p>
+                        </div>
+                        <div id="loop" class="core">
+                            <span class="pc-en">LOOP</span><span class="pc-badge">おすすめ</span>
+                            <p class="pc-ja">つくって、届いたかを確かめる</p>
+                            <p class="pc-txt">BUILD と TRACE の両方を、ひとつのチームで毎月回します。</p>
+                            <p class="pc-for">分かったことが、そのまま次の制作に入ります</p>
                         </div>
                     </div>
-                    <p class="pr-note">
-                        制作・撮影・編集・投稿は含みません（<a href="#build" class="text-link">BUILD</a> / <a href="#loop" class="text-link">LOOP</a> の範囲です）。
-                    </p>
+
+                    <table class="cmp">
+                        <thead><tr><th></th><th>BUILD<small>つくる</small></th><th>TRACE<small>確かめる</small></th><th class="core">LOOP<small>両方</small></th></tr></thead>
+                        <tbody>
+                            <tr><td>企画・構成・編集</td><td><span class="dot">●</span></td><td><span class="no">—</span></td><td class="core"><span class="dot">●</span></td></tr>
+                            <tr><td>投稿設計</td><td><span class="no">—</span></td><td><span class="dot">●</span></td><td class="core"><span class="dot">●</span></td></tr>
+                            <tr><td>1本ごとの分析レポート・月次まとめ</td><td><span class="no">—</span></td><td><span class="dot">●</span></td><td class="core"><span class="dot">●</span></td></tr>
+                            <tr><td>改善提案・定例お打ち合わせ</td><td><span class="no">—</span></td><td><span class="dot">●</span></td><td class="core"><span class="dot">●</span></td></tr>
+                            <tr class="sep"><td>導入<br><small style="opacity:.6;">初回3ヶ月・月5本</small></td><td class="price em">100,000円</td><td class="price em">100,000円</td><td class="core price em">200,000円</td></tr>
+                            <tr><td>標準<br><small style="opacity:.6;">4ヶ月目以降・月5本</small></td><td class="price">225,000円〜</td><td class="price">200,000円〜</td><td class="core price">400,000円〜</td></tr>
+                            <tr><td>標準<br><small style="opacity:.6;">月10本</small></td><td class="price">450,000円〜</td><td class="price">350,000円〜</td><td class="core price">800,000円〜</td></tr>
+                        </tbody>
+                    </table>
+
+                    <ul class="pr-list">
+                        <li>導入は初回3ヶ月の価格です。4ヶ月目以降は標準へ移行します（双方合意のうえ、早めの移行も可能です）。実績掲載のご許可・投稿数値のご共有が条件です。</li>
+                        <li>導入・初回の価格は、ご案内できる枠に限りがあります。規定の枠に達した時点で、受付を終了します。</li>
+                        <li>本数は月5本から調整いただけます。本数が変わっても、1本あたりの内容とご料金は変わりません（TRACE は月5本まで・月10本までの月額固定です）。</li>
+                        <li>プランに含まれる制作は、1分前後までの縦型ショート動画です。横型の動画や本格的なプロモーション映像は、<a href="#video" class="text-link">映像制作</a>の料金でお見積もりします。</li>
+                        <li>撮影は含みません。内容に応じてお見積もりします（目安 10,000円／時間・2時間から）。</li>
+                        <li>分析を含むプランでは、投稿先アカウントのインサイト閲覧権限と、ご来店・お問い合わせ数のご共有をお願いしています。</li>
+                    </ul>
+
+                    <details class="pr-details">
+                        <summary>分析では、4つの段階で数字を並べます</summary>
+                        <div>
+                            <div class="pr-rows">
+                            <div class="pr-row"><span>① REACH<span class="sub">届いたか</span></span><span>リーチ数・再生数</span></div>
+                            <div class="pr-row"><span>② ENGAGE<span class="sub">刺さったか</span></span><span>視聴維持率・保存・シェア</span></div>
+                            <div class="pr-row"><span>③ MOVE<span class="sub">動いたか</span></span><span>プロフィールアクセス・フォロー増</span></div>
+                            <div class="pr-row"><span>④ RESULT<span class="sub">成果が出たか</span></span><span>お問い合わせ・ご来店・ご購入</span></div>
+                        </div>
+                            <p class="pr-note">「再生数が伸びた／伸びなかった」で終わらせず、どこで止まっているかを段階で切り分けて次の制作に反映します。④の数字は御社にしか分からないため、月次でのご共有をお願いしています。</p>
+                        </div>
+                    </details>
+                    <p class="pr-note"><a href="contact.html" class="text-link">お問い合わせはこちら →</a></p>
                 </div>
 
-                <!-- ============ LOOP ============ -->
-                <div id="loop" class="pr-sec fade-in">
-                    <div class="pr-kicker">CORE SERVICE</div>
-                    <h3 class="pr-h">LOOP<span>｜つくって、届いたかを確かめる</span><span style="font-family:'Montserrat',sans-serif;font-size:0.55em;letter-spacing:2px;border:1px solid rgba(255,255,255,0.5);padding:4px 10px;margin-left:14px;vertical-align:4px;opacity:1;display:inline-block;white-space:nowrap;">おすすめ</span></h3>
-                    <p class="pr-lead">
-                        ULDNLCの中核サービスです。<br>
-                        構成 → 撮影 → 編集 → 投稿 → <strong style="opacity:1;font-weight:400;">1本ごとの数値分析</strong> → 翌月の改善提案までを、ひとつのチームで担います。<br>
-                        動画を納品して終わりにしません。伸びた理由・伸びなかった理由を毎回言語化し、次の制作に反映します。
-                    </p>
-                    <div class="pr-rows">
-                        <div class="pr-row">
-                            <span>導入プラン（月5本）<span class="sub">初回3ヶ月。構成・撮影・編集・投稿設計・1本ごとの分析レポート・月次まとめ・定例お打ち合わせ</span></span>
-                            <span>月額 250,000円〜</span>
+                <!-- ============ 単発 ============ -->
+                <div id="spot" class="pr-sec fade-in">
+                    <div class="pr-kicker">03 ／ SPOT</div>
+                    <h3 class="pr-h">単発のご依頼<span>｜1本・1点から</span></h3>
+                    <div class="spot-grid">
+                        <div id="short">
+                            <div class="pr-sub">SNSショート動画<span>｜〜180秒</span></div>
+                            <div class="pr-rows">
+                            <div class="pr-row"><span>編集のみ<span class="sub">〜30秒 / 〜60秒 / 〜180秒</span></span><span>11,000 / 22,000 / 44,000円</span></div>
+                            <div class="pr-row"><span>企画構成 ＋ 編集<span class="sub">〜60秒</span></span><span>50,000円 / 本</span></div>
+                            <div class="pr-row"><span>撮影<span class="sub">内容に応じてお見積もり・2時間から</span></span><span>目安 10,000円 / 時間</span></div>
                         </div>
-                        <div class="pr-row">
-                            <span>標準プラン（月5本）<span class="sub">4ヶ月目以降。内容は同上</span></span>
-                            <span>月額 500,000円〜</span>
+                            <p class="pr-note">修正は1本につき2回まで。撮影は本数で割らないため、まとめて撮るほど1本あたりのご負担が下がります。</p>
                         </div>
-                        <div class="pr-row">
-                            <span>標準プラン（月10本・週2回投稿）<span class="sub">週2回の投稿が組める本数です</span></span>
-                            <span>月額 1,000,000円〜</span>
+                        <div id="video">
+                            <div class="pr-sub">映像制作<span>｜撮影込み</span></div>
+                            <div class="pr-rows">
+                            <div class="pr-row"><span>ライブ映像 / イベント記録</span><span>80,000円〜</span></div>
+                            <div class="pr-row"><span>PR動画 / 店舗・サービス紹介<span class="sub">1〜3分</span></span><span>150,000円〜</span></div>
+                            <div class="pr-row"><span>ブランドムービー</span><span>300,000円〜</span></div>
+                            <div class="pr-row"><span>MV</span><span>300,000円〜</span></div>
+                            <div class="pr-row"><span>MV フルパッケージ<span class="sub">企画・キャスティング込み</span></span><span>400,000円〜</span></div>
+                        </div>
+                            <p class="pr-note">180秒を超えるもの、企画から起こすもの、ロケが複数・出演者の手配が必要なものは、内容でお見積もりします。</p>
+                        </div>
+                        <div id="photo">
+                            <div class="pr-sub">写真・宣材</div>
+                            <div class="pr-rows">
+                            <div class="pr-row"><span>アーティスト写真 / プロフィール写真</span><span>30,000円〜</span></div>
+                            <div class="pr-row"><span>ポートフォリオ映像</span><span>50,000円〜</span></div>
+                        </div>
+                            <p class="pr-note">撮影規模・カット数・用途により変動します。</p>
+                        </div>
+                        <div id="design">
+                            <div class="pr-sub">デザイン</div>
+                            <div class="pr-rows">
+                            <div class="pr-row"><span>名刺</span><span>5,000円〜</span></div>
+                            <div class="pr-row"><span>SNS画像</span><span>8,000円〜</span></div>
+                            <div class="pr-row"><span>フライヤー</span><span>20,000円〜</span></div>
+                            <div class="pr-row"><span>資料デザイン</span><span>30,000円〜</span></div>
+                        </div>
+                            <p class="pr-note">印刷手配・追加修正・QRコード追加・特急納品などのオプションもあります。</p>
+                        </div>
+                        <div id="web">
+                            <div class="pr-sub">Web制作</div>
+                            <div class="pr-rows">
+                            <div class="pr-row"><span>ポートフォリオサイト</span><span>200,000円〜</span></div>
+                            <div class="pr-row"><span>LP<span class="sub">1ページ</span></span><span>300,000円〜</span></div>
+                            <div class="pr-row"><span>コーポレートサイト<span class="sub">5ページまで</span></span><span>800,000円〜</span></div>
+                            <div class="pr-row"><span>保守・更新</span><span>月額 50,000円〜</span></div>
+                        </div>
+                            <p class="pr-note"><strong style="opacity:1;font-weight:400;">LOOP とあわせてご契約いただく場合は40%引き。</strong>原稿・写真は御社ご支給が前提です。ドメイン・サーバー費用は御社ご負担です。</p>
+                        </div>
+                        <div id="artist">
+                            <div class="pr-sub">アーティスト支援</div>
+                            <p class="pr-note" style="margin-top:14px;font-size:.74rem;opacity:.75;">宣材写真・ライブ映像・MV・SNS発信素材・ブッキング・仕事仲介などを、活動フェーズに合わせて組み合わせます。内容に応じてお見積もりします。</p>
                         </div>
                     </div>
-                    <p class="pr-note">
-                        本数は、ご体制に合わせて月5本から調整いただけます。本数が変わっても、1本あたりの内容とご料金は変わりません。<br>
-                        導入プランは初回3ヶ月です。4ヶ月目以降は標準プランへ移行します（双方合意のうえ、3ヶ月を待たず移行いただくことも可能です）。<br>
-                        撮影を御社にてご対応いただく場合は、1本あたり撮影分を減額いたします。<br>
-                        実績掲載のご許可・投稿数値のご共有を条件に、導入プラン価格でご案内しています。<br>
-                        効果測定には、投稿先アカウントのインサイト閲覧権限と、ご来店・お問い合わせ数のご共有をお願いしております。<br>
-                        <a href="contact.html" class="text-link">お問い合わせはこちら →</a>
-                    </p>
-
-                    <div class="pr-sub">分析では、4つの段階で数字を並べます</div>
-                    <div class="pr-rows">
-                        <div class="pr-row"><span>① REACH<span class="sub">届いたか</span></span><span>リーチ数・再生数</span></div>
-                        <div class="pr-row"><span>② ENGAGE<span class="sub">刺さったか</span></span><span>視聴維持率・保存・シェア</span></div>
-                        <div class="pr-row"><span>③ MOVE<span class="sub">動いたか</span></span><span>プロフィールアクセス・フォロー増</span></div>
-                        <div class="pr-row"><span>④ RESULT<span class="sub">成果が出たか</span></span><span>お問い合わせ・ご来店・ご購入</span></div>
-                    </div>
-                    <p class="pr-note">
-                        「再生数が伸びた／伸びなかった」で終わらせません。どこで止まっているかを段階で切り分け、次の制作に反映します。<br>
-                        ④の数字は御社にしか分かりません。お問い合わせ件数などを月次でご共有いただくことを前提としています。
-                    </p>
                 </div>
 
-                <!-- ============ BUILD ============ -->
-                <div id="build" class="pr-sec fade-in">
-                    <div class="pr-kicker">03 ／ PRODUCTION</div>
-                    <h3 class="pr-h">BUILD<span>｜つくることに専念する</span></h3>
-                    <p class="pr-lead">
-                        分析・運用を含まない、制作だけのプランです。<br>
-                        すでに社内で数字を見ておられる場合や、まずは制作の体制だけを整えたい場合にお選びいただけます。<br>
-                        映像・写真・デザイン・Webまで、つくるものはすべてこちらに含まれます。
-                    </p>
-                    <div class="pr-rows">
-                        <div class="pr-row">
-                            <span>継続プラン（月5本）<span class="sub">構成・撮影・編集・品質管理</span></span>
-                            <span>月額 150,000円〜</span>
-                        </div>
-                        <div class="pr-row">
-                            <span>継続プラン（月10本）<span class="sub">同上</span></span>
-                            <span>月額 650,000円〜</span>
-                        </div>
-                    </div>
-                    <p class="pr-note">
-                        投稿設計、公開後の数値分析、改善提案までをご希望の場合は <a href="#loop" class="text-link">LOOP</a> をご覧ください。
-                    </p>
-
-                    <div class="pr-sub">SHORT VIDEO<span>｜SNSショート動画（単発）</span></div>
-                    <p class="pr-note" style="margin-top:14px;">
-                        〜180秒の動画は、<strong style="opacity:1;font-weight:400;">納品尺</strong>と<strong style="opacity:1;font-weight:400;">撮影の現場拘束時間</strong>で積み上げます。
-                    </p>
-                    <div class="pr-rows">
-                        <div class="pr-row"><span>編集｜〜30秒<span class="sub">カット編集・テロップ・サムネ</span></span><span>11,000円 / 本</span></div>
-                        <div class="pr-row"><span>編集｜〜60秒</span><span>22,000円 / 本</span></div>
-                        <div class="pr-row"><span>編集｜〜180秒</span><span>44,000円 / 本</span></div>
-                        <div class="pr-row"><span>撮影<span class="sub">4時間から承ります。機材の設営・撤収を含みます</span></span><span>10,000円 / 時間</span></div>
-                    </div>
-                    <p class="pr-note">
-                        工程をまとめてご依頼いただくこともできます（〜60秒）— 編集のみ 22,000円／撮影＋編集 55,000円／構成から一貫 71,500円。<br>
-                        撮影は本数では割りません。1本でも3本でも、伺う手間は同じためです。<strong style="opacity:1;font-weight:400;">まとめて撮影いただくほど、1本あたりのご負担は下がります。</strong><br>
-                        修正は1本につき2回まで承ります。
-                    </p>
-
-                    <div class="pr-sub">VIDEO PRODUCTION<span>｜映像制作</span></div>
-                    <p class="pr-note" style="margin-top:14px;">
-                        180秒を超えるもの、企画から起こすもの、ロケが複数のもの、出演者の手配が必要なものは、尺ではなく内容でお見積もりします。
-                    </p>
-                    <div class="pr-rows">
-                        <div class="pr-row"><span>ライブ映像 / イベント記録映像</span><span>80,000円〜</span></div>
-                        <div class="pr-row"><span>PR動画 / 店舗・サービス紹介<span class="sub">1〜3分</span></span><span>150,000円〜</span></div>
-                        <div class="pr-row"><span>ブランドムービー</span><span>300,000円〜</span></div>
-                        <div class="pr-row"><span>MV（ミュージックビデオ）</span><span>300,000円〜</span></div>
-                        <div class="pr-row"><span>MV フルパッケージ<span class="sub">企画・キャスティングを含みます</span></span><span>400,000円〜</span></div>
-                    </div>
-                    <p class="pr-note">
-                        複数本のパッケージ制作、企画・ディレクションを深く含む案件は、内容に応じてお見積もりします。
-                    </p>
-
-                    <div class="pr-sub">PHOTO<span>｜写真・宣材制作</span></div>
-                    <div class="pr-rows">
-                        <div class="pr-row"><span>アーティスト写真 / プロフィール写真</span><span>30,000円〜</span></div>
-                        <div class="pr-row"><span>ポートフォリオ映像</span><span>50,000円〜</span></div>
-                    </div>
-                    <p class="pr-note">撮影規模・カット数・用途により変動します。</p>
-
-                    <div class="pr-sub">DESIGN<span>｜デザイン制作</span></div>
-                    <div class="pr-rows">
-                        <div class="pr-row"><span>名刺</span><span>5,000円〜</span></div>
-                        <div class="pr-row"><span>SNS画像</span><span>8,000円〜</span></div>
-                        <div class="pr-row"><span>フライヤー</span><span>20,000円〜</span></div>
-                        <div class="pr-row"><span>資料デザイン</span><span>30,000円〜</span></div>
-                    </div>
-                    <p class="pr-note">印刷手配、追加修正、QRコード追加、特急納品などのオプションもご用意しています。</p>
-
-                    <div class="pr-sub">WEB<span>｜Web制作</span></div>
-                    <div class="pr-rows">
-                        <div class="pr-row"><span>ポートフォリオサイト<span class="sub">実績・作品の見せ方から設計します</span></span><span>200,000円〜</span></div>
-                        <div class="pr-row"><span>LP<span class="sub">1ページ。構成・デザイン・実装・公開まで</span></span><span>300,000円〜</span></div>
-                        <div class="pr-row"><span>コーポレートサイト<span class="sub">5ページまで。構成・デザイン・実装・公開まで</span></span><span>800,000円〜</span></div>
-                        <div class="pr-row"><span>保守・更新<span class="sub">公開後の更新・改善</span></span><span>月額 50,000円〜</span></div>
-                    </div>
-                    <p class="pr-note">
-                        <strong style="opacity:1;font-weight:400;">LOOP を継続でご契約いただく場合は、上記を40%引きでご案内します。</strong>公開後の数字をご一緒に確認できるためです。<br>
-                        原稿・写真は御社ご支給が前提です（撮影が必要な場合は別途お見積もり）。ドメインの取得・設定と公開までをお引き受けし、ドメイン・サーバーの費用は御社ご負担となります。
-                    </p>
-                </div>
-
-                <!-- ============ TRACE ============ -->
-                <div id="trace" class="pr-sec fade-in">
-                    <div class="pr-kicker">04 ／ ANALYTICS</div>
-                    <h3 class="pr-h">TRACE<span>｜届けて、確かめる</span></h3>
-                    <p class="pr-lead">
-                        公開したあとの数字を辿ります。<br>
-                        動画をすでにお持ちの場合に、投稿設計から数値分析・改善提案までをお引き受けします。制作は含みません。
-                    </p>
-                    <div class="pr-rows">
-                        <div class="pr-row">
-                            <span>Light（月5本まで）<span class="sub">投稿設計・1本ごとの分析レポート・月次まとめ・定例お打ち合わせ</span></span>
-                            <span>月額 200,000円〜</span>
-                        </div>
-                        <div class="pr-row">
-                            <span>Standard（月10本まで）<span class="sub">同上</span></span>
-                            <span>月額 350,000円〜</span>
-                        </div>
-                    </div>
-                    <p class="pr-note">
-                        月額固定です。分析は本数が増えても手間が比例して増える性質のものではないため、本数ではなく月額でご案内しています。<br>
-                        企画構成・撮影・編集は含みません（<a href="#build" class="text-link">BUILD</a> / <a href="#loop" class="text-link">LOOP</a> の範囲です）。
-                    </p>
-                </div>
-
+                <!-- ============ 業種別 ============ -->
                 <div id="vertical" class="pr-sec fade-in">
-                    <div class="pr-kicker">05 ／ BY INDUSTRY</div>
+                    <div class="pr-kicker">04 ／ BY INDUSTRY</div>
                     <h3 class="pr-h">業種に特化したご支援<span>｜宿泊・飲食・小売</span></h3>
-                    <p class="pr-lead">
-                        上の5つの段階を、業種ごとの事情に合わせて組み直したものです。<br>
-                        いずれも入口は READ（無料）と同じで、そこから必要な段階へ進みます。
-                    </p>
 
-                    <div class="pr-sub">STAY SUPPORT<span>｜宿泊・日帰り滞在施設向け</span></div>
-                    <p class="pr-note" style="margin-top:14px;">
-                        施設の“過ごし方”を整理し、Instagram と HP で選ばれる状態をつくる共想型の発信支援です。<br>
-                        初回パートナー価格 30,000円〜。<a href="stay-support.html" class="text-link">STAY SUPPORT の詳細 →</a>
-                    </p>
-
-                    <div class="pr-sub">SHOP SUPPORT<span>｜飲食店・小売店向け</span></div>
-                    <p class="pr-note" style="margin-top:14px;">
-                        メニュー・商品の撮影、ショート動画、新メニュー・入荷情報の発信、ご来店への導線づくりまでをまとめてお引き受けします。
-                    </p>
-                    <div class="pr-rows">
-                        <div class="pr-row"><span>A｜写真パック<span class="sub">訪問2時間・メニュー / 商品 / 店内を10〜15点</span></span><span>20,000円〜 / 回</span></div>
-                        <div class="pr-row"><span>B｜動画パック<span class="sub">〜30秒のショート動画5本</span></span><span>55,000円〜 / 5本</span></div>
-                        <div class="pr-row"><span>C｜発信おまかせ<span class="sub">撮影・編集 月5本 ＋ 投稿設計</span></span><span>月額 150,000円〜</span></div>
-                        <div class="pr-row"><span>D｜数字まで見る<span class="sub">C ＋ 1本ごとの分析レポート・月次まとめ・改善提案</span></span><span>月額 250,000円〜</span></div>
+                    <div class="ind-card">
+                        <div class="ic-h"><span class="pc-en" style="font-size:.85rem;">STAY SUPPORT<span style="font-family:'Noto Serif JP',serif;font-weight:300;letter-spacing:.5px;opacity:.6;font-size:.8em;">｜宿泊・日帰り滞在施設</span></span><span class="ic-cp">お試しキャンペーン 10,000円〜 ／ 12月31日まで</span></div>
+                        <p class="pc-txt">予約までの道筋を確かめ、「過ごし方」を撮り、予約につながったかまで見ます。</p>
+                        <div class="pr-rows">
+                            <div class="pr-row"><span>予約導線チェック</span><span>無料</span></div>
+                            <div class="pr-row"><span>単発<span class="sub">1本から / 撮影して2本 / 「過ごし方」を撮る</span></span><span>30,000円〜</span></div>
+                            <div class="pr-row"><span>継続<span class="sub">季節プラン / 制作 / 数字まで見る（初回価格）</span></span><span>月額 100,000円〜</span></div>
+                        </div>
+                        <p class="pr-note">キャンペーンは期間中でも規定の枠に達した時点で終了します。<a href="stay-support.html" class="text-link">STAY SUPPORT の詳細 →</a></p>
                     </div>
-                    <p class="pr-note">
-                        C と D の違いは、公開したあとに数字を見るかどうかです。<a href="shop-support.html" class="text-link">SHOP SUPPORT の詳細 →</a>
-                    </p>
-                </div>
 
-                <div id="artist" class="pr-sec fade-in">
-                    <div class="pr-kicker">06 ／ FOR ARTISTS</div>
-                    <h3 class="pr-h">ARTIST SUPPORT<span>｜アーティスト支援</span></h3>
-                    <p class="pr-lead">
-                        宣材写真・ライブ映像・MV・SNS発信素材・ブッキング・仕事仲介などを、<br>
-                        活動フェーズに合わせて組み合わせます。内容に応じてお見積もりします。
-                    </p>
+                    <div class="ind-card">
+                        <div class="ic-h"><span class="pc-en" style="font-size:.85rem;">SHOP SUPPORT<span style="font-family:'Noto Serif JP',serif;font-weight:300;letter-spacing:.5px;opacity:.6;font-size:.8em;">｜飲食店・小売店</span></span></div>
+                        <p class="pc-txt">メニュー・商品の撮影から発信、ご来店への導線づくりまで。</p>
+                        <div class="pr-rows">
+                            <div class="pr-row"><span>A｜写真パック<span class="sub">訪問2時間・10〜15点</span></span><span>20,000円〜 / 回</span></div>
+                            <div class="pr-row"><span>B｜動画パック<span class="sub">〜30秒のショート動画5本の編集</span></span><span>55,000円〜</span></div>
+                            <div class="pr-row"><span>C｜発信おまかせ<span class="sub">企画・構成・編集 月5本 ＋ 投稿設計（初回3ヶ月）</span></span><span>月額 100,000円〜</span></div>
+                            <div class="pr-row"><span>D｜数字まで見る<span class="sub">C ＋ 分析レポート・改善提案（初回3ヶ月）</span></span><span>月額 200,000円〜</span></div>
+                        </div>
+                        <p class="pr-note">4ヶ月目以降は C 225,000円〜／D 400,000円〜。導入・初回の価格は、ご案内できる枠に限りがあります。規定の枠に達した時点で、受付を終了します。<a href="shop-support.html" class="text-link">SHOP SUPPORT の詳細 →</a></p>
+                    </div>
                 </div>
 
                 <div class="pr-sec fade-in">
                     <h3 class="pr-h">NOTES<span>｜ご留意事項</span></h3>
-                    <p style="font-size: 0.75rem; line-height: 2; opacity: 0.6;">
-                        ・本ページの金額はすべて税別・目安です。正式金額は個別お見積もりによります。<br>
-                        ・撮影日数・場所、出演者の有無、編集ボリューム、納期などにより変動します。<br>
-                        ・二次利用（広告出稿・長期掲載・他媒体転用など）の範囲により料金が変動する場合があります。<br>
-                        ・交通費・宿泊費・特殊機材費・出演者費用等が別途発生する場合があります。
-                    </p>
+                    <ul class="pr-list" style="margin-top:0;">
+                        <li>本ページの金額はすべて税別・目安です。正式金額は個別お見積もりによります。</li>
+                        <li>撮影日数・場所、出演者の有無、編集ボリューム、納期などにより変動します。</li>
+                        <li>二次利用（広告出稿・長期掲載・他媒体転用など）の範囲により料金が変動する場合があります。</li>
+                        <li>交通費は別途ご請求します（全サービス共通）。宿泊費・特殊機材費・出演者費用等が別途発生する場合があります。</li>
+                    </ul>
                 </div>
 
                 <div class="fade-in" style="margin-bottom: 40px; text-align: center;">

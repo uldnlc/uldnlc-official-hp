@@ -103,6 +103,42 @@
         .svc-cycle .lead-in { stroke: rgba(255,255,255,0.28); stroke-width: 1.2; fill: none; stroke-dasharray: 4 4; }
         .svc-cycle .svc-cycle-sp { display: none; }
         .svc-cycle-note { font-size: 0.78rem; line-height: 1.9; opacity: 0.7; text-align: center; margin: 4px 0 0; }
+        /* 図解の動き(2026-09-30) */
+        .svc-cycle .ring { animation: svcRing 14s linear infinite; }
+        .svc-cycle .lead-in { animation: svcFlow 1.2s linear infinite; }
+        .svc-cycle .orbit { fill: #fff; }
+        .svc-cycle .orbit.t1 { opacity: .45; } .svc-cycle .orbit.t2 { opacity: .2; }
+        .svc-cycle .n-map .node, .svc-cycle .n-build .node, .svc-cycle .n-trace .node { animation: svcPulse 9s ease-out infinite; }
+        .svc-cycle .n-build .node { animation-delay: 3s; }
+        .svc-cycle .n-trace .node { animation-delay: 6s; }
+        .svc-cycle .core-glow { fill: none; stroke: rgba(255,255,255,0.35); stroke-width: 1;
+            transform-box: fill-box; transform-origin: center; animation: svcBreathe 4.5s ease-in-out infinite; }
+        .svc-cycle a { transform-box: fill-box; transform-origin: center; opacity: 0; transform: scale(.82);
+            transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+        .svc-lead.visible .svc-cycle a { opacity: 1; transform: none; }
+        .svc-lead.visible .svc-cycle .n-read  { transition-delay: .1s; }
+        .svc-lead.visible .svc-cycle .n-map   { transition-delay: .35s; }
+        .svc-lead.visible .svc-cycle .n-build { transition-delay: .6s; }
+        .svc-lead.visible .svc-cycle .n-trace { transition-delay: .85s; }
+        .svc-lead.visible .svc-cycle .n-loop  { transition-delay: 1.1s; }
+        .svc-cycle a:hover .node { animation-play-state: paused; }
+        @keyframes svcRing { to { stroke-dashoffset: -96; } }
+        @keyframes svcFlow { to { stroke-dashoffset: -16; } }
+        @keyframes svcPulse {
+            0%   { stroke: rgba(255,255,255,0.22); fill: #0b0b0b; }
+            4%   { stroke: rgba(255,255,255,0.95); fill: rgba(255,255,255,0.09); }
+            22%  { stroke: rgba(255,255,255,0.22); fill: #0b0b0b; }
+            100% { stroke: rgba(255,255,255,0.22); fill: #0b0b0b; }
+        }
+        @keyframes svcBreathe {
+            0%, 100% { transform: scale(1);    opacity: .55; }
+            50%      { transform: scale(1.16); opacity: 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .svc-cycle .ring, .svc-cycle .lead-in, .svc-cycle .node, .svc-cycle .core-glow { animation: none !important; }
+            .svc-cycle .orbit { display: none; }
+            .svc-cycle a { opacity: 1; transform: none; transition: none; }
+        }
 
         .svc-flow-group { display: grid; grid-template-columns: 1fr 1fr; margin-top: 10px; }
         .svc-flow-group span { font-size: 0.68rem; letter-spacing: 1px; opacity: 0.55; padding-left: 16px; }
@@ -235,9 +271,10 @@
                             <marker id="svc-ah" viewBox="0 0 9 9" refX="7" refY="4.5" markerWidth="5.5" markerHeight="5.5" orient="auto">
                                 <path d="M 0 0 L 9 4.5 L 0 9 z" fill="rgba(255,255,255,0.5)"></path>
                             </marker>
+                            <filter id="svc-glow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="3" result="b"></feGaussianBlur><feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter>
                         </defs>
                         <!-- READ(入口・円の外) -->
-                        <a href="price.html#read">
+                        <a class="n-read" href="price.html#read">
                             <circle class="node" cx="78" cy="215" r="60"></circle>
                             <text class="en" x="78" y="200" text-anchor="middle">READ</text>
                             <text class="ja" x="78" y="222" text-anchor="middle">いまを見る</text>
@@ -252,9 +289,12 @@
                         <path class="arc" d="M 491 78 A 150 150 0 0 1 579 231" marker-end="url(#svc-ah)"></path>
                         <path class="arc" d="M 518 336 A 150 150 0 0 1 342 336" marker-end="url(#svc-ah)"></path>
                         <path class="arc" d="M 281 231 A 150 150 0 0 1 369 78" marker-end="url(#svc-ah)"></path>
+                        <circle class="orbit t2" r="2.4" filter="url(#svc-glow)"><animateMotion dur="9s" begin="-0.36s" repeatCount="indefinite" path="M 430 65 A 150 150 0 0 1 430 365 A 150 150 0 0 1 430 65"></animateMotion></circle>
+                        <circle class="orbit t1" r="3.2" filter="url(#svc-glow)"><animateMotion dur="9s" begin="-0.18s" repeatCount="indefinite" path="M 430 65 A 150 150 0 0 1 430 365 A 150 150 0 0 1 430 65"></animateMotion></circle>
+                        <circle class="orbit" r="4.2" filter="url(#svc-glow)"><animateMotion dur="9s" begin="0s" repeatCount="indefinite" path="M 430 65 A 150 150 0 0 1 430 365 A 150 150 0 0 1 430 65"></animateMotion></circle>
 
                         <!-- MAP(上) -->
-                        <a href="price.html#map">
+                        <a class="n-map" href="price.html#map">
                             <circle class="node" cx="430" cy="65" r="62"></circle>
                             <text class="en" x="430" y="50" text-anchor="middle">MAP</text>
                             <text class="ja" x="430" y="72" text-anchor="middle">何を出すか</text>
@@ -262,14 +302,14 @@
                         </a>
 
                         <!-- BUILD(右下) -->
-                        <a href="price.html#build">
+                        <a class="n-build" href="price.html#build">
                             <circle class="node" cx="560" cy="290" r="62"></circle>
                             <text class="en" x="560" y="282" text-anchor="middle">BUILD</text>
                             <text class="ja" x="560" y="304" text-anchor="middle">つくる</text>
                         </a>
 
                         <!-- TRACE(左下) -->
-                        <a href="price.html#trace">
+                        <a class="n-trace" href="price.html#trace">
                             <circle class="node" cx="300" cy="290" r="62"></circle>
                             <text class="en" x="300" y="275" text-anchor="middle">TRACE</text>
                             <text class="ja" x="300" y="297" text-anchor="middle">数字を</text>
@@ -277,7 +317,8 @@
                         </a>
 
                         <!-- LOOP(中心) -->
-                        <a href="price.html#loop">
+                        <circle class="core-glow" cx="430" cy="215" r="72"></circle>
+                        <a class="n-loop" href="price.html#loop">
                             <circle class="node" cx="430" cy="215" r="72" fill="rgba(255,255,255,0.055)"></circle>
                             <text class="core-en" x="430" y="208" text-anchor="middle">LOOP</text>
                             <text class="core-ja" x="430" y="232" text-anchor="middle">毎月まわす</text>
@@ -289,9 +330,10 @@
                             <marker id="svc-ah-sp" viewBox="0 0 9 9" refX="7" refY="4.5" markerWidth="5.5" markerHeight="5.5" orient="auto">
                                 <path d="M 0 0 L 9 4.5 L 0 9 z" fill="rgba(255,255,255,0.5)"></path>
                             </marker>
+                            <filter id="svc-glow-sp" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="3" result="b"></feGaussianBlur><feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter>
                         </defs>
                         <!-- READ(入口・円の外) -->
-                        <a href="price.html#read">
+                        <a class="n-read" href="price.html#read">
                             <circle class="node" cx="180" cy="54" r="50"></circle>
                             <text class="en" x="180" y="38" text-anchor="middle">READ</text>
                             <text class="ja" x="180" y="60" text-anchor="middle">いまを見る</text>
@@ -306,9 +348,12 @@
                         <path class="arc" d="M 241.9 223.4 A 132 132 0 0 1 311.9 344.6" marker-end="url(#svc-ah-sp)"></path>
                         <path class="arc" d="M 249.9 451.9 A 132 132 0 0 1 110.1 451.9" marker-end="url(#svc-ah-sp)"></path>
                         <path class="arc" d="M 48.1 344.6 A 132 132 0 0 1 118.0 223.4" marker-end="url(#svc-ah-sp)"></path>
+                        <circle class="orbit t2" r="2.4" filter="url(#svc-glow-sp)"><animateMotion dur="9s" begin="-0.36s" repeatCount="indefinite" path="M 180 208 A 132 132 0 0 1 180 472 A 132 132 0 0 1 180 208"></animateMotion></circle>
+                        <circle class="orbit t1" r="3.2" filter="url(#svc-glow-sp)"><animateMotion dur="9s" begin="-0.18s" repeatCount="indefinite" path="M 180 208 A 132 132 0 0 1 180 472 A 132 132 0 0 1 180 208"></animateMotion></circle>
+                        <circle class="orbit" r="4.2" filter="url(#svc-glow-sp)"><animateMotion dur="9s" begin="0s" repeatCount="indefinite" path="M 180 208 A 132 132 0 0 1 180 472 A 132 132 0 0 1 180 208"></animateMotion></circle>
 
                         <!-- MAP(上) -->
-                        <a href="price.html#map">
+                        <a class="n-map" href="price.html#map">
                             <circle class="node" cx="180" cy="208" r="56"></circle>
                             <text class="en" x="180" y="193" text-anchor="middle">MAP</text>
                             <text class="ja" x="180" y="215" text-anchor="middle">何を出すか</text>
@@ -316,14 +361,14 @@
                         </a>
 
                         <!-- BUILD(右下) -->
-                        <a href="price.html#build">
+                        <a class="n-build" href="price.html#build">
                             <circle class="node" cx="294" cy="406" r="52"></circle>
                             <text class="en" x="294" y="398" text-anchor="middle">BUILD</text>
                             <text class="ja" x="294" y="420" text-anchor="middle">つくる</text>
                         </a>
 
                         <!-- TRACE(左下) -->
-                        <a href="price.html#trace">
+                        <a class="n-trace" href="price.html#trace">
                             <circle class="node" cx="66" cy="406" r="52"></circle>
                             <text class="en" x="66" y="391" text-anchor="middle">TRACE</text>
                             <text class="ja" x="66" y="413" text-anchor="middle">数字を</text>
@@ -331,7 +376,8 @@
                         </a>
 
                         <!-- LOOP(中心) -->
-                        <a href="price.html#loop">
+                        <circle class="core-glow" cx="180" cy="340" r="62"></circle>
+                        <a class="n-loop" href="price.html#loop">
                             <circle class="node" cx="180" cy="340" r="62" fill="rgba(255,255,255,0.055)"></circle>
                             <text class="core-en" x="180" y="333" text-anchor="middle">LOOP</text>
                             <text class="core-ja" x="180" y="357" text-anchor="middle">毎月まわす</text>
@@ -361,9 +407,8 @@
                     </dl>
                     <div class="svc-edge">
                         <b>STRENGTH<span>ULDNLCの強み</span></b>
-                        <p><strong style="font-weight:400;">売り場に立っていた人間が読みます。</strong>代表は楽器店で販売とSNS運用を担当し、<strong style="font-weight:400;">1機種で56台・約179万円</strong>を売りました。数字を追う側にいた目で拝見します。</p>
+                        <p><strong style="font-weight:400;">徹底した事前リサーチと準備で、課題を探ります。</strong>投稿の傾向、プロフィールからご予約・ご購入までの道筋、近い業種の見せ方まで、お話をうかがう前に調べ上げます。シートには、<strong style="font-weight:400;">実際にたどって確かめたことだけ</strong>を書きます。</p>
                         <p>③と④は<strong style="font-weight:400;">空欄のままお渡しします。</strong>外から見ている限り、誰にも書けないためです。</p>
-                        <p class="svc-work"><b>実績</b>楽器店での販売・SNS運用（1機種 56台・約179万円）</p>
                     </div>
                     <p class="svc-price">無料<span>1回かぎり</span></p>
                     <p class="svc-links"><a href="price.html#read" class="svc-a">くわしく見る →</a></p>
@@ -409,10 +454,10 @@
                     <div class="svc-edge">
                         <b>STRENGTH<span>ULDNLCの強み</span></b>
                         <p><strong style="font-weight:400;">テレビ番組制作の現場出身のディレクターが、公開前に1本ずつ確認します。</strong>業務用の撮影機材を自社で保有しているため、<strong style="font-weight:400;">レンタルの手配も、機材費の上乗せもありません。</strong></p>
-                        <p>お見積りは納品する尺と撮影時間で決まります。<strong style="font-weight:400;">30秒の動画に、3分ぶんのご負担をいただくことがありません。</strong></p>
+                        <p>編集は納品する尺で、撮影は内容に応じてお見積りします。<strong style="font-weight:400;">30秒の動画に、3分ぶんのご負担をいただくことがありません。</strong></p>
                         <p class="svc-work"><b>実績</b><a href="work-reminiscent.html" class="svc-a">Réminiscent</a>（ブランドムービー） ・ <a href="work-ayers.html" class="svc-a">エアーズギター様</a>（SNSショート動画） ・ MV制作</p>
                     </div>
-                    <p class="svc-price">月額 150,000円〜<span>単発は 22,000円 / 本〜</span></p>
+                    <p class="svc-price">月額 100,000円〜<span>初回3ヶ月 ・ 4ヶ月目以降は 225,000円〜 ・ 撮影は内容に応じてお見積り</span></p>
                     <p class="svc-to-loop">※ 公開後の数字まで一緒に見る場合は、<a href="#loop" class="svc-a">LOOP</a> のほうがまとまります。</p>
                     <p class="svc-sub"><span class="svc-label">WHAT WE MAKE</span>SNSショート動画(Reels・TikTok・YouTube Shorts)/ ブランドムービー / PR動画 / 商品紹介動画 / MV / ライブ・イベント映像 / 宣材・商品写真</p>
                     <p class="svc-links">料金の目安:<a href="price.html#video" class="svc-a">映像制作</a> ・ <a href="price.html#short" class="svc-a">SNSショート動画</a> ・ <a href="price.html#photo" class="svc-a">写真・宣材</a></p>
@@ -439,7 +484,7 @@
                         <p><strong style="font-weight:400;">④ まで見ます。</strong>ご来店やお問い合わせの数まで一緒に確認するため、発信がどこまでつながったかをご報告できます。</p>
                         <p class="svc-work"><b>実績</b><a href="work-ayers.html" class="svc-a">エアーズギター様</a>（楽器店）— 1本ごとの分析レポートと月次まとめを継続中</p>
                     </div>
-                    <p class="svc-price">月額 200,000円〜<span>撮影・編集は含みません</span></p>
+                    <p class="svc-price">月額 100,000円〜<span>初回3ヶ月 ・ 4ヶ月目以降は 200,000円〜 ・ 制作は含みません</span></p>
                     <p class="svc-to-loop">※ 制作からご希望の場合は、<a href="#loop" class="svc-a">LOOP</a> のほうがまとまります。</p>
                     <div class="svc-stages">
                         <div><span class="q">① 届いたか</span><span class="m">再生数・リーチ</span></div>
@@ -478,7 +523,7 @@
                         <p>売り場の実務、テレビ番組制作の現場、制作会社の編集。<strong style="font-weight:400;">この3つが同じ卓にいます。</strong></p>
                         <p class="svc-work"><b>実績</b><a href="work-ayers.html" class="svc-a">エアーズギター様</a>（楽器店）— 月5本。構成から分析レポートまで継続中</p>
                     </div>
-                    <p class="svc-price">月額 250,000円〜<span>月5本・初回3ヶ月</span></p>
+                    <p class="svc-price">月額 200,000円〜<span>月5本・初回3ヶ月 ・ 撮影は別途お見積り</span></p>
                     <p class="svc-links"><a href="price.html#loop" class="svc-a">くわしく見る →</a></p>
                 </div>
 
@@ -540,7 +585,7 @@
                 <p class="svc-cta"><a href="contact.html" class="svc-a">ご相談・お問い合わせはこちら →</a> ・ <a href="price.html" class="svc-a">料金を見る →</a></p>
                 <p class="svc-small" style="text-align:center; margin-top:28px;">
                     本ページに記載の金額はすべて<strong style="opacity:1;">税別・目安</strong>です。正式な金額は、ご相談内容をうかがったうえで個別にお見積りいたします。<br>
-                    撮影の日数・場所、出演者の有無、編集の分量、納期などにより変動します。交通費・宿泊費・特殊機材費等が別途発生する場合があります。
+                    撮影の日数・場所、出演者の有無、編集の分量、納期などにより変動します。交通費は別途ご請求します。宿泊費・特殊機材費等が別途発生する場合があります。
                 </p>
             </div>
 
