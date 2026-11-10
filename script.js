@@ -99,20 +99,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // =========================================================
-    // 3. カスタムカーソル
-    // =========================================================
-    const cursor = document.getElementById('cursor');
-    const follower = document.getElementById('cursor-follower');
-    if (cursor && follower && window.innerWidth > 768 && !prefersReducedMotion) {
-        let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
-        document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; cursor.style.left = mouseX + 'px'; cursor.style.top = mouseY + 'px'; });
-        function animateFollower() { followerX += (mouseX - followerX) * 0.1; followerY += (mouseY - followerY) * 0.1; follower.style.left = followerX + 'px'; follower.style.top = followerY + 'px'; requestAnimationFrame(animateFollower); }
-        animateFollower();
-        const links = document.querySelectorAll('a, button, input, textarea, select, .hamburger');
-        links.forEach(link => { link.addEventListener('mouseenter', () => follower.classList.add('hovered')); link.addEventListener('mouseleave', () => follower.classList.remove('hovered')); });
-    }
-
-    // =========================================================
     // 4. ローディング & ページ遷移 (★url.href正規化・完全版)
     // =========================================================
     const loader = document.getElementById('loading');
