@@ -35,7 +35,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Montserrat:wght@400;700&family=Noto+Serif+JP:wght@300;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20261110">
 
     <script type="application/ld+json">
     {
@@ -86,6 +86,7 @@
             <ul>
                 <li><a href="identity.html">IDENTITY</a></li>
                 <li><a href="services.html">SERVICES</a></li>
+                <li><a href="works.html">WORKS</a></li>
                 <li><a href="price.html">PRICE</a></li>
                 <li><a href="about.html">ABOUT</a></li>
                 <li><a href="recruit.html">RECRUIT</a></li>
@@ -111,6 +112,147 @@
             <div class="scroll-indicator">
                 <span>SCROLL</span>
                 <div class="line"></div>
+            </div>
+        </section>
+
+        <section class="section-container">
+            <div class="section-header fade-in">
+                <h2>SERVICES</h2>
+                <a href="services.html" class="view-all">VIEW ALL</a>
+            </div>
+            <div class="home-svc fade-in">
+                <p class="home-svc-lead">
+                    ULDNLC（ウルドネルク）<br>
+                    映像制作を軸に、SNS運用・数値分析・改善提案までを一貫して担うクリエイティブスタジオ。<br>
+                    届いたかどうかまで、つくる。
+                </p>
+                <div class="svc-cycle">
+                    <svg class="svc-cycle-pc" viewBox="0 0 700 430" role="img" aria-label="READ から始まり、MAP・BUILD・TRACE を毎月くり返す循環図">
+                        <defs>
+                            <marker id="svc-ah" viewBox="0 0 9 9" refX="7" refY="4.5" markerWidth="5.5" markerHeight="5.5" orient="auto">
+                                <path d="M 0 0 L 9 4.5 L 0 9 z" fill="rgba(255,255,255,0.5)"></path>
+                            </marker>
+                            <filter id="svc-glow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="3" result="b"></feGaussianBlur><feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter>
+                        </defs>
+                        <!-- READ(入口・円の外) -->
+                        <a class="n-read" href="services.html#read">
+                            <circle class="node" cx="78" cy="215" r="60"></circle>
+                            <text class="en" x="78" y="200" text-anchor="middle">READ</text>
+                            <text class="ja" x="78" y="222" text-anchor="middle">いまを見る</text>
+                            <text class="sm" x="78" y="241" text-anchor="middle">無料・1回</text>
+                        </a>
+                        <path class="lead-in" d="M 142 215 L 200 215" marker-end="url(#svc-ah)"></path>
+
+                        <!-- 循環のリング -->
+                        <circle class="ring" cx="430" cy="215" r="150"></circle>
+
+                        <!-- 循環の矢印(ノードを避けて円周に沿わせる) -->
+                        <path class="arc" d="M 491 78 A 150 150 0 0 1 579 231" marker-end="url(#svc-ah)"></path>
+                        <path class="arc" d="M 518 336 A 150 150 0 0 1 342 336" marker-end="url(#svc-ah)"></path>
+                        <path class="arc" d="M 281 231 A 150 150 0 0 1 369 78" marker-end="url(#svc-ah)"></path>
+                        <circle class="orbit t2" r="2.4" filter="url(#svc-glow)"><animateMotion dur="9s" begin="-0.36s" repeatCount="indefinite" path="M 430 65 A 150 150 0 0 1 430 365 A 150 150 0 0 1 430 65"></animateMotion></circle>
+                        <circle class="orbit t1" r="3.2" filter="url(#svc-glow)"><animateMotion dur="9s" begin="-0.18s" repeatCount="indefinite" path="M 430 65 A 150 150 0 0 1 430 365 A 150 150 0 0 1 430 65"></animateMotion></circle>
+                        <circle class="orbit" r="4.2" filter="url(#svc-glow)"><animateMotion dur="9s" begin="0s" repeatCount="indefinite" path="M 430 65 A 150 150 0 0 1 430 365 A 150 150 0 0 1 430 65"></animateMotion></circle>
+
+                        <!-- MAP(上) -->
+                        <a class="n-map" href="services.html#map">
+                            <circle class="node" cx="430" cy="65" r="62"></circle>
+                            <text class="en" x="430" y="50" text-anchor="middle">MAP</text>
+                            <text class="ja" x="430" y="72" text-anchor="middle">何を出すか</text>
+                            <text class="ja" x="430" y="90" text-anchor="middle">決める</text>
+                        </a>
+
+                        <!-- BUILD(右下) -->
+                        <a class="n-build" href="services.html#build">
+                            <circle class="node" cx="560" cy="290" r="62"></circle>
+                            <text class="en" x="560" y="282" text-anchor="middle">BUILD</text>
+                            <text class="ja" x="560" y="304" text-anchor="middle">つくる</text>
+                        </a>
+
+                        <!-- TRACE(左下) -->
+                        <a class="n-trace" href="services.html#trace">
+                            <circle class="node" cx="300" cy="290" r="62"></circle>
+                            <text class="en" x="300" y="275" text-anchor="middle">TRACE</text>
+                            <text class="ja" x="300" y="297" text-anchor="middle">数字を</text>
+                            <text class="ja" x="300" y="315" text-anchor="middle">見る</text>
+                        </a>
+
+                        <!-- LOOP(中心) -->
+                        <circle class="core-glow" cx="430" cy="215" r="72"></circle>
+                        <a class="n-loop" href="services.html#loop">
+                            <circle class="node" cx="430" cy="215" r="72" fill="rgba(255,255,255,0.055)"></circle>
+                            <text class="core-en" x="430" y="208" text-anchor="middle">LOOP</text>
+                            <text class="core-ja" x="430" y="232" text-anchor="middle">毎月まわす</text>
+                        </a>
+                    </svg>
+
+                    <svg class="svc-cycle-sp" viewBox="0 0 360 470" role="img" aria-label="READ から始まり、MAP・BUILD・TRACE を毎月くり返す循環図">
+                        <defs>
+                            <marker id="svc-ah-sp" viewBox="0 0 9 9" refX="7" refY="4.5" markerWidth="5.5" markerHeight="5.5" orient="auto">
+                                <path d="M 0 0 L 9 4.5 L 0 9 z" fill="rgba(255,255,255,0.5)"></path>
+                            </marker>
+                            <filter id="svc-glow-sp" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="3" result="b"></feGaussianBlur><feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter>
+                        </defs>
+                        <!-- READ(入口・円の外) -->
+                        <a class="n-read" href="services.html#read">
+                            <circle class="node" cx="180" cy="54" r="50"></circle>
+                            <text class="en" x="180" y="38" text-anchor="middle">READ</text>
+                            <text class="ja" x="180" y="60" text-anchor="middle">いまを見る</text>
+                            <text class="sm" x="180" y="79" text-anchor="middle">無料・1回</text>
+                        </a>
+                        <path class="lead-in" d="M 180 112 L 180 144" marker-end="url(#svc-ah-sp)"></path>
+
+                        <!-- 循環のリング -->
+                        <circle class="ring" cx="180" cy="340" r="132"></circle>
+
+                        <!-- 循環の矢印(ノードを避けて円周に沿わせる) -->
+                        <path class="arc" d="M 241.9 223.4 A 132 132 0 0 1 311.9 344.6" marker-end="url(#svc-ah-sp)"></path>
+                        <path class="arc" d="M 249.9 451.9 A 132 132 0 0 1 110.1 451.9" marker-end="url(#svc-ah-sp)"></path>
+                        <path class="arc" d="M 48.1 344.6 A 132 132 0 0 1 118.0 223.4" marker-end="url(#svc-ah-sp)"></path>
+                        <circle class="orbit t2" r="2.4" filter="url(#svc-glow-sp)"><animateMotion dur="9s" begin="-0.36s" repeatCount="indefinite" path="M 180 208 A 132 132 0 0 1 180 472 A 132 132 0 0 1 180 208"></animateMotion></circle>
+                        <circle class="orbit t1" r="3.2" filter="url(#svc-glow-sp)"><animateMotion dur="9s" begin="-0.18s" repeatCount="indefinite" path="M 180 208 A 132 132 0 0 1 180 472 A 132 132 0 0 1 180 208"></animateMotion></circle>
+                        <circle class="orbit" r="4.2" filter="url(#svc-glow-sp)"><animateMotion dur="9s" begin="0s" repeatCount="indefinite" path="M 180 208 A 132 132 0 0 1 180 472 A 132 132 0 0 1 180 208"></animateMotion></circle>
+
+                        <!-- MAP(上) -->
+                        <a class="n-map" href="services.html#map">
+                            <circle class="node" cx="180" cy="208" r="56"></circle>
+                            <text class="en" x="180" y="193" text-anchor="middle">MAP</text>
+                            <text class="ja" x="180" y="215" text-anchor="middle">何を出すか</text>
+                            <text class="ja" x="180" y="233" text-anchor="middle">決める</text>
+                        </a>
+
+                        <!-- BUILD(右下) -->
+                        <a class="n-build" href="services.html#build">
+                            <circle class="node" cx="294" cy="406" r="52"></circle>
+                            <text class="en" x="294" y="398" text-anchor="middle">BUILD</text>
+                            <text class="ja" x="294" y="420" text-anchor="middle">つくる</text>
+                        </a>
+
+                        <!-- TRACE(左下) -->
+                        <a class="n-trace" href="services.html#trace">
+                            <circle class="node" cx="66" cy="406" r="52"></circle>
+                            <text class="en" x="66" y="391" text-anchor="middle">TRACE</text>
+                            <text class="ja" x="66" y="413" text-anchor="middle">数字を</text>
+                            <text class="ja" x="66" y="431" text-anchor="middle">見る</text>
+                        </a>
+
+                        <!-- LOOP(中心) -->
+                        <circle class="core-glow" cx="180" cy="340" r="62"></circle>
+                        <a class="n-loop" href="services.html#loop">
+                            <circle class="node" cx="180" cy="340" r="62" fill="rgba(255,255,255,0.055)"></circle>
+                            <text class="core-en" x="180" y="333" text-anchor="middle">LOOP</text>
+                            <text class="core-ja" x="180" y="357" text-anchor="middle">毎月まわす</text>
+                        </a>
+                    </svg>
+                </div>
+                <ol class="home-svc-list">
+                    <li><a href="services.html#read"><span class="hs-en">READ</span><span class="hs-role">いまを見る</span><span class="hs-desc">いまの発信を外から拝見し、直せる場所を A4・1枚にまとめます。無料です。</span></a></li>
+                    <li><a href="services.html#map"><span class="hs-en">MAP</span><span class="hs-role">何を出すか決める</span><span class="hs-desc">誰に、何を、どの順番で伝えるかを決めます。迷わず投稿できる状態にします。</span></a></li>
+                    <li><a href="services.html#build"><span class="hs-en">BUILD</span><span class="hs-role">つくる</span><span class="hs-desc">動画の構成と編集を行い、そのまま投稿できる形に仕上げます。</span></a></li>
+                    <li><a href="services.html#trace"><span class="hs-en">TRACE</span><span class="hs-role">数字を見る</span><span class="hs-desc">投稿から数字の確認までをお引き受けし、次に何を直すかを毎月ご一緒に決めます。</span></a></li>
+                    <li class="hs-loop"><a href="services.html#loop"><span class="hs-en">LOOP</span><span class="hs-role">毎月まわす</span><span class="hs-desc">MAP・BUILD・TRACE をまとめてお引き受けします。分かったことが、そのまま次の制作に入ります。</span></a></li>
+                </ol>
+                <p class="home-svc-note">輪をまるごとお任せいただくことも、一部だけのご依頼もできます。まずは無料の READ からどうぞ。</p>
             </div>
         </section>
 
@@ -188,6 +330,6 @@
 
 
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js?v=20261110"></script>
 </body>
 </html>
