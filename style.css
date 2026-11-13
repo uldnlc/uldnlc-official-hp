@@ -734,6 +734,7 @@ select:focus-visible {
 
 /* 文節のまとまり(script.js)と、スマホのはみ出し対策 (2026-11-14) */
 .wj { white-space: nowrap; }
+.wj.wj-free { white-space: normal; }
 @media (max-width: 768px) {
     .works-note { white-space: normal !important; }
     br.br-pc { display: none; }

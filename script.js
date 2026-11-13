@@ -893,7 +893,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const kanji = /[\u3400-\u9fff々0-9０-９,，]$/.test(cur) && /^[\u3400-\u9fff々0-9０-９]/.test(s);
             const attach = prefix || kanji || ATTACH.test(s) || OPEN.test(cur) || (HIRA.test(s) && !STOP.test(cur));
             prefix = false;
-            if (attach && (cur + s).length <= 20) cur += s;
+            if (attach && (cur + s).length <= 12) cur += s;
             else { out.push(cur); cur = s; }
         }
         if (cur) out.push(cur);
@@ -937,6 +937,23 @@ document.addEventListener("DOMContentLoaded", function() {
             br.classList.add('br-pc');
         });
     }
-    const run = () => { const m = document.querySelector('main') || document.body; wrap(m); markBr(m); };
+    // 安全策:枠からはみ出したまとまりは、その場で解いて普通に折り返す
+    function fit() {
+        document.querySelectorAll('.wj').forEach(s => {
+            let b = s.parentElement;
+            while (b && getComputedStyle(b).display.startsWith('inline')) b = b.parentElement;
+            if (!b) return;
+            const r = s.getBoundingClientRect(), br = b.getBoundingClientRect();
+            const right = br.right - parseFloat(getComputedStyle(b).paddingRight || 0);
+            if (r.width && (r.right > right + 1 || r.right > document.documentElement.clientWidth)) s.classList.add('wj-free');
+        });
+    }
+    const run = () => {
+        const m = document.querySelector('main') || document.body; wrap(m); markBr(m);
+        requestAnimationFrame(fit);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+        window.addEventListener('load', fit);
+        let t; window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(fit, 150); });
+    };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
 })();
