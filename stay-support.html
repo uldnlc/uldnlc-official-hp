@@ -17,13 +17,13 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <meta name="description" content="宿泊・日帰り滞在施設の“過ごし方”を、SNSとHPで選ばれる理由に変える共想型の発信支援。施設ごとの魅力を整理し、Instagram発信・縦型映像・HP導線までを個別提案します。">
+    <meta name="description" content="宿泊・日帰り滞在施設の発信支援。お客様が過ごす時間をリール動画と写真にして、インスタから予約までの流れを整えます。予約につながったかまで一緒に確かめます。無料のご相談受付中。">
 
-    <meta property="og:type" content="article">
+    <meta property="og:type" content="website">
     <meta property="og:url" content="https://uldnlc.studio/stay-support.html">
     <link rel="canonical" href="https://uldnlc.studio/stay-support.html">
     <meta property="og:title" content="STAY SUPPORT（SUGOSU DESIGN）| ULDNLC">
-    <meta property="og:description" content="宿泊・日帰り滞在施設の“過ごし方”を、SNSとHPで選ばれる理由に変える共想型の発信支援。施設ごとの魅力を整理し、Instagram発信・縦型映像・HP導線までを個別提案します。">
+    <meta property="og:description" content="宿泊・日帰り滞在施設の発信支援。お客様が過ごす時間をリール動画と写真にして、インスタから予約までの流れを整えます。予約につながったかまで一緒に確かめます。無料のご相談受付中。">
     <meta property="og:image" content="https://uldnlc.studio/ogp.jpg">
     <meta name="twitter:card" content="summary_large_image">
 
@@ -32,7 +32,115 @@
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Montserrat:wght@400;700&family=Noto+Serif+JP:wght@300;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-    <link rel="stylesheet" href="style.css?v=20261110">
+    <link rel="stylesheet" href="style.css?v=20261114">
+    <style>
+        .st-hero { text-align: center; padding-bottom: 20px; }
+        .st-eyebrow { font-family: 'Montserrat', sans-serif; font-size: 0.62rem; letter-spacing: 4px; opacity: 0.55; margin: 0 0 14px; }
+        .st-for { font-size: 0.82rem; letter-spacing: 2px; opacity: 0.8; margin: 0 0 22px; }
+        .st-title { font-family: var(--font-primary, 'Noto Serif JP', serif); font-size: 2.3rem; font-weight: 300; letter-spacing: 5px; line-height: 1.6; margin: 0 0 28px; }
+        .st-lead { font-size: 0.9rem; line-height: 2.1; opacity: 0.85; margin: 0 0 40px; }
+        .st-cta-row { display: flex; justify-content: center; align-items: center; gap: 28px; flex-wrap: wrap; }
+        .st-btn { display: inline-block; padding: 19px 54px; background: #fff; color: #000 !important; font-weight: 700; font-size: 0.95rem; letter-spacing: 4px; transition: 0.4s; border: 1px solid #fff; }
+        .st-btn:hover { background: #ccc; border-color: #ccc; box-shadow: 0 0 22px rgba(255,255,255,0.35); }
+        .st-link { color: #fff; font-size: 0.8rem; letter-spacing: 1px; border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom: 2px; transition: 0.3s; }
+        .st-link:hover { border-bottom-color: #fff; }
+        .st-camp-badge { margin: 30px 0 0; font-size: 0.78rem; letter-spacing: 1px; opacity: 0.85; }
+        .st-camp-badge span:not(.wj) { border: 1px solid rgba(255,255,255,0.5); padding: 3px 10px; margin-right: 12px; font-size: 0.7rem; letter-spacing: 2px; }
+        .st-wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+        .st-sec { margin: 0 0 110px; }
+        .st-h-en { font-family: 'Montserrat', sans-serif; font-size: 0.62rem; letter-spacing: 4px; opacity: 0.5; margin: 0 0 12px; text-align: center; }
+        .st-h { display: block; width: auto; border: none !important; padding: 0 !important; background: none; font-family: inherit;
+               font-size: 1.45rem; font-weight: 300; letter-spacing: 3px; line-height: 1.7; text-align: center; margin: 0 0 44px; }
+        .st-sub { text-align: center; font-size: 0.78rem; opacity: 0.65; margin: -30px 0 34px; }
+        .st-body { font-size: 0.85rem; line-height: 2.05; opacity: 0.85; margin: 0 0 18px; }
+        .st-note-c { text-align: center; font-size: 0.85rem; line-height: 2; opacity: 0.85; margin: 34px 0 0; }
+        .st-cards { display: grid; gap: 1px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.12); }
+        .st-cards-3 { grid-template-columns: repeat(3, 1fr); }
+        .st-cards > div { background: #0b0b0b; padding: 30px 24px; }
+        .st-quote { font-size: 0.9rem; line-height: 1.9; margin: 0; letter-spacing: 1px; }
+        .st-cards:not(.st-cards-num) > div { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 150px; box-sizing: border-box; }
+        .st-approach { display: grid; grid-template-columns: 1fr 1.3fr; gap: 50px; align-items: center; }
+        .st-tl { list-style: none; margin: 0; padding: 0 0 0 20px; border-left: 1px solid rgba(255,255,255,0.25); }
+        .st-tl li { position: relative; font-family: 'Montserrat', sans-serif; font-size: 0.95rem; letter-spacing: 4px; padding: 12px 0; }
+        .st-tl li::before { content: ""; position: absolute; left: -24px; top: 50%; width: 7px; height: 7px; margin-top: -3.5px; border-radius: 50%; background: #fff; box-shadow: 0 0 10px rgba(255,255,255,0.6); }
+        .st-tl li span:not(.wj) { display: inline-block; width: 66px; font-size: 0.7rem; letter-spacing: 1px; opacity: 0.5; }
+        .st-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; counter-reset: none; }
+        .st-steps li { border-top: 1px solid rgba(255,255,255,0.35); padding: 24px 4px 0; }
+        .st-step-n { font-family: 'Montserrat', sans-serif; font-size: 0.62rem; letter-spacing: 3px; opacity: 0.5; }
+        .st-step-t { font-size: 1rem; line-height: 1.7; letter-spacing: 1px; margin: 12px 0 12px; }
+        .st-step-d { font-size: 0.78rem; line-height: 1.95; opacity: 0.75; margin: 0; }
+        .st-step-tag { display: inline-block; margin: 16px 0 0; font-size: 0.7rem; letter-spacing: 1px; border: 1px solid rgba(255,255,255,0.45); padding: 3px 10px; }
+        .st-case { display: grid; grid-template-columns: 1.05fr 1fr; gap: 44px; align-items: center; margin: 0 0 70px; }
+        .st-case-v { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .st-v { position: relative; aspect-ratio: 9 / 16; background: #0b0b0a; overflow: hidden; border-radius: 4px; }
+        .st-h16 { position: relative; aspect-ratio: 16 / 9; background: #0b0b0a; overflow: hidden; border-radius: 4px; margin: 0 0 16px; }
+        .st-v iframe, .st-h16 iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .st-case-cat { font-size: 0.72rem; letter-spacing: 1.5px; opacity: 0.6; margin: 0 0 8px; }
+        .st-case-t { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; letter-spacing: 2px; margin: 0 0 16px; font-weight: 400; }
+        .st-case-grid .st-case-t { font-family: inherit; font-size: 0.98rem; letter-spacing: 1px; margin: 0 0 6px; }
+        .st-case-role { font-size: 0.74rem; opacity: 0.6; letter-spacing: 0.5px; margin: 0 0 18px; }
+        .st-member { border-top: 1px solid rgba(255,255,255,0.15); padding: 34px 0 0; margin: 0 0 26px; }
+        .st-member-en { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 3px; margin: 0 0 6px; }
+        .st-member-note { font-size: 0.74rem; opacity: 0.6; margin: 0; }
+        .st-case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .st-cards-num .st-step-t { margin-top: 14px; }
+        .st-cta-box { border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.03); text-align: center; padding: 60px 40px; margin: 0 0 110px; }
+        .st-cta-t { font-size: 1.25rem; font-weight: 300; letter-spacing: 2px; line-height: 1.8; margin: 0 0 16px; }
+        .st-cta-box .st-body { margin-bottom: 32px; }
+        .st-price-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.12); }
+        .st-price-cards > div { background: #0b0b0b; padding: 30px 24px; display: flex; flex-direction: column; }
+        .pc-name { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 2px; margin: 0 0 12px; }
+        .pc-desc { font-size: 0.74rem; line-height: 1.85; opacity: 0.7; margin: 0 0 22px; flex: 1; }
+        .pc-price { font-family: 'Montserrat', sans-serif; font-size: 1.35rem; letter-spacing: 1px; margin: 0; }
+        .pc-reg { font-size: 0.7rem; opacity: 0.5; margin: 6px 0 0; }
+        .st-fine { font-size: 0.72rem; line-height: 1.95; opacity: 0.6; margin: 20px 0 0; }
+        .st-plan-g { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 2.5px; opacity: 0.55; margin: 38px 0 12px; }
+        .st-rows { border-top: 1px solid rgba(255,255,255,0.2); }
+        .st-rows > div { display: flex; justify-content: space-between; gap: 18px; padding: 22px 6px; border-bottom: 1px solid rgba(255,255,255,0.15); }
+        .st-rows .r-rec { background: rgba(255,255,255,0.045); }
+        .r-name { font-size: 0.85rem; letter-spacing: 1px; }
+        .r-desc { display: block; font-size: 0.72rem; line-height: 1.8; opacity: 0.6; margin-top: 6px; letter-spacing: 0.5px; }
+        .r-badge { display: inline-block; margin-left: 10px; font-size: 0.62rem; padding: 2px 8px; background: #fff; color: #000; letter-spacing: 1px; vertical-align: 2px; }
+        .r-price { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; text-align: right; white-space: nowrap; }
+        .r-sub { display: block; font-size: 0.7rem; opacity: 0.55; margin-top: 5px; }
+        .r-reg { display: block; font-size: 0.72rem; opacity: 0.55; }
+        .r-camp { display: block; font-size: 0.95rem; margin-top: 4px; }
+        .r-big { font-size: 1rem; }
+        .st-camp { border: 1px solid rgba(255,255,255,0.45); padding: 18px 22px; margin: 0 0 4px; }
+        .st-camp-t { font-size: 0.9rem; letter-spacing: 1px; margin: 0 0 6px; font-weight: 700; }
+        .st-camp-t span:not(.wj) { font-weight: 400; font-size: 0.75rem; opacity: 0.75; margin-left: 10px; }
+        .st-camp-d { font-size: 0.76rem; opacity: 0.75; margin: 0; line-height: 1.8; }
+        .st-fine b { font-weight: 700; opacity: 1; }
+        .st-flow { list-style: none; margin: 0; padding: 0; }
+        .st-flow li { display: grid; grid-template-columns: 60px 1fr; gap: 10px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.12); }
+        .st-flow li > span { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; letter-spacing: 2px; opacity: 0.5; padding-top: 3px; }
+        .st-flow p { margin: 0; font-size: 0.8rem; line-height: 1.9; opacity: 0.8; }
+        .st-flow b { display: block; font-weight: 700; font-size: 0.9rem; opacity: 1; margin-bottom: 4px; letter-spacing: 1px; }
+        .st-cta-final { margin-bottom: 60px; }
+        .st-float { position: fixed; right: 24px; bottom: 24px; z-index: 50; padding: 15px 26px; background: #fff; color: #000 !important; font-weight: 700; font-size: 0.82rem; letter-spacing: 2px; box-shadow: 0 6px 24px rgba(0,0,0,0.5); opacity: 0; transform: translateY(16px); pointer-events: none; transition: 0.4s; }
+        .st-float.on { opacity: 1; transform: none; pointer-events: auto; }
+        .st-float:hover { background: #ddd; }
+        @media (max-width: 768px) {
+            .st-title { font-size: 1.65rem; letter-spacing: 3px; }
+            .st-lead { font-size: 0.85rem; text-align: left; }
+            .st-btn { display: block; width: 100%; padding: 18px 10px; box-sizing: border-box; }
+            .st-cta-row { flex-direction: column; gap: 20px; }
+            .st-camp-badge span:not(.wj) { display: table; margin: 0 auto 8px; }
+            .st-sec { margin-bottom: 80px; }
+            .st-h { font-size: 1.2rem; margin-bottom: 32px; }
+            .st-cards-3, .st-steps, .st-price-cards, .st-case-grid { grid-template-columns: 1fr; }
+            .st-steps { gap: 30px; }
+            .st-approach, .st-case { grid-template-columns: 1fr; gap: 30px; }
+            .st-note-c { text-align: left; }
+            .st-cards:not(.st-cards-num) > div { min-height: 0; padding: 26px 20px; }
+            .st-cta-box { padding: 40px 20px; margin-bottom: 80px; }
+            .st-cta-t { font-size: 1.05rem; }
+            .st-cta-box .st-body { text-align: left; }
+            .st-rows > div { flex-direction: column; gap: 10px; }
+            .r-price { text-align: left; }
+            .st-float { left: 16px; right: 16px; bottom: 14px; text-align: center; padding: 16px 10px; }
+        }
+    </style>
 </head>
 <body>
     <div id="loading" style="display: none;"></div>
@@ -69,180 +177,187 @@
     </header>
 
     <main class="main-content">
-        <section class="section-container" style="padding-top: 120px;">
-            <div class="section-header fade-in">
-                <h2>STAY SUPPORT</h2>
-                <p style="font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 3px; opacity: 0.5; margin-top: 12px;">宿泊・日帰り滞在施設の発信支援&nbsp;&nbsp;/&nbsp;&nbsp;SUGOSU DESIGN</p>
-            </div>
-
-            <div style="max-width: 800px; margin: 0 auto;">
-
-                <div class="fade-in" style="margin-bottom: 70px;">
-                    <p class="line-reveal" style="line-height: 2.1; opacity: 0.9; font-size: 0.85rem; letter-spacing: 1px;">
-                        過ごす時間を、選ばれる理由に。<br>
-                        <br>
-                        「Instagramを頑張っているのに、予約につながらない」<br>
-                        「何を投稿すればいいのか、わからない」<br>
-                        <br>
-                        ULDNLCは、宿泊・日帰り滞在施設の魅力と“どう過ごせるか”を一緒に整理し、<br>
-                        SNSとHPで活用できる映像・投稿・運用改善を個別にご提案します。<br>
-                        動画を納品して終わりではなく、<br>
-                        施設様と一緒に「伝わる発信の型」を作る、共想型の支援です。
-                    </p>
+        <!-- HERO -->
+        <section class="section-container st-hero" style="padding-top: 120px;">
+            <div class="fade-in">
+                <p class="st-eyebrow">STAY SUPPORT ／ SUGOSU DESIGN</p>
+                <p class="st-for">宿泊・日帰り滞在施設の発信支援</p>
+                <h1 class="st-title">過ごす時間を、<br>選ばれる理由に。</h1>
+                <p class="st-lead">お客様が施設で過ごす時間を、リール・ショート動画（スマホ縦向きの動画）にして、<br>インスタから予約までの流れを整えます。<br>撮って終わりにせず、予約につながったかまで一緒に確かめます。</p>
+                <div class="st-cta-row">
+                    <a href="contact.html?type=stay" class="st-btn">無料で相談する</a>
+                    <a href="#plans" class="st-link">料金を見る ↓</a>
                 </div>
-
-                <div class="fade-in" style="margin-bottom: 70px;">
-                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-bottom: 25px; letter-spacing: 2px;">FOR</h3>
-                    <p style="line-height: 2; opacity: 0.9; font-size: 0.8rem;">
-                        こんな施設様に向けた支援です。<br>
-                        <br>
-                        ・キャンプ場、グランピング、BBQ場<br>
-                        ・サウナ、日帰り温浴施設<br>
-                        ・一棟貸しヴィラ、古民家宿<br>
-                        ・カフェ併設型のアウトドア施設<br>
-                        ・個性ある小規模旅館・ゲストハウス<br>
-                        ・Instagramを運用中で、改善の余地を感じている施設
-                    </p>
-                </div>
-
-                <div class="fade-in" style="margin-bottom: 70px;">
-                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-bottom: 25px; letter-spacing: 2px;">WHAT WE DO</h3>
-                    <p style="line-height: 2.1; opacity: 0.9; font-size: 0.8rem;">
-                        <strong style="font-weight: 700;">予約までの道筋を確かめる</strong><br>
-                        InstagramからHP、予約ページまでを実際にたどり、途中で迷いやすいところを見つけて改善案をお渡しします。<br>
-<br>
-                        <strong style="font-weight: 700;">「過ごし方」を撮る</strong><br>
-                        設備の紹介ではなく、チェックインから夜、翌朝までの時間の流れを映像にします。<br>
-<br>
-                        <strong style="font-weight: 700;">写真もまとめてそろえる</strong><br>
-                        撮影の日に、HPや予約サイト（じゃらん・楽天トラベルなど）に載せる写真も一緒に撮影します。<br>
-<br>
-                        <strong style="font-weight: 700;">季節ごとに撮る</strong><br>
-                        季節の変わり目にまとめて撮影し、その季節の投稿をそろえます。<br>
-<br>
-                        <strong style="font-weight: 700;">予約につながったかを見る</strong><br>
-                        予約数と、どこから予約されたかを毎月確かめ、翌月の内容に反映します。
-                    </p>
-                </div>
-
-                <div class="fade-in" style="margin-bottom: 70px;">
-                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-bottom: 25px; letter-spacing: 2px;">STRENGTHS</h3>
-                    <p style="line-height: 2.1; opacity: 0.9; font-size: 0.8rem;">
-                        <strong style="font-weight: 700;">1回の訪問で、動画と写真をそろえる</strong><br>
-                        業務用の撮影機材を自社で保有しています。1日の撮影で、SNS用の動画と掲載用の写真を同時に仕上げます。<br>
-<br>
-                        <strong style="font-weight: 700;">公開前に、映像のプロが確認する</strong><br>
-                        テレビ番組制作の現場出身のディレクターが、公開前に1本ずつ確認します。<br>
-<br>
-                        <strong style="font-weight: 700;">撮って終わりにしない</strong><br>
-                        公開後の反応と予約の動きを確かめ、次の撮影と投稿に反映します。
-                    </p>
-                </div>
-
-                <div class="fade-in" style="margin-bottom: 70px;">
-                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-bottom: 25px; letter-spacing: 2px;">CAMPAIGN</h3>
-                    <p style="font-size: 0.8rem; line-height: 1.9; opacity: 0.9; margin-bottom: 26px;"><strong style="font-weight: 700;">お試しキャンペーン</strong>　2026年10月1日〜12月31日</p>
-                    <div style="border-top: 1px solid rgba(255,255,255,0.2);">
-                        <div style="padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-                            <span style="font-size: 0.8rem; opacity: 0.9;">お試し MINI
-                                <span style="display:block; font-size:0.68rem; opacity:0.55; margin-top:5px; letter-spacing:0.5px;">素材ご支給で縦型動画1本 ＋ 投稿文（撮影なし）</span>
-                            </span>
-                            <span style="font-size: 0.8rem; opacity: 0.85; font-family: 'Montserrat', sans-serif; text-align: right;">10,000円〜<span style="display:block; font-size:0.68rem; opacity:0.5; margin-top:4px;">通常 30,000円〜</span></span>
-                        </div>
-                        <div style="padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-                            <span style="font-size: 0.8rem; opacity: 0.9;">お試し STANDARD
-                                <span style="display:block; font-size:0.68rem; opacity:0.55; margin-top:5px; letter-spacing:0.5px;">半日撮影 ＋ 縦型動画2本 ＋ 投稿案</span>
-                            </span>
-                            <span style="font-size: 0.8rem; opacity: 0.85; font-family: 'Montserrat', sans-serif; text-align: right;">50,000円〜<span style="display:block; font-size:0.68rem; opacity:0.5; margin-top:4px;">通常 140,000円〜</span></span>
-                        </div>
-                        <div style="padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-                            <span style="font-size: 0.8rem; opacity: 0.9;">お試し PREMIUM
-                                <span style="display:block; font-size:0.68rem; opacity:0.55; margin-top:5px; letter-spacing:0.5px;">「過ごし方」撮影（約5時間）＋ 縦型動画3本 ＋ 掲載用写真10点 ＋ 投稿後の振り返り</span>
-                            </span>
-                            <span style="font-size: 0.8rem; opacity: 0.85; font-family: 'Montserrat', sans-serif; text-align: right;">80,000円〜<span style="display:block; font-size:0.68rem; opacity:0.5; margin-top:4px;">通常 220,000円〜</span></span>
-                        </div>
-                    </div>
-                    <p style="font-size: 0.72rem; line-height: 1.95; opacity: 0.6; margin-top: 18px;">キャンペーン特典：キャンペーン期間中（2026年12月31日まで）に継続プラン「数字まで見る」をご契約いただいた場合、お試しの代金の半額（上限30,000円）を初月のご請求から差し引きます。<br>期間中でも、規定の枠に達した時点で終了します。交通費は別途ご請求します。</p>
-                </div>
-
-                <div class="fade-in" style="margin-bottom: 70px;">
-                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-bottom: 25px; letter-spacing: 2px;">PLANS</h3>
-                    <p style="font-size: 0.75rem; opacity: 0.6; margin-bottom: 8px;">通常プラン（税別・目安）</p>
-                    <p style="font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 2.5px; opacity: 0.5; margin: 22px 0 14px;">FREE｜まずは無料で</p>
-                    <div style="border-top: 1px solid rgba(255,255,255,0.2);">
-                        <div style="padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-                            <span style="font-size: 0.8rem; opacity: 0.9;">予約導線チェック
-                                <span style="display:block; font-size:0.68rem; opacity:0.55; margin-top:5px; letter-spacing:0.5px;">InstagramからHP・予約ページまでをたどり、改善点をA4・1枚にまとめます</span>
-                            </span>
-                            <span style="font-size: 0.8rem; opacity: 0.85; font-family: 'Montserrat', sans-serif; text-align: right;">無料</span>
-                        </div>
-                    </div>
-                    <p style="font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 2.5px; opacity: 0.5; margin: 40px 0 14px;">SPOT｜単発</p>
-                    <div style="border-top: 1px solid rgba(255,255,255,0.2);">
-                        <div style="padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-                            <span style="font-size: 0.8rem; opacity: 0.9;">1本から
-                                <span style="display:block; font-size:0.68rem; opacity:0.55; margin-top:5px; letter-spacing:0.5px;">素材ご支給で縦型動画1本 ＋ 投稿文（撮影なし）</span>
-                            </span>
-                            <span style="font-size: 0.8rem; opacity: 0.85; font-family: 'Montserrat', sans-serif; text-align: right;">30,000円〜</span>
-                        </div>
-                        <div style="padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-                            <span style="font-size: 0.8rem; opacity: 0.9;">撮影して2本
-                                <span style="display:block; font-size:0.68rem; opacity:0.55; margin-top:5px; letter-spacing:0.5px;">半日撮影 ＋ 縦型動画2本 ＋ 投稿案</span>
-                            </span>
-                            <span style="font-size: 0.8rem; opacity: 0.85; font-family: 'Montserrat', sans-serif; text-align: right;">140,000円〜</span>
-                        </div>
-                        <div style="padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-                            <span style="font-size: 0.8rem; opacity: 0.9;">「過ごし方」を撮る
-                                <span style="display:block; font-size:0.68rem; opacity:0.55; margin-top:5px; letter-spacing:0.5px;">約5時間の撮影 ＋ 縦型動画3本 ＋ 掲載用写真10点 ＋ 投稿後の振り返り</span>
-                            </span>
-                            <span style="font-size: 0.8rem; opacity: 0.85; font-family: 'Montserrat', sans-serif; text-align: right;">220,000円〜</span>
-                        </div>
-                    </div>
-                    <p style="font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 2.5px; opacity: 0.5; margin: 40px 0 14px;">MONTHLY｜継続</p>
-                    <div style="border-top: 1px solid rgba(255,255,255,0.2);">
-                        <div style="padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-                            <span style="font-size: 0.8rem; opacity: 0.9;">季節プラン
-                                <span style="display:block; font-size:0.68rem; opacity:0.55; margin-top:5px; letter-spacing:0.5px;">年4回。季節ごとに縦型動画5本 ＋ 写真 ＋ 投稿カレンダー</span>
-                            </span>
-                            <span style="font-size: 0.8rem; opacity: 0.85; font-family: 'Montserrat', sans-serif; text-align: right;">最初の季節 120,000円<span style="display:block; font-size:0.68rem; opacity:0.5; margin-top:4px;">以降 1季節 225,000円〜</span></span>
-                        </div>
-                        <div style="padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-                            <span style="font-size: 0.8rem; opacity: 0.9;">制作
-                                <span style="display:block; font-size:0.68rem; opacity:0.55; margin-top:5px; letter-spacing:0.5px;">企画・構成・編集 月5本</span>
-                            </span>
-                            <span style="font-size: 0.8rem; opacity: 0.85; font-family: 'Montserrat', sans-serif; text-align: right;">月額 120,000円<span style="display:block; font-size:0.68rem; opacity:0.5; margin-top:4px;">4ヶ月目以降 225,000円〜</span></span>
-                        </div>
-                        <div style="padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-                            <span style="font-size: 0.8rem; opacity: 0.9;">数字まで見る
-                                <span style="display:block; font-size:0.68rem; opacity:0.55; margin-top:5px; letter-spacing:0.5px;">制作 ＋ 投稿設計・1本ごとの分析レポート・月次まとめ・改善提案。予約につながったかまで確かめます</span>
-                            </span>
-                            <span style="font-size: 0.8rem; opacity: 0.85; font-family: 'Montserrat', sans-serif; text-align: right;">月額 200,000円<span style="display:block; font-size:0.68rem; opacity:0.5; margin-top:4px;">4ヶ月目以降 400,000円〜</span></span>
-                        </div>
-                    </div>
-                    <p style="font-size: 0.72rem; line-height: 1.95; opacity: 0.6; margin-top: 18px;">継続プランの金額は、初回（最初の3ヶ月・最初の季節）の価格と、それ以降の価格です。導入価格でのご契約は、最低3ヶ月からとなります。<br>継続プランの撮影は、内容に応じて別途お見積りします。<br>月額プランの動画は、1分前後までの縦型ショート動画です。HP導線改善・HP制作は別途ご相談ください。<br>導入・初回の価格は、ご案内できる枠に限りがあります。規定の枠に達した時点で、受付を終了します。<br>交通費は別途ご請求します。</p>
-                </div>
-
-                <div class="fade-in" style="margin-bottom: 70px;">
-                    <h3 style="font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-bottom: 25px; letter-spacing: 2px;">FLOW</h3>
-                    <p style="line-height: 2.1; opacity: 0.9; font-size: 0.8rem;">
-                        1. お問い合わせ・予約導線チェックのお申し込み — 現在のSNSやお悩みをお聞かせください<br>
-                        2. ヒアリング — 施設の魅力・伝えたい相手を一緒に整理します<br>
-                        3. ご提案・お見積もり — 最適なプランと正式金額をご提示（無料）<br>
-                        4. 撮影・制作 — 縦型映像・写真・投稿案を制作<br>
-                        5. 納品・振り返り — 投稿後の反応まで一緒に確認します
-                    </p>
-                </div>
-
-                <div class="fade-in" style="margin-bottom: 40px; text-align: center;">
-                    <p style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 30px; line-height: 2;">
-                        ご希望のご予算に合わせて、制作できる内容のご提案も承ります。<br>
-                        お気軽にお問い合わせください。
-                    </p>
-                    <a href="contact.html?type=stay" class="text-link" style="font-family: 'Montserrat', sans-serif; letter-spacing: 2px;">CONTACT →</a>
-                </div>
-
+                <p class="st-camp-badge"><span>お試しキャンペーン</span>12月31日まで ／ 10,000円〜（税別）</p>
             </div>
         </section>
+
+        <div class="st-wrap">
+
+            <!-- PROBLEMS -->
+            <section class="st-sec fade-in">
+                <p class="st-h-en">PROBLEMS</p>
+                <h2 class="st-h">こんなお悩みはありませんか</h2>
+                <div class="st-cards st-cards-3">
+                    <div><p class="st-quote">「Instagram を頑張っているのに、予約につながらない」</p></div>
+                    <div><p class="st-quote">「何を投稿すればいいのか、わからない」</p></div>
+                    <div><p class="st-quote">「撮影も投稿も、日々の運営で手が回らない」</p></div>
+                </div>
+                <p class="st-note-c">施設様と一緒に考えながら、「伝わる発信」をつくっていくサポートです。</p>
+            </section>
+
+            <!-- APPROACH -->
+            <section class="st-sec fade-in">
+                <p class="st-h-en">APPROACH</p>
+                <h2 class="st-h">設備ではなく、<br class="sp-br">過ごす時間を撮る</h2>
+                <div class="st-approach">
+                    <ol class="st-tl" aria-label="滞在の時間の流れ">
+                        <li><span>15:00</span>CHECK-IN</li>
+                        <li><span>18:00</span>DINNER</li>
+                        <li><span>21:00</span>NIGHT</li>
+                        <li><span>07:00</span>MORNING</li>
+                    </ol>
+                    <p class="st-body">お客様が予約を決めるのは、設備の一覧を見たときではなく、「ここでこう過ごせる」と想像できたときです。<br>チェックインから夜、翌朝までの時間の流れを、短いリール動画にまとめます。</p>
+                </div>
+            </section>
+
+            <!-- WHAT WE DO -->
+            <section class="st-sec fade-in">
+                <p class="st-h-en">WHAT WE DO</p>
+                <h2 class="st-h">見つける・撮る・確かめる</h2>
+                <ol class="st-steps">
+                    <li>
+                        <span class="st-step-n">01</span>
+                        <p class="st-step-t">予約までの道筋を確かめる</p>
+                        <p class="st-step-d">インスタから HP、予約ページまでを実際にたどり、お客様が迷いやすいところを見つけて、直し方をお渡しします。</p>
+                        <p class="st-step-tag">予約までの流れチェック（無料）</p>
+                    </li>
+                    <li>
+                        <span class="st-step-n">02</span>
+                        <p class="st-step-t">「過ごし方」を撮る</p>
+                        <p class="st-step-d">1回の訪問で、SNS 用のリール動画と、HP・予約サイト（じゃらん・楽天トラベルなど）に載せる写真をまとめて撮影します。季節ごとの撮影もお任せください。</p>
+                    </li>
+                    <li>
+                        <span class="st-step-n">03</span>
+                        <p class="st-step-t">予約につながったかを見る</p>
+                        <p class="st-step-d">予約数と、どこから予約されたかを毎月確かめ、翌月の撮影と投稿に反映します。</p>
+                    </li>
+                </ol>
+            </section>
+
+            <!-- CASES -->
+            <section class="st-sec fade-in">
+                <p class="st-h-en">CASES</p>
+                <h2 class="st-h">事例</h2>
+
+                <article class="st-case">
+                    <div class="st-case-media st-case-v">
+                        <div class="st-v"><iframe src="https://www.youtube-nocookie.com/embed/j_h6hU1bT_Q?rel=0&amp;modestbranding=1&amp;playsinline=1" title="BBQ DAYS kichijoji PROMOTION" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                        <div class="st-v"><iframe src="https://www.youtube-nocookie.com/embed/wbcx8GtTds8?rel=0&amp;modestbranding=1&amp;playsinline=1" title="BBQ DAYS kichijoji ACCESS" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                    </div>
+                    <div class="st-case-body">
+                        <p class="st-case-cat">BBQ 施設 ／ 東京都武蔵野市</p>
+                        <h3 class="st-case-t">BBQ DAYS kichijoji</h3>
+                        <p class="st-body">現地に伺い、撮影から編集までを担当したショート動画2本。1本目はプランと過ごし方を伝えるプロモーション、2本目は会場までの道のりを案内するアクセス動画です。「行ってみたい」と思った人が、迷わずたどり着けるところまでを映像で支えています。</p>
+                        <p class="st-case-role">撮影・編集 ／ ショート動画 2本</p>
+                        <a href="work-bbqdays.html" class="st-link">詳しく見る →</a>
+                    </div>
+                </article>
+
+                <div class="st-member">
+                    <p class="st-member-en">MEMBER WORKS</p>
+                    <p class="st-member-note">所属クリエイターによる、ULDNLC 加入前の実績です。</p>
+                </div>
+                <div class="st-case-grid">
+                    <article>
+                        <div class="st-h16"><iframe src="https://www.youtube-nocookie.com/embed/NF7tChV1cjU?rel=0&amp;modestbranding=1&amp;playsinline=1" title="別府市営 浜脇温泉 施設紹介映像" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                        <p class="st-case-cat">温泉施設 ／ 大分県別府市</p>
+                        <h3 class="st-case-t">別府市営 浜脇温泉</h3>
+                        <p class="st-case-role">施設紹介映像（インタビュー）／ 演出・構成・編集</p>
+                    </article>
+                    <article>
+                        <div class="st-h16"><iframe src="https://www.youtube-nocookie.com/embed/2ET1H6LfU8c?rel=0&amp;modestbranding=1&amp;playsinline=1" title="別府市営 湯都ピア浜脇 施設紹介映像" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                        <p class="st-case-cat">温浴施設 ／ 大分県別府市</p>
+                        <h3 class="st-case-t">別府市営 湯都ピア浜脇</h3>
+                        <p class="st-case-role">施設紹介映像（インタビュー）／ 演出・構成・編集</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- STRENGTHS -->
+            <section class="st-sec fade-in">
+                <p class="st-h-en">STRENGTHS</p>
+                <h2 class="st-h">選ばれている理由</h2>
+                <div class="st-cards st-cards-3 st-cards-num">
+                    <div><span class="st-step-n">01</span><p class="st-step-t">1回の訪問で、<br>動画と写真をそろえる</p><p class="st-step-d">業務用の撮影機材を自社で持っています。1日の撮影で、SNS 用の動画と掲載用の写真を同時に仕上げます。</p></div>
+                    <div><span class="st-step-n">02</span><p class="st-step-t">公開前に、<br>映像のプロが確認する</p><p class="st-step-d">テレビ番組制作の現場出身のディレクターが、公開前に1本ずつ確認します。</p></div>
+                    <div><span class="st-step-n">03</span><p class="st-step-t">撮って<br>終わりにしない</p><p class="st-step-d">公開後の反応と予約の動きを確かめ、次の撮影と投稿に反映します。</p></div>
+                </div>
+            </section>
+
+            <!-- MID CTA -->
+            <section class="st-cta-box fade-in">
+                <p class="st-h-en">FREE CHECK</p>
+                <p class="st-cta-t">まずは無料の「予約までの流れチェック」から</p>
+                <p class="st-body">インスタから HP・予約ページまでをたどり、直せるところを A4・1枚にまとめてお送りします。売り込みの資料ではありません。</p>
+                <a href="contact.html?type=stay" class="st-btn">無料で相談する</a>
+            </section>
+
+            <!-- PLANS -->
+            <section class="st-sec fade-in" id="plans">
+                <p class="st-h-en">PRICE</p>
+                <h2 class="st-h">料金</h2>
+                <p class="st-sub">すべて税別・目安です。正式な金額はお見積もりでご提示します。</p>
+
+                <p class="st-plan-g">FREE｜まずは無料で</p>
+                <div class="st-rows">
+                    <div><span class="r-name">予約までの流れチェック<span class="r-desc">インスタから HP・予約ページまでを実際にたどり、直せるところを A4・1枚にまとめてお送りします</span></span><span class="r-price r-big">無料</span></div>
+                </div>
+
+                <p class="st-plan-g">SPOT｜単発</p>
+                <div class="st-camp">
+                    <p class="st-camp-t">お試しキャンペーン実施中 <span>2026年12月31日まで</span></p>
+                    <p class="st-camp-d">期間中は、下の単発3プランをキャンペーン価格でお受けします。</p>
+                </div>
+                <div class="st-rows">
+                    <div><span class="r-name">1本から<span class="r-desc">写真や動画をご用意いただく場合。リール動画1本 ＋ 投稿文（撮影なし）</span></span><span class="r-price"><span class="r-reg">通常 30,000円〜</span><span class="r-camp">キャンペーン 10,000円〜</span></span></div>
+                    <div><span class="r-name">撮影して2本<span class="r-desc">半日の撮影 ＋ リール動画2本 ＋ 投稿の案</span></span><span class="r-price"><span class="r-reg">通常 140,000円〜</span><span class="r-camp">キャンペーン 50,000円〜</span></span></div>
+                    <div><span class="r-name">過ごす1日を撮る<span class="r-desc">お客様の過ごす1日（チェックインから翌朝まで）を約5時間で撮影 ＋ リール動画3本 ＋ 掲載用の写真10点 ＋ 投稿後の振り返り</span></span><span class="r-price"><span class="r-reg">通常 220,000円〜</span><span class="r-camp">キャンペーン 80,000円〜</span></span></div>
+                </div>
+                <p class="st-fine"><b>キャンペーン特典：</b>期間中に継続プラン「数字まで見る」をご契約いただくと、お試しの代金の半額（最大30,000円）を初月のご請求から差し引きます。<br>例：1本から（10,000円）なら5,000円引き ／ 撮影して2本（50,000円）なら25,000円引き ／ 過ごす1日を撮る（80,000円）なら30,000円引き</p>
+
+                <p class="st-plan-g">MONTHLY｜継続</p>
+                <div class="st-rows">
+                    <div><span class="r-name">季節プラン<span class="r-desc">年4回。季節ごとにリール動画5本 ＋ 写真 ＋ 投稿カレンダー</span></span><span class="r-price"><span class="r-reg">通常 1季節 225,000円〜</span><span class="r-camp">最初の季節は 120,000円</span></span></div>
+                    <div><span class="r-name">制作<span class="r-desc">月5本の企画・構成・編集</span></span><span class="r-price"><span class="r-reg">通常 月225,000円〜</span><span class="r-camp">最初の3ヶ月は 月120,000円</span></span></div>
+                    <div class="r-rec"><span class="r-name">数字まで見る<span class="r-badge">おすすめ</span><span class="r-desc">制作 ＋ 何をどの順番で投稿するかの計画 ＋ 1本ごとの数字の振り返り ＋ 月1回のまとめと改善のご提案。予約につながったかまで確かめます</span></span><span class="r-price"><span class="r-reg">通常 月400,000円〜</span><span class="r-camp">最初の3ヶ月は 月200,000円</span></span></div>
+                </div>
+                <p class="st-fine">最初の3ヶ月（季節プランは最初の季節）の価格でのご契約は、3ヶ月からとなります。<br>継続プランの撮影は、内容に応じて別途お見積もりします。<br>月額プランの動画は、1分前後までのリール・ショート動画（スマホ縦向きの動画）です。HP の改善・制作は別途ご相談ください。<br>キャンペーン価格・最初の3ヶ月の価格は先着順でご案内しており、枠がなくなり次第終了します。<br>交通費は別途ご請求します。</p>
+            </section>
+
+            <!-- FLOW -->
+            <section class="st-sec fade-in">
+                <p class="st-h-en">FLOW</p>
+                <h2 class="st-h">ご相談から公開まで</h2>
+                <ol class="st-flow">
+                    <li><span>01</span><p><b>お問い合わせ</b>いまの SNS やお悩みをお聞かせください。「予約までの流れチェック」のお申し込みもこちらから</p></li>
+                    <li><span>02</span><p><b>ヒアリング</b>施設の魅力と、伝えたい相手を一緒に整理します</p></li>
+                    <li><span>03</span><p><b>ご提案・お見積もり</b>最適なプランと正式な金額をご提示します（無料）</p></li>
+                    <li><span>04</span><p><b>撮影・制作</b>リール動画・写真・投稿の案をつくります</p></li>
+                    <li><span>05</span><p><b>納品・振り返り</b>投稿後の反応まで一緒に確認します</p></li>
+                </ol>
+            </section>
+
+            <!-- FINAL CTA -->
+            <section class="st-cta-box st-cta-final fade-in">
+                <p class="st-cta-t">ご予算に合わせた内容のご提案も承ります。</p>
+                <p class="st-body">お見積もり・ご相談は無料です。3営業日以内に担当者よりご連絡いたします。</p>
+                <a href="contact.html?type=stay" class="st-btn">無料で相談する</a>
+            </section>
+
+        </div>
+
+        <a href="contact.html?type=stay" class="st-float" aria-label="無料で相談する">無料で相談する</a>
     </main>
 
     <footer>
@@ -259,6 +374,18 @@
 
 
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
-    <script src="script.js?v=20261110"></script>
+    <script src="script.js?v=20261114"></script>
+    <script>
+    (function () {
+        var f = document.querySelector('.st-float'), hero = document.querySelector('.st-hero'), fin = document.querySelector('.st-cta-final');
+        if (!f || !hero) return;
+        function upd() {
+            var past = hero.getBoundingClientRect().bottom < 0;
+            var nearEnd = fin && fin.getBoundingClientRect().top < window.innerHeight;
+            f.classList.toggle('on', past && !nearEnd);
+        }
+        window.addEventListener('scroll', upd, { passive: true }); upd();
+    })();
+    </script>
 </body>
 </html>

@@ -311,7 +311,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const type = new URLSearchParams(location.search).get('type');
         const presets = {
             read: ['無料の発信診断（READ）の申し込み', '見てほしいアカウント・URL:\n\n業種・お店の名前:\n\n気になっていること(任意):\n'],
-            stay: ['宿泊・日帰り滞在施設向け支援について', '施設名:\n\nInstagram・HP の URL:\n\nご希望(予約導線チェック〈無料〉/ お試しキャンペーン / 継続のご相談 など):\n\n気になっていること(任意):\n']
+            stay: ['宿泊・日帰り滞在施設向け支援について', '施設名:\n\nInstagram・HP の URL:\n\nご希望(予約までの流れチェック〈無料〉/ お試しキャンペーン / 継続のご相談 など):\n\n気になっていること(任意):\n']
         };
         if (!presets[type]) return;
         const cat = document.getElementById('category');
@@ -421,8 +421,9 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll('.line-reveal').forEach(el => {
         const parts = el.innerHTML.split(/<br\s*\/?>/i);
         el.innerHTML = parts.map((seg, i) => {
-            const content = seg.trim() === '' ? '&nbsp;' : seg;
-            return `<span class="rl"><span class="rl-inner" style="transition-delay:${(i * 0.07).toFixed(2)}s">${content}</span></span>`;
+            const gap = seg.trim() === '';
+            const content = gap ? '&nbsp;' : seg.trim();
+            return `<span class="rl${gap ? ' rl-gap' : ''}"><span class="rl-inner" style="transition-delay:${(i * 0.07).toFixed(2)}s">${content}</span></span>`;
         }).join('');
         const revealObs = new IntersectionObserver((entries) => {
             entries.forEach(en => {
@@ -871,3 +872,71 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
+
+// 日本語を文節ごとのまとまりにして、単語の途中で折り返さないようにする (2026-11-14)
+(function () {
+    if (!window.Intl || !Intl.Segmenter) return;
+    const seg = new Intl.Segmenter('ja', { granularity: 'word' });
+    const JA = /[\u3040-\u30ff\u3400-\u9fff\uff01-\uff60]/;
+    const HIRA = /^[\u3041-\u309f\u30fc]+$/;
+    const ATTACH = /^[、。，．！？!?）」』】〉》・ー〜…:：%％]+$/;
+    const OPEN = /[（「『【〈《]$/;
+    const STOP = /[、。！？!?\s]$/;
+    const SKIP = 'SCRIPT,STYLE,TEXTAREA,OPTION,SELECT,INPUT,BUTTON,svg,SVG,CODE,PRE';
+    function chunks(text) {
+        const out = []; let cur = ''; let prefix = false;
+        for (const { segment: s } of seg.segment(text)) {
+            if (/^\s+$/.test(s)) { if (cur) out.push(cur); out.push(s); cur = ''; prefix = false; continue; }
+            if (s === 'お' || s === 'ご') { if (cur) out.push(cur); cur = s; prefix = true; continue; }
+            if (!cur) { cur = s; continue; }
+            const kanji = /[\u3400-\u9fff々0-9０-９,，]$/.test(cur) && /^[\u3400-\u9fff々0-9０-９]/.test(s);
+            const attach = prefix || kanji || ATTACH.test(s) || OPEN.test(cur) || (HIRA.test(s) && !STOP.test(cur));
+            prefix = false;
+            if (attach && (cur + s).length <= 20) cur += s;
+            else { out.push(cur); cur = s; }
+        }
+        if (cur) out.push(cur);
+        return out;
+    }
+    function wrap(root) {
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+            acceptNode(n) {
+                if (!JA.test(n.nodeValue)) return NodeFilter.FILTER_REJECT;
+                const p = n.parentElement;
+                if (!p || p.closest(SKIP) || p.closest('.wj, .no-wj')) return NodeFilter.FILTER_REJECT;
+                return NodeFilter.FILTER_ACCEPT;
+            }
+        });
+        const nodes = []; while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach(n => {
+            const frag = document.createDocumentFragment();
+            chunks(n.nodeValue).forEach(c => {
+                if (JA.test(c) && c.length > 1) { const sp = document.createElement('span'); sp.className = 'wj'; sp.textContent = c; frag.appendChild(sp); }
+                else frag.appendChild(document.createTextNode(c));
+            });
+            n.parentNode.replaceChild(frag, n);
+        });
+    }
+    // 本文の1回だけの改行は PC 用。スマホでは外す(空行と見出しの改行は残す)
+    function markBr(root) {
+        root.querySelectorAll('p br, li br').forEach(br => {
+            const host = br.closest('p, li');
+            if (!host || host.closest('svg, .no-wj')) return;
+            if (parseFloat(getComputedStyle(host).fontSize) > 17) return;
+            const isWs = n => n && n.nodeType === 3 && !n.nodeValue.trim();
+            let prev = br.previousSibling, next = br.nextSibling;
+            while (isWs(prev)) prev = prev.previousSibling;
+            while (isWs(next)) next = next.nextSibling;
+            const realPrev = prev, realNext = next;
+            if ((realPrev && realPrev.nodeName === 'BR') || (realNext && realNext.nodeName === 'BR')) return;
+            if (realNext && /^\s*[・※●■◆▶︎①-⑳\-–]/.test(realNext.textContent || '')) return;
+            if (realPrev && /^(STRONG|B|H[1-6])$/.test(realPrev.nodeName)) return;
+            while (isWs(br.previousSibling)) br.previousSibling.remove();
+            while (isWs(br.nextSibling)) br.nextSibling.remove();
+            br.classList.add('br-pc');
+        });
+    }
+    const run = () => { const m = document.querySelector('main') || document.body; wrap(m); markBr(m); };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
+})();
