@@ -742,3 +742,16 @@ select:focus-visible {
 }
 /* 料金の行:金額が2行目に回っても右端にそろえる */
 [style*="justify-content: space-between"] > span[style*="text-align: right"] { margin-left: auto; }
+
+/* トップ:宿泊施設の方への小さな入口 (2026-11-14) */
+.home-door-wrap { padding-top: 0 !important; padding-bottom: 0 !important; margin-top: -30px; }
+.home-door { display: flex; align-items: center; gap: 20px; max-width: 800px; margin: 0 auto; padding: 18px 24px; border: 1px solid rgba(255,255,255,0.2); color: #fff; transition: 0.3s; }
+.home-door:hover { border-color: rgba(255,255,255,0.55); background: rgba(255,255,255,0.03); }
+.home-door .hd-en { font-family: 'Montserrat', sans-serif; font-size: 0.58rem; letter-spacing: 3px; opacity: 0.5; }
+.home-door .hd-ja { font-size: 0.82rem; letter-spacing: 1px; flex: 1; }
+.home-door .hd-go { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.8; }
+@media (max-width: 768px) {
+    .home-door { flex-wrap: wrap; gap: 6px 14px; padding: 16px 18px; }
+    .home-door .hd-ja { flex-basis: 100%; order: 2; }
+    .home-door .hd-go { order: 3; }
+}
