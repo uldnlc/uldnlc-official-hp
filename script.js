@@ -305,6 +305,20 @@ document.addEventListener("DOMContentLoaded", function() {
     // 9. CONTACT フォーム処理
     // =========================================================
     const contactForm = document.getElementById('contactForm');
+    // ?type=read で来た人は、READ を選んだ状態で開く (2026-11-13)
+    (function () {
+        if (!contactForm) return;
+        const type = new URLSearchParams(location.search).get('type');
+        const presets = {
+            read: ['無料の発信診断（READ）の申し込み', '見てほしいアカウント・URL:\n\n業種・お店の名前:\n\n気になっていること(任意):\n'],
+            stay: ['宿泊・日帰り滞在施設向け支援について', '施設名:\n\nInstagram・HP の URL:\n\nご希望(予約導線チェック〈無料〉/ お試しキャンペーン / 継続のご相談 など):\n\n気になっていること(任意):\n']
+        };
+        if (!presets[type]) return;
+        const cat = document.getElementById('category');
+        const msg = document.getElementById('message');
+        if (cat) cat.value = presets[type][0];
+        if (msg && !msg.value) msg.value = presets[type][1];
+    })();
     const btnConfirm = document.getElementById('btn-confirm');
     const btnBack = document.getElementById('btn-back');
     const stepInput = document.getElementById('form-input-step');
